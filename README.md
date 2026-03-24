@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## サイト
 
-## Getting Started
+https://slaythespire2vote.vercel.app/
 
-First, run the development server:
+# Slay the Spire 2 カード強さ投票サイト
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[Slay the Spire 2](https://store.steampowered.com/app/1868140/Slay_the_Spire_2/) のカードを **S / A / B / C / D** の5段階で評価できる投票サイトです。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+キャラクターごとにカード一覧を表示し、各カードに対してみんなの評価をリアルタイムで確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 機能
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- キャラクター別カード一覧（アイアンクラッド / サイレント / ディフェクト / ネクロバインダー / リージェント）
+- カードタイプ（アタック / スキル / パワー）でフィルタリング
+- S〜Dの5段階評価で投票
+- 投票結果をリアルタイム表示（棒グラフで分布確認）
+- 同一IPからの重複投票を防止
+- カード画像表示
 
-## Learn More
+## 技術スタック
 
-To learn more about Next.js, take a look at the following resources:
+| 役割 | 技術 |
+|---|---|
+| フロントエンド | Next.js (App Router) / Tailwind CSS |
+| ホスティング | Vercel |
+| データベース | Firebase Firestore |
+| 画像配信 | Vercel Blob |
+| 投票API | Next.js API Routes |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 免責事項
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- カード画像・カード名は [Slay the Spire 2](https://store.steampowered.com/app/1868140/Slay_the_Spire_2/) (MegaCrit) の著作物です
+- 本サイトは非公式のファンサイトであり、MegaCrit とは一切関係ありません
+- 商用利用は行っていません
