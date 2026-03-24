@@ -43,7 +43,8 @@
       "rarity": "スターター",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/強打.webp"
     },
     {
       "id": "ironclad_怒り",
@@ -52,7 +53,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/怒り.webp"
     },
     {
       "id": "ironclad_アイアンウェーブ",
@@ -61,7 +63,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/アイアンウェーブ.webp"
     },
     {
       "id": "ironclad_サンダークラップ",
@@ -70,7 +73,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/サンダークラップ.webp"
     },
     {
       "id": "ironclad_セットアップストライク",
@@ -79,7 +83,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/セットアップストライク.webp"
     },
     {
       "id": "ironclad_ソードブーメラン",
@@ -97,7 +102,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ツインストライク.webp"
     },
     {
       "id": "ironclad_ヘッドバット",
@@ -106,7 +112,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ヘッドバット.webp"
     },
     {
       "id": "ironclad_ボディスラム",
@@ -115,7 +122,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ボディスラム.webp"
     },
     {
       "id": "ironclad_ポンメルストライク",
@@ -124,7 +132,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ポンメルストライク.webp"
     },
     {
       "id": "ironclad_血路を開く",
@@ -133,7 +142,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/血路を開く.webp"
     },
     {
       "id": "ironclad_溶岩の拳",
@@ -142,7 +152,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/溶岩の拳.webp"
     },
     {
       "id": "ironclad_パーフェクトストライク",
@@ -151,7 +162,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/パーフェクトストライク.webp"
     },
     {
       "id": "ironclad_黒焦げ",
@@ -160,7 +172,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/黒焦げ.webp"
     },
     {
       "id": "ironclad_ごろつき",
@@ -169,7 +182,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ごろつき.webp"
     },
     {
       "id": "ironclad_悪意",
@@ -178,7 +192,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/悪意.webp"
     },
     {
       "id": "ironclad_旋風刃",
@@ -187,7 +202,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/旋風刃.webp"
     },
     {
       "id": "ironclad_アッシュストライク",
@@ -196,7 +212,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/アッシュストライク.webp"
     },
     {
       "id": "ironclad_グラップル",
@@ -205,7 +222,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/グラップル.webp"
     },
     {
       "id": "ironclad_ぶんどる",
@@ -214,7 +232,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ぶんどる.webp"
     },
     {
       "id": "ironclad_ヘモキネシス",
@@ -223,7 +242,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ヘモキネシス.webp"
     },
     {
       "id": "ironclad_ランページ",
@@ -232,7 +252,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ランページ.webp"
     },
     {
       "id": "ironclad_解体",
@@ -241,7 +262,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/解体.webp"
     },
     {
       "id": "ironclad_アッパーカット",
@@ -250,7 +272,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/アッパーカット.webp"
     },
     {
       "id": "ironclad_俺と戦え！",
@@ -259,7 +282,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/俺と戦え！.webp"
     },
     {
       "id": "ironclad_冷酷",
@@ -268,7 +292,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/冷酷.webp"
     },
     {
       "id": "ironclad_踏みつけ",
@@ -277,7 +302,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/踏みつけ.webp"
     },
     {
       "id": "ironclad_脳天割り",
@@ -286,7 +312,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/脳天割り.webp"
     },
     {
       "id": "ironclad_彼方からの遠吠え",
@@ -295,7 +322,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/彼方からの遠吠え.webp"
     },
     {
       "id": "ironclad_契約の終わり",
@@ -304,7 +332,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/契約の終わり.webp"
     },
     {
       "id": "ironclad_捕食",
@@ -313,7 +342,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/捕食.webp"
     },
     {
       "id": "ironclad_滅多打ち",
@@ -322,7 +352,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/滅多打ち.webp"
     },
     {
       "id": "ironclad_猛火",
@@ -331,7 +362,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/猛火.webp"
     },
     {
       "id": "ironclad_鬼火",
@@ -340,7 +372,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/鬼火.webp"
     },
     {
       "id": "ironclad_八つ裂き",
@@ -349,7 +382,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/八つ裂き.webp"
     },
     {
       "id": "ironclad_切り刻み",
@@ -358,7 +392,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/切り刻み.webp"
     },
     {
       "id": "ironclad_破砕",
@@ -367,7 +402,8 @@
       "rarity": "エンシェント",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/破砕.webp"
     },
     {
       "id": "ironclad_防御",
@@ -385,7 +421,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/瀉血.webp"
     },
     {
       "id": "ironclad_荒廃",
@@ -394,7 +431,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/荒廃.webp"
     },
     {
       "id": "ironclad_受け流し",
@@ -403,7 +441,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/受け流し.webp"
     },
     {
       "id": "ironclad_身震い",
@@ -412,7 +451,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/身震い.webp"
     },
     {
       "id": "ironclad_不屈の闘志",
@@ -421,7 +461,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/不屈の闘志.webp"
     },
     {
       "id": "ironclad_武装",
@@ -430,7 +471,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/武装.webp"
     },
     {
       "id": "ironclad_血の壁",
@@ -439,7 +481,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/血の壁.webp"
     },
     {
       "id": "ironclad_バトルトランス",
@@ -448,7 +491,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/バトルトランス.webp"
     },
     {
       "id": "ironclad_悪魔の盾※マルチプレイ専用",
@@ -466,7 +510,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/激怒.webp"
     },
     {
       "id": "ironclad_イービルアイ",
@@ -475,7 +520,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/イービルアイ.webp"
     },
     {
       "id": "ironclad_セカンドウィンド",
@@ -484,7 +530,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/セカンドウィンド.webp"
     },
     {
       "id": "ironclad_威圧",
@@ -502,7 +549,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/焦熱の契約.webp"
     },
     {
       "id": "ironclad_挑発",
@@ -511,7 +559,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/挑発.webp"
     },
     {
       "id": "ironclad_非道の刃",
@@ -529,7 +578,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/忘れられし儀式.webp"
     },
     {
       "id": "ironclad_炎の障壁",
@@ -538,7 +588,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/炎の障壁.webp"
     },
     {
       "id": "ironclad_戦いの予感",
@@ -547,7 +598,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/戦いの予感.webp"
     },
     {
       "id": "ironclad_カスケード",
@@ -556,7 +608,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/カスケード.webp"
     },
     {
       "id": "ironclad_供物",
@@ -565,7 +618,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/供物.webp"
     },
     {
       "id": "ironclad_原始の力",
@@ -574,7 +628,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/原始の力.webp"
     },
     {
       "id": "ironclad_焼印",
@@ -583,7 +638,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/焼印.webp"
     },
     {
       "id": "ironclad_ワン・ツーパンチ",
@@ -592,7 +648,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ワン・ツーパンチ.webp"
     },
     {
       "id": "ironclad_巨人",
@@ -601,7 +658,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/巨人.webp"
     },
     {
       "id": "ironclad_焚きつけ",
@@ -610,7 +668,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/焚きつけ.webp"
     },
     {
       "id": "ironclad_不動",
@@ -619,7 +678,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/不動.webp"
     },
     {
       "id": "ironclad_戦いのドラム",
@@ -628,7 +688,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/戦いのドラム.webp"
     },
     {
       "id": "ironclad_インフェルノ",
@@ -646,7 +707,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ジャグリング.webp"
     },
     {
       "id": "ironclad_ストーンアーマー",
@@ -655,7 +717,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ストーンアーマー.webp"
     },
     {
       "id": "ironclad_血の沸騰(破裂)",
@@ -673,7 +736,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/残忍.webp"
     },
     {
       "id": "ironclad_発火",
@@ -682,7 +746,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/発火.webp"
     },
     {
       "id": "ironclad_無痛",
@@ -691,7 +756,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/無痛.webp"
     },
     {
       "id": "ironclad_暴走",
@@ -700,7 +766,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/暴走.webp"
     },
     {
       "id": "ironclad_タンク※マルチプレイ専用",
@@ -718,7 +785,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/残酷.webp"
     },
     {
       "id": "ironclad_深紅の衣",
@@ -727,7 +795,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/深紅の衣.webp"
     },
     {
       "id": "ironclad_闘争心",
@@ -736,7 +805,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/闘争心.webp"
     },
     {
       "id": "ironclad_かがり火",
@@ -745,7 +815,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/かがり火.webp"
     },
     {
       "id": "ironclad_ジャガーノート",
@@ -754,7 +825,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ジャガーノート.webp"
     },
     {
       "id": "ironclad_ヘル・レイザー",
@@ -763,7 +835,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ヘル・レイザー.webp"
     },
     {
       "id": "ironclad_闇の抱擁",
@@ -772,7 +845,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/闇の抱擁.webp"
     },
     {
       "id": "ironclad_盤石",
@@ -781,7 +855,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/盤石.webp"
     },
     {
       "id": "ironclad_バリケード",
@@ -790,7 +865,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/バリケード.webp"
     },
     {
       "id": "ironclad_悪魔化",
@@ -799,7 +875,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/悪魔化.webp"
     },
     {
       "id": "ironclad_堕落",
@@ -808,7 +885,8 @@
       "rarity": "エンシェント",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/堕落.webp"
     },
     {
       "id": "silent_ストライク",
@@ -844,7 +922,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ダガースロー.webp"
     },
     {
       "id": "silent_フリック・フラック",
@@ -853,7 +932,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/フリック・フラック.webp"
     },
     {
       "id": "silent_リーディングストライク",
@@ -889,7 +969,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/不意打ち.webp"
     },
     {
       "id": "silent_跳弾",
@@ -907,7 +988,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/串刺し.webp"
     },
     {
       "id": "silent_研ぎ澄まされた刃",
@@ -916,7 +998,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/研ぎ澄まされた刃.webp"
     },
     {
       "id": "silent_騙し討ち",
@@ -925,7 +1008,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/騙し討ち.webp"
     },
     {
       "id": "silent_フィニッシャー(とどめの一撃)",
@@ -943,7 +1027,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/フレシェット.webp"
     },
     {
       "id": "silent_メメント・モリ",
@@ -952,7 +1037,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/メメント・モリ.webp"
     },
     {
       "id": "silent_絞殺",
@@ -961,7 +1047,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/絞殺.webp"
     },
     {
       "id": "silent_追打ち",
@@ -970,7 +1057,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/追打ち.webp"
     },
     {
       "id": "silent_ダッシュ",
@@ -979,7 +1067,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ダッシュ.webp"
     },
     {
       "id": "silent_急襲",
@@ -988,7 +1077,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/急襲.webp"
     },
     {
       "id": "silent_略奪",
@@ -997,7 +1087,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/略奪.webp"
     },
     {
       "id": "silent_ピンポイント",
@@ -1006,7 +1097,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ピンポイント.webp"
     },
     {
       "id": "silent_グランドフィナーレ",
@@ -1015,7 +1107,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/グランドフィナーレ.webp"
     },
     {
       "id": "silent_暗殺",
@@ -1024,7 +1117,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/暗殺.webp"
     },
     {
       "id": "silent_狩猟",
@@ -1033,7 +1127,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/狩猟.webp"
     },
     {
       "id": "silent_反響する斬撃",
@@ -1042,7 +1137,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/反響する斬撃.webp"
     },
     {
       "id": "silent_殺害",
@@ -1051,7 +1147,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/殺害.webp"
     },
     {
       "id": "silent_抑圧",
@@ -1060,7 +1157,8 @@
       "rarity": "エンシェント",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/抑圧.webp"
     },
     {
       "id": "silent_防御",
@@ -1078,7 +1176,8 @@
       "rarity": "スターター",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/サバイバー.webp"
     },
     {
       "id": "silent_ディフレクト",
@@ -1087,7 +1186,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ディフレクト.webp"
     },
     {
       "id": "silent_機先",
@@ -1096,7 +1196,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/機先.webp"
     },
     {
       "id": "silent_準備",
@@ -1114,7 +1215,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/アクロバット.webp"
     },
     {
       "id": "silent_ドッジ＆ロール",
@@ -1123,7 +1225,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ドッジ＆ロール.webp"
     },
     {
       "id": "silent_バックフリップ",
@@ -1132,7 +1235,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/バックフリップ.webp"
     },
     {
       "id": "silent_外套と短剣",
@@ -1141,7 +1245,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/外套と短剣.webp"
     },
     {
       "id": "silent_金切り声",
@@ -1150,7 +1255,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/金切り声.webp"
     },
     {
       "id": "silent_剣の舞",
@@ -1159,7 +1265,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/剣の舞.webp"
     },
     {
       "id": "silent_致死毒",
@@ -1168,7 +1275,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/致死毒.webp"
     },
     {
       "id": "silent_蛇の噛みつき",
@@ -1177,7 +1285,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/蛇の噛みつき.webp"
     },
     {
       "id": "silent_不可侵",
@@ -1186,7 +1295,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/不可侵.webp"
     },
     {
       "id": "silent_イカサマ",
@@ -1204,7 +1314,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/暗器.webp"
     },
     {
       "id": "silent_脱出計画",
@@ -1213,7 +1324,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/脱出計画.webp"
     },
     {
       "id": "silent_暴露",
@@ -1222,7 +1334,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/暴露.webp"
     },
     {
       "id": "silent_バブル・バブル",
@@ -1231,7 +1344,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/バブル・バブル.webp"
     },
     {
       "id": "silent_ブラー",
@@ -1240,7 +1354,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ブラー.webp"
     },
     {
       "id": "silent_手品",
@@ -1249,7 +1364,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/手品.webp"
     },
     {
       "id": "silent_職人技",
@@ -1258,7 +1374,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/職人技.webp"
     },
     {
       "id": "silent_蜃気楼",
@@ -1267,7 +1384,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/蜃気楼.webp"
     },
     {
       "id": "silent_バウンドフラスコ",
@@ -1276,7 +1394,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/バウンドフラスコ.webp"
     },
     {
       "id": "silent_奥の手",
@@ -1285,7 +1404,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/奥の手.webp"
     },
     {
       "id": "silent_挟撃※マルチプレイ専用",
@@ -1303,7 +1423,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/足払い.webp"
     },
     {
       "id": "silent_策士",
@@ -1312,7 +1433,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/策士.webp"
     },
     {
       "id": "silent_毒の薄霧",
@@ -1321,7 +1443,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/毒の薄霧.webp"
     },
     {
       "id": "silent_反射神経(反射)",
@@ -1339,7 +1462,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/アドレナリン.webp"
     },
     {
       "id": "silent_不快感",
@@ -1348,7 +1472,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/不快感.webp"
     },
     {
       "id": "silent_シャドウステップ",
@@ -1357,7 +1482,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/シャドウステップ.webp"
     },
     {
       "id": "silent_バースト",
@@ -1375,7 +1501,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/影との融合.webp"
     },
     {
       "id": "silent_鋼の嵐",
@@ -1384,7 +1511,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/鋼の嵐.webp"
     },
     {
       "id": "silent_腐食の波",
@@ -1393,7 +1521,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/腐食の波.webp"
     },
     {
       "id": "silent_墨の刃",
@@ -1411,7 +1540,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ナイフの罠.webp"
     },
     {
       "id": "silent_バレットタイム",
@@ -1420,7 +1550,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/バレットタイム.webp"
     },
     {
       "id": "silent_悪夢",
@@ -1429,7 +1560,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/悪夢.webp"
     },
     {
       "id": "silent_ファントムブレード",
@@ -1438,7 +1570,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ファントムブレード.webp"
     },
     {
       "id": "silent_フットワーク",
@@ -1447,7 +1580,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/フットワーク.webp"
     },
     {
       "id": "silent_感染爆発",
@@ -1456,7 +1590,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/感染爆発.webp"
     },
     {
       "id": "silent_精度上昇",
@@ -1465,7 +1600,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/精度上昇.webp"
     },
     {
       "id": "silent_毒ガス(有毒ガス)",
@@ -1483,7 +1619,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/無限の刃.webp"
     },
     {
       "id": "silent_用意周到",
@@ -1492,7 +1629,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/用意周到.webp"
     },
     {
       "id": "silent_スピードスター",
@@ -1501,7 +1639,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/スピードスター.webp"
     },
     {
       "id": "silent_残像",
@@ -1510,7 +1649,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/残像.webp"
     },
     {
       "id": "silent_商売道具",
@@ -1519,7 +1659,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/商売道具.webp"
     },
     {
       "id": "silent_促進剤",
@@ -1537,7 +1678,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/ナイフの雨.webp"
     },
     {
       "id": "silent_隠密※マルチプレイ専用",
@@ -1555,7 +1697,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/稀代の策士.webp"
     },
     {
       "id": "silent_追跡",
@@ -1564,7 +1707,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/追跡.webp"
     },
     {
       "id": "silent_毒の仕込み(猛毒の仕込み)",
@@ -1582,7 +1726,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/刺々しい.webp"
     },
     {
       "id": "silent_大蛇化",
@@ -1591,7 +1736,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/大蛇化.webp"
     },
     {
       "id": "silent_死霊化",
@@ -1600,7 +1746,8 @@
       "rarity": "エンシェント",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/死霊化.webp"
     },
     {
       "id": "defect_ストライク",
@@ -1618,7 +1765,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ビームセル.webp"
     },
     {
       "id": "defect_爪",
@@ -1627,7 +1775,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/爪.webp"
     },
     {
       "id": "defect_目潰し",
@@ -1636,7 +1785,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/目潰し.webp"
     },
     {
       "id": "defect_コンパイル・ドライバ",
@@ -1645,7 +1795,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/コンパイル・ドライバ.webp"
     },
     {
       "id": "defect_ビーム一掃",
@@ -1654,7 +1805,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ビーム一掃.webp"
     },
     {
       "id": "defect_フォーカスストライク",
@@ -1663,7 +1815,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/フォーカスストライク.webp"
     },
     {
       "id": "defect_ヘドロ投げ",
@@ -1672,7 +1825,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ヘドロ投げ.webp"
     },
     {
       "id": "defect_ボールライトニング",
@@ -1681,7 +1835,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ボールライトニング.webp"
     },
     {
       "id": "defect_モメンタムストライク",
@@ -1690,7 +1845,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/モメンタムストライク.webp"
     },
     {
       "id": "defect_寒波",
@@ -1699,7 +1855,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/寒波.webp"
     },
     {
       "id": "defect_集中砲火",
@@ -1708,7 +1865,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/集中砲火.webp"
     },
     {
       "id": "defect_大騒ぎ",
@@ -1717,7 +1875,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/大騒ぎ.webp"
     },
     {
       "id": "defect_FTL",
@@ -1726,7 +1885,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/FTL.webp"
     },
     {
       "id": "defect_テスラコイル",
@@ -1735,7 +1895,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/テスラコイル.webp"
     },
     {
       "id": "defect_スクレイプ",
@@ -1744,7 +1905,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/スクレイプ.webp"
     },
     {
       "id": "defect_シンセシス",
@@ -1753,7 +1915,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/シンセシス.webp"
     },
     {
       "id": "defect_ヌル",
@@ -1762,7 +1925,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ヌル.webp"
     },
     {
       "id": "defect_ロケットパンチ",
@@ -1771,7 +1935,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ロケットパンチ.webp"
     },
     {
       "id": "defect_屈折",
@@ -1780,7 +1945,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/屈折.webp"
     },
     {
       "id": "defect_切断",
@@ -1789,7 +1955,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/切断.webp"
     },
     {
       "id": "defect_螺旋ドリル",
@@ -1798,7 +1965,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/螺旋ドリル.webp"
     },
     {
       "id": "defect_粉砕",
@@ -1807,7 +1975,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/粉砕.webp"
     },
     {
       "id": "defect_アダプティブストライク",
@@ -1816,7 +1985,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/アダプティブストライク.webp"
     },
     {
       "id": "defect_オール・フォー・ワン",
@@ -1825,7 +1995,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/オール・フォー・ワン.webp"
     },
     {
       "id": "defect_ハイパービーム",
@@ -1834,7 +2005,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ハイパービーム.webp"
     },
     {
       "id": "defect_対空砲",
@@ -1843,7 +2015,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/対空砲.webp"
     },
     {
       "id": "defect_アイスランス",
@@ -1852,7 +2025,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/アイスランス.webp"
     },
     {
       "id": "defect_メテオストライク",
@@ -1861,7 +2035,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/メテオストライク.webp"
     },
     {
       "id": "defect_防御",
@@ -1879,7 +2054,8 @@
       "rarity": "スターター",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ザップ.webp"
     },
     {
       "id": "defect_デュアルキャスト",
@@ -1888,7 +2064,8 @@
       "rarity": "スターター",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/デュアルキャスト.webp"
     },
     {
       "id": "defect_ホットフィックス",
@@ -1897,7 +2074,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ホットフィックス.webp"
     },
     {
       "id": "defect_加速！",
@@ -1906,7 +2084,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/加速！.webp"
     },
     {
       "id": "defect_緊急回避",
@@ -1915,7 +2094,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/緊急回避.webp"
     },
     {
       "id": "defect_バッテリー充電",
@@ -1924,7 +2104,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/バッテリー充電.webp"
     },
     {
       "id": "defect_ホログラム",
@@ -1933,7 +2114,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ホログラム.webp"
     },
     {
       "id": "defect_跳躍",
@@ -1942,7 +2124,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/跳躍.webp"
     },
     {
       "id": "defect_避雷針",
@@ -1951,7 +2134,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/避雷針.webp"
     },
     {
       "id": "defect_冷静沈着",
@@ -1960,7 +2144,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/冷静沈着.webp"
     },
     {
       "id": "defect_オーバークロック",
@@ -1969,7 +2154,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/オーバークロック.webp"
     },
     {
       "id": "defect_テンペスト",
@@ -1978,7 +2164,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/テンペスト.webp"
     },
     {
       "id": "defect_寒気",
@@ -1987,7 +2174,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/寒気.webp"
     },
     {
       "id": "defect_起動シーケンス",
@@ -1996,7 +2184,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/起動シーケンス.webp"
     },
     {
       "id": "defect_エナジーサージ※マルチプレイ専用",
@@ -2014,7 +2203,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ガラス細工.webp"
     },
     {
       "id": "defect_スキム",
@@ -2023,7 +2213,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/スキム.webp"
     },
     {
       "id": "defect_ダブルエナジー",
@@ -2032,7 +2223,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ダブルエナジー.webp"
     },
     {
       "id": "defect_ホワイトノイズ",
@@ -2041,7 +2233,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ホワイトノイズ.webp"
     },
     {
       "id": "defect_圧縮",
@@ -2050,7 +2243,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/圧縮.webp"
     },
     {
       "id": "defect_暗黒",
@@ -2059,7 +2253,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/暗黒.webp"
     },
     {
       "id": "defect_強行突破",
@@ -2068,7 +2263,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/強行突破.webp"
     },
     {
       "id": "defect_混沌",
@@ -2077,7 +2273,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/混沌.webp"
     },
     {
       "id": "defect_同期",
@@ -2086,7 +2283,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/同期.webp"
     },
     {
       "id": "defect_廃品回収",
@@ -2095,7 +2293,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/廃品回収.webp"
     },
     {
       "id": "defect_シャドウシールド",
@@ -2104,7 +2303,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/シャドウシールド.webp"
     },
     {
       "id": "defect_氷河",
@@ -2113,7 +2313,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/氷河.webp"
     },
     {
       "id": "defect_融合",
@@ -2122,7 +2323,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/融合.webp"
     },
     {
       "id": "defect_マルチキャスト",
@@ -2131,7 +2333,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/マルチキャスト.webp"
     },
     {
       "id": "defect_改造",
@@ -2140,7 +2343,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/改造.webp"
     },
     {
       "id": "defect_再起動",
@@ -2149,7 +2353,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/再起動.webp"
     },
     {
       "id": "defect_超臨界",
@@ -2158,7 +2363,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/超臨界.webp"
     },
     {
       "id": "defect_イグニッション※マルチプレイ専用",
@@ -2176,7 +2382,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/遺伝的アルゴリズム.webp"
     },
     {
       "id": "defect_信号増幅",
@@ -2185,7 +2392,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/信号増幅.webp"
     },
     {
       "id": "defect_レインボー",
@@ -2194,7 +2402,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/レインボー.webp"
     },
     {
       "id": "defect_電圧上昇",
@@ -2203,7 +2412,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/電圧上昇.webp"
     },
     {
       "id": "defect_クアッドキャスト",
@@ -2212,7 +2422,8 @@
       "rarity": "エンシェント",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/クアッドキャスト.webp"
     },
     {
       "id": "defect_コンデンサ",
@@ -2221,7 +2432,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/コンデンサ.webp"
     },
     {
       "id": "defect_サブルーティン",
@@ -2230,7 +2442,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/サブルーティン.webp"
     },
     {
       "id": "defect_サンダー",
@@ -2239,7 +2452,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/サンダー.webp"
     },
     {
       "id": "defect_ストーム",
@@ -2248,7 +2462,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ストーム.webp"
     },
     {
       "id": "defect_ヘイルストーム",
@@ -2257,7 +2472,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ヘイルストーム.webp"
     },
     {
       "id": "defect_ループ",
@@ -2266,7 +2482,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/ループ.webp"
     },
     {
       "id": "defect_煙突",
@@ -2275,7 +2492,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/煙突.webp"
     },
     {
       "id": "defect_反復",
@@ -2284,7 +2502,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/反復.webp"
     },
     {
       "id": "defect_肉体改造",
@@ -2293,7 +2512,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/肉体改造.webp"
     },
     {
       "id": "defect_野生",
@@ -2302,7 +2522,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/野生.webp"
     },
     {
       "id": "defect_スピナー",
@@ -2311,7 +2532,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/スピナー.webp"
     },
     {
       "id": "defect_デフラグ",
@@ -2320,7 +2542,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/デフラグ.webp"
     },
     {
       "id": "defect_機械学習",
@@ -2329,7 +2552,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/機械学習.webp"
     },
     {
       "id": "defect_災い転じて",
@@ -2338,7 +2562,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/災い転じて.webp"
     },
     {
       "id": "defect_冷却材",
@@ -2347,7 +2572,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/冷却材.webp"
     },
     {
       "id": "defect_バッファー",
@@ -2356,7 +2582,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/バッファー.webp"
     },
     {
       "id": "defect_貪る影",
@@ -2365,7 +2592,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/貪る影.webp"
     },
     {
       "id": "defect_クリエイティブAI",
@@ -2374,7 +2602,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/クリエイティブAI.webp"
     },
     {
       "id": "defect_反響化",
@@ -2383,7 +2612,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/反響化.webp"
     },
     {
       "id": "defect_認知偏向",
@@ -2392,7 +2622,8 @@
       "rarity": "エンシェント",
       "type": "パワー",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/認知偏向.webp"
     },
     {
       "id": "necro_ストライク",
@@ -2410,7 +2641,8 @@
       "rarity": "スターター",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/解き放つ.webp"
     },
     {
       "id": "necro_つっつき",
@@ -2419,7 +2651,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/つっつき.webp"
     },
     {
       "id": "necro_パチン",
@@ -2437,7 +2670,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/畏怖.webp"
     },
     {
       "id": "necro_枯毒のストライク",
@@ -2446,7 +2680,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/枯毒のストライク.webp"
     },
     {
       "id": "necro_魂剥ぎ",
@@ -2455,7 +2690,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/魂剥ぎ.webp"
     },
     {
       "id": "necro_種まき",
@@ -2464,7 +2700,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/種まき.webp"
     },
     {
       "id": "necro_彫刻のストライク",
@@ -2473,7 +2710,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/彫刻のストライク.webp"
     },
     {
       "id": "necro_墓場の爆発",
@@ -2482,7 +2720,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/墓場の爆発.webp"
     },
     {
       "id": "necro_冒涜",
@@ -2491,7 +2730,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/冒涜.webp"
     },
     {
       "id": "necro_力の吸収",
@@ -2500,7 +2740,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/力の吸収.webp"
     },
     {
       "id": "necro_ぺしゃんこ",
@@ -2509,7 +2750,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ぺしゃんこ.webp"
     },
     {
       "id": "necro_刈り取り",
@@ -2518,7 +2760,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/刈り取り.webp"
     },
     {
       "id": "necro_とってこい",
@@ -2527,7 +2770,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/とってこい.webp"
     },
     {
       "id": "necro_まさに右腕",
@@ -2536,7 +2780,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/まさに右腕.webp"
     },
     {
       "id": "necro_ガラガラ",
@@ -2545,7 +2790,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ガラガラ.webp"
     },
     {
       "id": "necro_ベールピアサー",
@@ -2554,7 +2800,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ベールピアサー.webp"
     },
     {
       "id": "necro_やっちゃえ",
@@ -2563,7 +2810,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/やっちゃえ.webp"
     },
     {
       "id": "necro_骨の破片",
@@ -2572,7 +2820,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/骨の破片.webp"
     },
     {
       "id": "necro_死の行進",
@@ -2581,7 +2830,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/死の行進.webp"
     },
     {
       "id": "necro_衰弱",
@@ -2590,7 +2840,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/衰弱.webp"
     },
     {
       "id": "necro_地底からの引き寄せ",
@@ -2599,7 +2850,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/地底からの引き寄せ.webp"
     },
     {
       "id": "necro_ハイタッチ",
@@ -2608,7 +2860,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ハイタッチ.webp"
     },
     {
       "id": "necro_分霊",
@@ -2617,7 +2870,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/分霊.webp"
     },
     {
       "id": "necro_埋葬",
@@ -2626,7 +2880,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/埋葬.webp"
     },
     {
       "id": "necro_ミザリー",
@@ -2635,7 +2890,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ミザリー.webp"
     },
     {
       "id": "necro_根絶",
@@ -2644,7 +2900,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/根絶.webp"
     },
     {
       "id": "necro_ソウルストーム",
@@ -2653,7 +2910,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ソウルストーム.webp"
     },
     {
       "id": "necro_絞首",
@@ -2662,7 +2920,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/絞首.webp"
     },
     {
       "id": "necro_刻限",
@@ -2671,7 +2930,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/刻限.webp"
     },
     {
       "id": "necro_大鎌",
@@ -2680,7 +2940,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/大鎌.webp"
     },
     {
       "id": "necro_絞り取り",
@@ -2689,7 +2950,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/絞り取り.webp"
     },
     {
       "id": "necro_バンシーの叫び",
@@ -2698,7 +2960,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/バンシーの叫び.webp"
     },
     {
       "id": "necro_プロテクター",
@@ -2707,7 +2970,8 @@
       "rarity": "エンシェント",
       "type": "アタック",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/プロテクター.webp"
     },
     {
       "id": "necro_0",
@@ -2734,7 +2998,8 @@
       "rarity": "スターター",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ボディガード.webp"
     },
     {
       "id": "necro_ウィスプ",
@@ -2743,7 +3008,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ウィスプ.webp"
     },
     {
       "id": "necro_祈祷",
@@ -2752,7 +3018,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/祈祷.webp"
     },
     {
       "id": "necro_天罰",
@@ -2761,7 +3028,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/天罰.webp"
     },
     {
       "id": "necro_反抗",
@@ -2770,7 +3038,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/反抗.webp"
     },
     {
       "id": "necro_負の波動",
@@ -2779,7 +3048,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/負の波動.webp"
     },
     {
       "id": "necro_墓守",
@@ -2788,7 +3058,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/墓守.webp"
     },
     {
       "id": "necro_来世",
@@ -2797,7 +3068,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/来世.webp"
     },
     {
       "id": "necro_ヘイト稼ぎ",
@@ -2806,7 +3078,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ヘイト稼ぎ.webp"
     },
     {
       "id": "necro_借り物の時間",
@@ -2815,7 +3088,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/借り物の時間.webp"
     },
     {
       "id": "necro_葬送歌",
@@ -2824,7 +3098,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/葬送歌.webp"
     },
     {
       "id": "necro_化膿",
@@ -2833,7 +3108,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/化膿.webp"
     },
     {
       "id": "necro_解析",
@@ -2842,7 +3118,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/解析.webp"
     },
     {
       "id": "necro_虚脱の魔手",
@@ -2851,7 +3128,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/虚脱の魔手.webp"
     },
     {
       "id": "necro_激励",
@@ -2860,7 +3138,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/激励.webp"
     },
     {
       "id": "necro_採取",
@@ -2869,7 +3148,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/採取.webp"
     },
     {
       "id": "necro_死への扉",
@@ -2878,7 +3158,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/死への扉.webp"
     },
     {
       "id": "necro_浄化",
@@ -2887,7 +3168,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/浄化.webp"
     },
     {
       "id": "necro_逃げ場なし",
@@ -2896,7 +3178,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/逃げ場なし.webp"
     },
     {
       "id": "necro_霊魂抽出",
@@ -2905,7 +3188,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/霊魂抽出.webp"
     },
     {
       "id": "necro_ディレイ",
@@ -2914,7 +3198,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ディレイ.webp"
     },
     {
       "id": "necro_デスブリンガー",
@@ -2923,7 +3208,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/デスブリンガー.webp"
     },
     {
       "id": "necro_骨の軍団※マルチプレイ専用",
@@ -2941,7 +3227,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/憂鬱.webp"
     },
     {
       "id": "necro_オブリビオン",
@@ -2950,7 +3237,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/オブリビオン.webp"
     },
     {
       "id": "necro_運命共同体",
@@ -2959,7 +3247,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/運命共同体.webp"
     },
     {
       "id": "necro_降霊術",
@@ -2968,7 +3257,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/降霊術.webp"
     },
     {
       "id": "necro_不死",
@@ -2977,7 +3267,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/不死.webp"
     },
     {
       "id": "necro_生贄",
@@ -2986,7 +3277,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/生贄.webp"
     },
     {
       "id": "necro_彼方への一瞥※マルチプレイ専用",
@@ -3004,7 +3296,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/変貌.webp"
     },
     {
       "id": "necro_亡霊の儀",
@@ -3013,7 +3306,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/亡霊の儀.webp"
     },
     {
       "id": "necro_終末の日",
@@ -3022,7 +3316,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/終末の日.webp"
     },
     {
       "id": "necro_蘇生",
@@ -3031,7 +3326,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/蘇生.webp"
     },
     {
       "id": "necro_カウントダウン",
@@ -3040,7 +3336,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/カウントダウン.webp"
     },
     {
       "id": "necro_フレンドシップ",
@@ -3049,7 +3346,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/フレンドシップ.webp"
     },
     {
       "id": "necro_影の衣",
@@ -3058,7 +3356,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/影の衣.webp"
     },
     {
       "id": "necro_骨強化",
@@ -3067,7 +3366,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/骨強化.webp"
     },
     {
       "id": "necro_殺意",
@@ -3076,7 +3376,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/殺意.webp"
     },
     {
       "id": "necro_死の舞踏",
@@ -3085,7 +3386,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/死の舞踏.webp"
     },
     {
       "id": "necro_紙の嵐",
@@ -3094,7 +3396,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/紙の嵐.webp"
     },
     {
       "id": "necro_憑依",
@@ -3103,7 +3406,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/憑依.webp"
     },
     {
       "id": "necro_呪肉の奇術",
@@ -3112,7 +3416,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/呪肉の奇術.webp"
     },
     {
       "id": "necro_ニューロサージ",
@@ -3121,7 +3426,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ニューロサージ.webp"
     },
     {
       "id": "necro_灰の精霊",
@@ -3130,7 +3436,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/灰の精霊.webp"
     },
     {
       "id": "necro_虚空の呼び声",
@@ -3139,7 +3446,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/虚空の呼び声.webp"
     },
     {
       "id": "necro_魂喰らい",
@@ -3148,7 +3456,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/魂喰らい.webp"
     },
     {
       "id": "necro_ネクロマスタリー",
@@ -3157,7 +3466,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/ネクロマスタリー.webp"
     },
     {
       "id": "necro_監視モード",
@@ -3166,7 +3476,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/監視モード.webp"
     },
     {
       "id": "necro_死神化",
@@ -3175,7 +3486,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/死神化.webp"
     },
     {
       "id": "necro_領域",
@@ -3184,7 +3496,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/領域.webp"
     },
     {
       "id": "necro_禁断の魔導書",
@@ -3211,7 +3524,8 @@
       "rarity": "スターター",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/落星.webp"
     },
     {
       "id": "regent_衝突軌道",
@@ -3220,7 +3534,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/衝突軌道.webp"
     },
     {
       "id": "regent_星霊の波動",
@@ -3229,7 +3544,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/星霊の波動.webp"
     },
     {
       "id": "regent_ソーラーストライク",
@@ -3238,7 +3554,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ソーラーストライク.webp"
     },
     {
       "id": "regent_フォトンカット",
@@ -3247,7 +3564,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/フォトンカット.webp"
     },
     {
       "id": "regent_三日月の槍",
@@ -3256,7 +3574,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/三日月の槍.webp"
     },
     {
       "id": "regent_失せよ！",
@@ -3265,7 +3584,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/失せよ！.webp"
     },
     {
       "id": "regent_重圧",
@@ -3274,7 +3594,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/重圧.webp"
     },
     {
       "id": "regent_導きの星",
@@ -3283,7 +3604,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/導きの星.webp"
     },
     {
       "id": "regent_百戦錬磨",
@@ -3292,7 +3614,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/百戦錬磨.webp"
     },
     {
       "id": "regent_天の力",
@@ -3301,7 +3624,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/天の力.webp"
     },
     {
       "id": "regent_ガンマブラスト",
@@ -3310,7 +3634,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ガンマブラスト.webp"
     },
     {
       "id": "regent_輝きの奔流",
@@ -3319,7 +3644,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/輝きの奔流.webp"
     },
     {
       "id": "regent_月光波",
@@ -3328,7 +3654,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/月光波.webp"
     },
     {
       "id": "regent_星くず",
@@ -3337,7 +3664,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/星くず.webp"
     },
     {
       "id": "regent_シャイニングストライク",
@@ -3346,7 +3674,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/シャイニングストライク.webp"
     },
     {
       "id": "regent_王様パンチ",
@@ -3355,7 +3684,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/王様パンチ.webp"
     },
     {
       "id": "regent_撃滅",
@@ -3364,7 +3694,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/撃滅.webp"
     },
     {
       "id": "regent_超巨大",
@@ -3373,7 +3704,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/超巨大.webp"
     },
     {
       "id": "regent_覇権",
@@ -3382,7 +3714,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/覇権.webp"
     },
     {
       "id": "regent_ノックアウト",
@@ -3391,7 +3724,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ノックアウト.webp"
     },
     {
       "id": "regent_王様キック",
@@ -3400,7 +3734,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/王様キック.webp"
     },
     {
       "id": "regent_ヘヴンリードリル",
@@ -3409,7 +3744,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ヘヴンリードリル.webp"
     },
     {
       "id": "regent_実行せよ",
@@ -3418,7 +3754,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/実行せよ.webp"
     },
     {
       "id": "regent_彗星",
@@ -3427,7 +3764,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/彗星.webp"
     },
     {
       "id": "regent_星の終わり",
@@ -3436,7 +3774,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/星の終わり.webp"
     },
     {
       "id": "regent_叩き直してやる",
@@ -3454,7 +3793,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/不時着.webp"
     },
     {
       "id": "regent_セブンスターズ",
@@ -3463,7 +3803,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/セブンスターズ.webp"
     },
     {
       "id": "regent_家宝のハンマー",
@@ -3472,7 +3813,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/家宝のハンマー.webp"
     },
     {
       "id": "regent_爆撃",
@@ -3481,7 +3823,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/爆撃.webp"
     },
     {
       "id": "regent_流星群",
@@ -3490,7 +3833,8 @@
       "rarity": "エンシェント",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/流星群.webp"
     },
     {
       "id": "regent_防御",
@@ -3508,7 +3852,8 @@
       "rarity": "スターター",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/畏敬.webp"
     },
     {
       "id": "regent_身の程を知れ",
@@ -3517,7 +3862,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/身の程を知れ.webp"
     },
     {
       "id": "regent_星の外套",
@@ -3526,7 +3872,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/星の外套.webp"
     },
     {
       "id": "regent_隠し財産",
@@ -3535,7 +3882,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/隠し財産.webp"
     },
     {
       "id": "regent_宇宙的無関心",
@@ -3544,7 +3892,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/宇宙的無関心.webp"
     },
     {
       "id": "regent_輝き",
@@ -3553,7 +3902,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/輝き.webp"
     },
     {
       "id": "regent_剣の研磨",
@@ -3562,7 +3912,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/剣の研磨.webp"
     },
     {
       "id": "regent_光の集約",
@@ -3571,7 +3922,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/光の集約.webp"
     },
     {
       "id": "regent_小盾の展開",
@@ -3580,7 +3932,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/小盾の展開.webp"
     },
     {
       "id": "regent_戦利品",
@@ -3589,7 +3942,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/戦利品.webp"
     },
     {
       "id": "regent_煌めく激流",
@@ -3598,7 +3952,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/煌めく激流.webp"
     },
     {
       "id": "regent_クエーサー",
@@ -3607,7 +3962,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/クエーサー.webp"
     },
     {
       "id": "regent_モノローグ",
@@ -3616,7 +3972,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/モノローグ.webp"
     },
     {
       "id": "regent_ロイヤルギャンブル",
@@ -3625,7 +3982,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ロイヤルギャンブル.webp"
     },
     {
       "id": "regent_寛大なる施し※マルチプレイ専用",
@@ -3643,7 +4001,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/星の巡り.webp"
     },
     {
       "id": "regent_粒子障壁",
@@ -3652,7 +4011,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/粒子障壁.webp"
     },
     {
       "id": "regent_テラフォーミング",
@@ -3661,7 +4021,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/テラフォーミング.webp"
     },
     {
       "id": "regent_共鳴",
@@ -3670,7 +4031,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/共鳴.webp"
     },
     {
       "id": "regent_権威の体現",
@@ -3679,7 +4041,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/権威の体現.webp"
     },
     {
       "id": "regent_顕現",
@@ -3688,7 +4051,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/顕現.webp"
     },
     {
       "id": "regent_集約",
@@ -3697,7 +4061,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/集約.webp"
     },
     {
       "id": "regent_征服者",
@@ -3715,7 +4080,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/突撃せよ！.webp"
     },
     {
       "id": "regent_反射",
@@ -3724,7 +4090,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/反射.webp"
     },
     {
       "id": "regent_微光",
