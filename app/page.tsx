@@ -43,7 +43,7 @@ export default async function HomePage() {
             return poll ? (
               <Link
                 key={char.id}
-                href={`/polls/${poll.id}`}
+                href={`/polls/${char.id}`}
                 className="bg-gray-800 hover:bg-gray-700 rounded-xl px-5 py-6 text-center transition-colors"
               >
                 <p className="font-bold text-lg">{char.name}</p>

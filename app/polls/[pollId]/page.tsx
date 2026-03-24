@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection, query, where, getDocs, orderBy, limit } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
 import { RATINGS, type Poll, type Card, type Rating } from "@/lib/types";
@@ -16,6 +16,7 @@ const CARD_TYPES = ["全て", "アタック", "スキル", "パワー"] as const
 export default function PollPage() {
   const { pollId } = useParams<{ pollId: string }>();
   const [poll, setPoll] = useState<Poll | null>(null);
+  const [pollDocId, setPollDocId] = useState<string | null>(null);
   const [cards, setCards] = useState<Card[]>([]);
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [votes, setVotes] = useState<VoteState>({});
@@ -23,11 +24,27 @@ export default function PollPage() {
   const [notFound, setNotFound] = useState(false);
   const [upgradedCards, setUpgradedCards] = useState<Record<string, boolean>>({});
 
-  // Firestoreからpoll取得
+  // Firestoreからpoll取得（直接IDまたはcharacterIdでフォールバック）
   useEffect(() => {
-    getDoc(doc(db, "polls", pollId)).then((snap) => {
-      if (!snap.exists()) { setNotFound(true); return; }
-      const data = snap.data();
+    async function fetchPoll() {
+      let snap = await getDoc(doc(db, "polls", pollId));
+
+      // 直接IDで見つからない場合はcharacterIdで検索
+      if (!snap.exists()) {
+        const q = query(
+          collection(db, "polls"),
+          where("characterId", "==", pollId),
+          orderBy("createdAt", "desc"),
+          limit(1)
+        );
+        const qs = await getDocs(q);
+        if (qs.empty) { setNotFound(true); return; }
+        snap = qs.docs[0] as typeof snap;
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const data = snap.data() as Record<string, any>;
+      if (!data) { setNotFound(true); return; }
       const p: Poll = {
         id: snap.id,
         title: data.title,
@@ -35,30 +52,33 @@ export default function PollPage() {
         characterName: data.characterName,
         createdAt: data.createdAt?.toMillis() ?? 0,
       };
+      setPollDocId(snap.id);
       setPoll(p);
       setCards(getCardsByCharacter(data.characterId));
 
       // localStorageから投票済み状態を復元
-      const saved = localStorage.getItem(`votes_${pollId}`);
+      const saved = localStorage.getItem(`votes_${snap.id}`);
       if (saved) setVotes(JSON.parse(saved));
-    });
+    }
+    fetchPoll();
   }, [pollId]);
 
   const vote = useCallback(
     async (cardId: string, rating: Rating) => {
+      if (!pollDocId) return;
       setStatus((s) => ({ ...s, [cardId]: "loading" }));
 
       const res = await fetch("/api/vote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pollId, cardId, rating }),
+        body: JSON.stringify({ pollId: pollDocId, cardId, rating }),
       });
 
       if (res.ok || res.status === 409) {
         // 409（投票済み）も含め、選択状態を確定
         setVotes((v) => {
           const next = { ...v, [cardId]: rating };
-          localStorage.setItem(`votes_${pollId}`, JSON.stringify(next));
+          localStorage.setItem(`votes_${pollDocId}`, JSON.stringify(next));
           return next;
         });
         setStatus((s) => ({ ...s, [cardId]: "done" }));
@@ -66,7 +86,7 @@ export default function PollPage() {
         setStatus((s) => ({ ...s, [cardId]: "error" }));
       }
     },
-    [pollId]
+    [pollDocId]
   );
 
   const EXCLUDED_CARDS = ["ストライク", "防御"];

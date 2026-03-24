@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { doc, getDoc, collection, onSnapshot } from "firebase/firestore";
+import { doc, getDoc, collection, onSnapshot, query, where, getDocs, orderBy, limit } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getCardsByCharacter } from "@/lib/cards";
 import { RATINGS, type Poll, type Card, type CardResult } from "@/lib/types";
@@ -27,16 +27,31 @@ function weightedScore(r: CardResult) {
 export default function ResultsPage() {
   const { pollId } = useParams<{ pollId: string }>();
   const [poll, setPoll] = useState<Poll | null>(null);
+  const [pollDocId, setPollDocId] = useState<string | null>(null);
   const [cards, setCards] = useState<Card[]>([]);
   const [results, setResults] = useState<Record<string, CardResult>>({});
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [sortBy, setSortBy] = useState<"score" | "name">("score");
 
-  // poll取得
+  // poll取得（直接IDまたはcharacterIdでフォールバック）
   useEffect(() => {
-    getDoc(doc(db, "polls", pollId)).then((snap) => {
-      if (!snap.exists()) return;
-      const data = snap.data();
+    async function fetchPoll() {
+      let snap = await getDoc(doc(db, "polls", pollId));
+      if (!snap.exists()) {
+        const q = query(
+          collection(db, "polls"),
+          where("characterId", "==", pollId),
+          orderBy("createdAt", "desc"),
+          limit(1)
+        );
+        const qs = await getDocs(q);
+        if (qs.empty) return;
+        snap = qs.docs[0] as typeof snap;
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const data = snap.data() as Record<string, any>;
+      if (!data) return;
+      setPollDocId(snap.id);
       setPoll({
         id: snap.id,
         title: data.title,
@@ -45,12 +60,14 @@ export default function ResultsPage() {
         createdAt: data.createdAt?.toMillis() ?? 0,
       });
       setCards(getCardsByCharacter(data.characterId));
-    });
+    }
+    fetchPoll();
   }, [pollId]);
 
   // リアルタイム結果購読
   useEffect(() => {
-    const ref = collection(db, "polls", pollId, "results");
+    if (!pollDocId) return;
+    const ref = collection(db, "polls", pollDocId, "results");
     const unsub = onSnapshot(ref, (snap) => {
       const data: Record<string, CardResult> = {};
       snap.docs.forEach((d) => {
@@ -59,7 +76,7 @@ export default function ResultsPage() {
       setResults(data);
     });
     return unsub;
-  }, [pollId]);
+  }, [pollDocId]);
 
   const EXCLUDED_CARDS = ["ストライク", "防御"];
 
