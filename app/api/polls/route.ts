@@ -35,18 +35,3 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ id: ref.id });
 }
 
-export async function GET() {
-  const db = getAdminDb();
-  const snap = await db
-    .collection("polls")
-    .orderBy("createdAt", "desc")
-    .get();
-
-  const polls = snap.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-    createdAt: doc.data().createdAt?.toMillis() ?? 0,
-  }));
-
-  return NextResponse.json(polls);
-}

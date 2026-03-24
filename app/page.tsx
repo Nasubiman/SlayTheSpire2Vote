@@ -1,12 +1,20 @@
 import Link from "next/link";
+import { getAdminDb } from "@/lib/firebase-admin";
+
+export const dynamic = "force-dynamic";
 import type { Poll } from "@/lib/types";
 
 async function getPolls(): Promise<Poll[]> {
   try {
-    const base = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${base}/api/polls`, { cache: "no-store" });
-    if (!res.ok) return [];
-    return res.json();
+    const db = getAdminDb();
+    const snap = await db.collection("polls").orderBy("createdAt", "desc").get();
+    return snap.docs.map((doc) => ({
+      id: doc.id,
+      title: doc.data().title,
+      characterId: doc.data().characterId,
+      characterName: doc.data().characterName,
+      createdAt: doc.data().createdAt?.toMillis() ?? 0,
+    }));
   } catch {
     return [];
   }
