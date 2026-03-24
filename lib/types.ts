@@ -35,9 +35,10 @@ export const RATINGS: { value: Rating; label: string; color: string }[] = [
 ];
 
 export const CHARACTERS = [
-  { id: "ironclad", name: "アイアンクラッド" },
-  { id: "silent",   name: "サイレント" },
-  { id: "defect",   name: "ディフェクト" },
-  { id: "necro",    name: "ネクロバインダー" },
-  { id: "regent",   name: "リージェント" },
+  { id: "ironclad",  name: "アイアンクラッド" },
+  { id: "silent",    name: "サイレント" },
+  { id: "defect",    name: "ディフェクト" },
+  { id: "necro",     name: "ネクロバインダー" },
+  { id: "regent",    name: "リージェント" },
+  { id: "colorless", name: "無色カード" },
 ];
