@@ -68,9 +68,11 @@ export default function PollPage() {
     [pollId]
   );
 
-  const filteredCards = filter === "全て"
-    ? cards
-    : cards.filter((c) => c.type === filter);
+  const EXCLUDED_CARDS = ["ストライク", "防御"];
+
+  const filteredCards = cards
+    .filter((c) => !EXCLUDED_CARDS.includes(c.name))
+    .filter((c) => filter === "全て" || c.type === filter);
 
   const votedCount = Object.keys(votes).length;
 
@@ -127,7 +129,7 @@ export default function PollPage() {
         </div>
 
         {/* カードグリッド */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredCards.map((card) => {
             const voted = votes[card.id];
             const isLoading = status[card.id] === "loading";
@@ -148,7 +150,7 @@ export default function PollPage() {
                     <img
                       src={getCardImageUrl(card)!}
                       alt={card.name}
-                      className="h-36 object-contain rounded"
+                      className="h-52 object-contain rounded"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                   </div>
