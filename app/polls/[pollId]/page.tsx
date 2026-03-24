@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { getCardsByCharacter } from "@/lib/cards";
+import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
 import { RATINGS, type Poll, type Card, type Rating } from "@/lib/types";
 
 type VoteState = Record<string, Rating>;
@@ -141,6 +141,19 @@ export default function PollPage() {
                     : "bg-gray-900 border-gray-700"
                 }`}
               >
+                {/* カード画像 */}
+                {getCardImageUrl(card) && (
+                  <div className="flex justify-center mb-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={getCardImageUrl(card)!}
+                      alt={card.name}
+                      className="h-36 object-contain rounded"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                    />
+                  </div>
+                )}
+
                 {/* カード情報 */}
                 <div className="mb-3">
                   <div className="flex items-start justify-between gap-2">
