@@ -175,15 +175,10 @@ export default function PollPage() {
 
                 {/* カード情報 */}
                 <div className="mb-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <p className="font-semibold leading-tight">{card.name}</p>
-                    <span className="text-xs text-gray-400 shrink-0">
-                      コスト {card.cost}
-                    </span>
-                  </div>
-                  <div className="flex gap-2 mt-1">
-                    <span className="text-xs text-gray-500">{card.type}</span>
-                    <span className="text-xs text-gray-600">{card.rarity}</span>
+                  <p className="font-semibold leading-tight mb-1">{card.name}</p>
+                  <div className="flex gap-2">
+                    <span className="text-xs text-gray-400">{card.type}</span>
+                    <span className="text-xs text-gray-400">{card.rarity}</span>
                   </div>
                 </div>
 
