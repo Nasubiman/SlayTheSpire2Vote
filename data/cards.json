@@ -4100,7 +4100,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/微光.webp"
     },
     {
       "id": "regent_城壁",
@@ -4109,7 +4110,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/城壁.webp"
     },
     {
       "id": "regent_予言",
@@ -4118,7 +4120,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/予言.webp"
     },
     {
       "id": "regent_ビッグバン",
@@ -4127,7 +4130,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ビッグバン.webp"
     },
     {
       "id": "regent_悩ましい選択",
@@ -4136,7 +4140,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/悩ましい選択.webp"
     },
     {
       "id": "regent_我に死角なし",
@@ -4145,7 +4150,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/我に死角なし.webp"
     },
     {
       "id": "regent_確定事項",
@@ -4154,7 +4160,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/確定事項.webp"
     },
     {
       "id": "regent_鍛冶師",
@@ -4163,7 +4170,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/鍛冶師.webp"
     },
     {
       "id": "regent_思いがけぬ贈り物",
@@ -4172,7 +4180,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/思いがけぬ贈り物.webp"
     },
     {
       "id": "regent_盾となれ！！",
@@ -4181,7 +4190,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/盾となれ！！.webp"
     },
     {
       "id": "regent_パリィ",
@@ -4190,7 +4200,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/パリィ.webp"
     },
     {
       "id": "regent_ブラックホール",
@@ -4199,7 +4210,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ブラックホール.webp"
     },
     {
       "id": "regent_ペイル・ブルー・ドット",
@@ -4208,7 +4220,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ペイル・ブルー・ドット.webp"
     },
     {
       "id": "regent_星の子",
@@ -4217,7 +4230,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/星の子.webp"
     },
     {
       "id": "regent_創造の柱",
@@ -4226,7 +4240,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/創造の柱.webp"
     },
     {
       "id": "regent_溶鉱炉",
@@ -4235,7 +4250,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/溶鉱炉.webp"
     },
     {
       "id": "regent_オービット",
@@ -4244,7 +4260,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/オービット.webp"
     },
     {
       "id": "regent_1",
@@ -4262,7 +4279,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/スペクトラムシフト.webp"
     },
     {
       "id": "regent_1",
@@ -4280,7 +4298,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ニュートロン・イージス.webp"
     },
     {
       "id": "regent_ロイヤリティ",
@@ -4289,7 +4308,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ロイヤリティ.webp"
     },
     {
       "id": "regent_専制",
@@ -4298,7 +4318,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/専制.webp"
     },
     {
       "id": "regent_追尾の刃",
@@ -4307,7 +4328,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/追尾の刃.webp"
     },
     {
       "id": "regent_武器庫",
@@ -4316,7 +4338,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/武器庫.webp"
     },
     {
       "id": "regent_ジェネシス",
@@ -4325,7 +4348,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ジェネシス.webp"
     },
     {
       "id": "regent_ハンマータイム※マルチプレイ専用",
@@ -4343,7 +4367,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/剣聖.webp"
     },
     {
       "id": "regent_虚無化",
@@ -4352,7 +4377,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/虚無化.webp"
     },
     {
       "id": "regent_君主の睨み",
@@ -4361,7 +4387,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/君主の睨み.webp"
     },
     {
       "id": "regent_封印されし玉座",
@@ -4370,7 +4397,8 @@
       "rarity": "エンシェント",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/封印されし玉座.webp"
     },
     {
       "id": "colorless_一閃",
@@ -4379,7 +4407,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/一閃.webp"
     },
     {
       "id": "colorless_劇的な入場",
@@ -4388,7 +4417,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/劇的な入場.webp"
     },
     {
       "id": "colorless_四方斬り",
@@ -4397,7 +4427,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/四方斬り.webp"
     },
     {
       "id": "colorless_連射",
@@ -4406,7 +4437,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/連射.webp"
     },
     {
       "id": "colorless_シーカーストライク",
@@ -4415,7 +4447,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/シーカーストライク.webp"
     },
     {
       "id": "colorless_マインドブラスト",
@@ -4424,7 +4457,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/マインドブラスト.webp"
     },
     {
       "id": "colorless_究極のストライク",
@@ -4433,7 +4467,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/究極のストライク.webp"
     },
     {
       "id": "colorless_共鳴の手斧",
@@ -4442,7 +4477,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/共鳴の手斧.webp"
     },
     {
       "id": "colorless_拳闘",
@@ -4451,7 +4487,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/拳闘.webp"
     },
     {
       "id": "colorless_総攻撃※マルチプレイ専用",
@@ -4478,7 +4515,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ボーラ.webp"
     },
     {
       "id": "colorless_一斉射撃",
@@ -4496,7 +4534,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/金の斧.webp"
     },
     {
       "id": "colorless_強欲の手",
@@ -4505,7 +4544,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/強欲の手.webp"
     },
     {
       "id": "colorless_裂傷",
@@ -4514,7 +4554,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/裂傷.webp"
     },
     {
       "id": "colorless_ジャックポット",
@@ -4523,7 +4564,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ジャックポット.webp"
     },
     {
       "id": "colorless_ノックダウン※マルチプレイ専用",
@@ -4550,7 +4592,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/闇の足枷.webp"
     },
     {
       "id": "colorless_延長",
@@ -4559,7 +4602,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/延長.webp"
     },
     {
       "id": "colorless_何でも屋",
@@ -4568,7 +4612,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/何でも屋.webp"
     },
     {
       "id": "colorless_苛立ち",
@@ -4577,7 +4622,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/苛立ち.webp"
     },
     {
       "id": "colorless_技巧",
@@ -4586,7 +4632,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/技巧.webp"
     },
     {
       "id": "colorless_焦燥",
@@ -4595,7 +4642,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/焦燥.webp"
     },
     {
       "id": "colorless_生産",
@@ -4604,7 +4652,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/生産.webp"
     },
     {
       "id": "colorless_先読み",
@@ -4613,7 +4662,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/先読み.webp"
     },
     {
       "id": "colorless_非常ボタン",
@@ -4622,7 +4672,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/非常ボタン.webp"
     },
     {
       "id": "colorless_祓い清め",
@@ -4631,7 +4682,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/祓い清め.webp"
     },
     {
       "id": "colorless_インターセプト※マルチプレイ専用",
@@ -4649,7 +4701,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/スプラッシュ.webp"
     },
     {
       "id": "colorless_究極の防御",
@@ -4658,7 +4711,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/究極の防御.webp"
     },
     {
       "id": "colorless_作戦会議※マルチプレイ専用",
@@ -4685,7 +4739,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/発見.webp"
     },
     {
       "id": "colorless_連携※マルチプレイ専用",
@@ -4703,7 +4758,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/均衡.webp"
     },
     {
       "id": "colorless_衝撃波",
@@ -4712,7 +4768,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/衝撃波.webp"
     },
     {
       "id": "colorless_天変地異",
@@ -4721,7 +4778,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/天変地異.webp"
     },
     {
       "id": "colorless_爆弾",
@@ -4730,7 +4788,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/爆弾.webp"
     },
     {
       "id": "colorless_シークレットウェポン",
@@ -4739,7 +4798,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/シークレットウェポン.webp"
     },
     {
       "id": "colorless_シークレットテクニック",
@@ -4748,7 +4808,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/シークレットテクニック.webp"
     },
     {
       "id": "colorless_戦略家",
@@ -4757,7 +4818,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/戦略家.webp"
     },
     {
       "id": "colorless_背水の陣",
@@ -4766,7 +4828,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/背水の陣.webp"
     },
     {
       "id": "colorless_ものまね※マルチプレイ専用",
@@ -4784,7 +4847,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/隠された宝石.webp"
     },
     {
       "id": "colorless_聖なる選別",
@@ -4793,7 +4857,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/聖なる選別.webp"
     },
     {
       "id": "colorless_走り書き",
@@ -4802,7 +4867,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/走り書き.webp"
     },
     {
       "id": "colorless_錬金術",
@@ -4811,7 +4877,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/錬金術.webp"
     },
     {
       "id": "colorless_結集※マルチプレイ専用",
@@ -4829,7 +4896,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ビートダウン.webp"
     },
     {
       "id": "colorless_威風堂々",
@@ -4838,7 +4906,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/威風堂々.webp"
     },
     {
       "id": "colorless_ウォームアップ",
@@ -4847,7 +4916,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ウォームアップ.webp"
     },
     {
       "id": "colorless_オートメーション",
@@ -4856,7 +4926,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/オートメーション.webp"
     },
     {
       "id": "colorless_計略",
@@ -4865,7 +4936,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/計略.webp"
     },
     {
       "id": "colorless_締め直し",
@@ -4874,7 +4946,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/締め直し.webp"
     },
     {
       "id": "colorless_武勇",
@@ -4883,7 +4956,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/武勇.webp"
     },
     {
       "id": "colorless_エントロピー",
@@ -4892,7 +4966,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/エントロピー.webp"
     },
     {
       "id": "colorless_希望の道標※マルチプレイ専用",
@@ -4910,7 +4985,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/郷愁.webp"
     },
     {
       "id": "colorless_騒乱",
@@ -4919,7 +4995,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/騒乱.webp"
     },
     {
       "id": "colorless_カラミティ",
@@ -4928,7 +5005,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/カラミティ.webp"
     },
     {
       "id": "colorless_大岩転がし",
@@ -4937,7 +5015,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/大岩転がし.webp"
     },
     {
       "id": "colorless_不滅の鎧",
@@ -4946,7 +5025,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/不滅の鎧.webp"
     },
     {
       "id": "colorless_繋留?",
@@ -5153,7 +5233,8 @@
       "rarity": "次のターン、●●を得る。",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/先読み.webp"
     },
     {
       "id": "colorless_動揺",
