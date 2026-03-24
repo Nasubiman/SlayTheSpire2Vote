@@ -1,0 +1,182 @@
+"use client";
+
+import { useEffect, useState, useCallback } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { getCardsByCharacter } from "@/lib/cards";
+import { RATINGS, type Poll, type Card, type Rating } from "@/lib/types";
+
+type VoteState = Record<string, Rating>;
+type StatusState = Record<string, "idle" | "loading" | "done" | "error">;
+
+const CARD_TYPES = ["全て", "アタック", "スキル", "パワー"] as const;
+
+export default function PollPage() {
+  const { pollId } = useParams<{ pollId: string }>();
+  const [poll, setPoll] = useState<Poll | null>(null);
+  const [cards, setCards] = useState<Card[]>([]);
+  const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
+  const [votes, setVotes] = useState<VoteState>({});
+  const [status, setStatus] = useState<StatusState>({});
+  const [notFound, setNotFound] = useState(false);
+
+  // Firestoreからpoll取得
+  useEffect(() => {
+    getDoc(doc(db, "polls", pollId)).then((snap) => {
+      if (!snap.exists()) { setNotFound(true); return; }
+      const data = snap.data();
+      const p: Poll = {
+        id: snap.id,
+        title: data.title,
+        characterId: data.characterId,
+        characterName: data.characterName,
+        createdAt: data.createdAt?.toMillis() ?? 0,
+      };
+      setPoll(p);
+      setCards(getCardsByCharacter(data.characterId));
+
+      // localStorageから投票済み状態を復元
+      const saved = localStorage.getItem(`votes_${pollId}`);
+      if (saved) setVotes(JSON.parse(saved));
+    });
+  }, [pollId]);
+
+  const vote = useCallback(
+    async (cardId: string, rating: Rating) => {
+      setStatus((s) => ({ ...s, [cardId]: "loading" }));
+
+      const res = await fetch("/api/vote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pollId, cardId, rating }),
+      });
+
+      if (res.ok || res.status === 409) {
+        // 409（投票済み）も含め、選択状態を確定
+        setVotes((v) => {
+          const next = { ...v, [cardId]: rating };
+          localStorage.setItem(`votes_${pollId}`, JSON.stringify(next));
+          return next;
+        });
+        setStatus((s) => ({ ...s, [cardId]: "done" }));
+      } else {
+        setStatus((s) => ({ ...s, [cardId]: "error" }));
+      }
+    },
+    [pollId]
+  );
+
+  const filteredCards = filter === "全て"
+    ? cards
+    : cards.filter((c) => c.type === filter);
+
+  const votedCount = Object.keys(votes).length;
+
+  if (notFound) {
+    return (
+      <main className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
+        <p className="text-gray-400">投票が見つかりません</p>
+      </main>
+    );
+  }
+
+  if (!poll) {
+    return (
+      <main className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
+        <p className="text-gray-400">読み込み中...</p>
+      </main>
+    );
+  }
+
+  return (
+    <main className="min-h-screen bg-gray-950 text-white">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        {/* ヘッダー */}
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h1 className="text-2xl font-bold">{poll.title}</h1>
+            <p className="text-gray-400 text-sm mt-1">
+              {poll.characterName} · {votedCount}/{cards.length} 投票済み
+            </p>
+          </div>
+          <Link
+            href={`/polls/${pollId}/results`}
+            className="bg-gray-800 hover:bg-gray-700 rounded-lg px-4 py-2 text-sm transition-colors"
+          >
+            結果を見る →
+          </Link>
+        </div>
+
+        {/* フィルタータブ */}
+        <div className="flex gap-2 mb-6">
+          {CARD_TYPES.map((t) => (
+            <button
+              key={t}
+              onClick={() => setFilter(t)}
+              className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                filter === t
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+              }`}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+
+        {/* カードグリッド */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {filteredCards.map((card) => {
+            const voted = votes[card.id];
+            const isLoading = status[card.id] === "loading";
+
+            return (
+              <div
+                key={card.id}
+                className={`rounded-lg p-4 border transition-colors ${
+                  voted
+                    ? "bg-gray-800 border-gray-600"
+                    : "bg-gray-900 border-gray-700"
+                }`}
+              >
+                {/* カード情報 */}
+                <div className="mb-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="font-semibold leading-tight">{card.name}</p>
+                    <span className="text-xs text-gray-400 shrink-0">
+                      コスト {card.cost}
+                    </span>
+                  </div>
+                  <div className="flex gap-2 mt-1">
+                    <span className="text-xs text-gray-500">{card.type}</span>
+                    <span className="text-xs text-gray-600">{card.rarity}</span>
+                  </div>
+                </div>
+
+                {/* レーティングボタン */}
+                <div className="flex gap-1.5">
+                  {RATINGS.map((r) => (
+                    <button
+                      key={r.value}
+                      onClick={() => vote(card.id, r.value)}
+                      disabled={isLoading}
+                      className={`flex-1 py-1.5 rounded text-sm font-bold transition-all ${
+                        voted === r.value
+                          ? `${r.color} ring-2 ring-white`
+                          : `${r.color} opacity-40 hover:opacity-100`
+                      } disabled:cursor-not-allowed`}
+                    >
+                      {r.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </main>
+  );
+}
