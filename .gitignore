@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal
+.claude
+info.txt
+
+# スクレイピングスクリプト（個人用ツール）
+scripts/
+
+# 画像（著作権配慮・Firebase Storageに上げる）
+data/images/
+data/failed-images.json
