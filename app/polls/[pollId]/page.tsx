@@ -73,6 +73,7 @@ export default function PollPage() {
 
   const filteredCards = cards
     .filter((c) => !EXCLUDED_CARDS.includes(c.name))
+    .filter((c) => !!getCardImageUrl(c))
     .filter((c) => filter === "全て" || c.type === filter);
 
   const votedCount = Object.keys(votes).length;
