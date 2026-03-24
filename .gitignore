@@ -47,6 +47,6 @@ info.txt
 # スクレイピングスクリプト（個人用ツール）
 scripts/
 
-# 画像（著作権配慮・Firebase Storageに上げる）
+# 画像ローカルキャッシュ（著作権配慮・Vercel Blobに移行済み）
 data/images/
 data/failed-images.json
