@@ -21,7 +21,7 @@ export default function PollPage() {
   const [votes, setVotes] = useState<VoteState>({});
   const [status, setStatus] = useState<StatusState>({});
   const [notFound, setNotFound] = useState(false);
-  const [upgraded, setUpgraded] = useState(false);
+  const [upgradedCards, setUpgradedCards] = useState<Record<string, boolean>>({});
 
   // Firestoreからpoll取得
   useEffect(() => {
@@ -112,33 +112,21 @@ export default function PollPage() {
           </Link>
         </div>
 
-        {/* フィルタータブ + 強化トグル */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex gap-2">
-            {CARD_TYPES.map((t) => (
-              <button
-                key={t}
-                onClick={() => setFilter(t)}
-                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
-                  filter === t
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-          <button
-            onClick={() => setUpgraded((u) => !u)}
-            className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
-              upgraded
-                ? "bg-purple-600 text-white"
-                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-            }`}
-          >
-            {upgraded ? "強化後" : "強化前"}
-          </button>
+        {/* フィルタータブ */}
+        <div className="flex gap-2 mb-6">
+          {CARD_TYPES.map((t) => (
+            <button
+              key={t}
+              onClick={() => setFilter(t)}
+              className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                filter === t
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+              }`}
+            >
+              {t}
+            </button>
+          ))}
         </div>
 
         {/* カードグリッド */}
@@ -146,6 +134,9 @@ export default function PollPage() {
           {filteredCards.map((card) => {
             const voted = votes[card.id];
             const isLoading = status[card.id] === "loading";
+            const isUpgraded = upgradedCards[card.id] ?? false;
+            const hasUpgraded = !!getCardImageUrl(card, true);
+            const imgUrl = getCardImageUrl(card, isUpgraded) ?? getCardImageUrl(card);
 
             return (
               <div
@@ -156,16 +147,28 @@ export default function PollPage() {
                     : "bg-gray-900 border-gray-700"
                 }`}
               >
-                {/* カード画像 */}
-                {(getCardImageUrl(card, upgraded) ?? getCardImageUrl(card)) && (
-                  <div className="flex justify-center mb-3">
+                {/* カード画像 + 強化トグル */}
+                {imgUrl && (
+                  <div className="flex flex-col items-center mb-3">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={(getCardImageUrl(card, upgraded) ?? getCardImageUrl(card))!}
+                      src={imgUrl}
                       alt={card.name}
                       className="h-52 object-contain rounded"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
+                    {hasUpgraded && (
+                      <button
+                        onClick={() => setUpgradedCards((u) => ({ ...u, [card.id]: !u[card.id] }))}
+                        className={`mt-2 px-3 py-0.5 rounded-full text-xs transition-colors ${
+                          isUpgraded
+                            ? "bg-purple-600 text-white"
+                            : "bg-gray-700 text-gray-400 hover:bg-gray-600"
+                        }`}
+                      >
+                        {isUpgraded ? "強化後" : "強化前"}
+                      </button>
+                    )}
                   </div>
                 )}
 
