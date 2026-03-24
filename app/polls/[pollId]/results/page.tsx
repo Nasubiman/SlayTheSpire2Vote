@@ -61,14 +61,17 @@ export default function ResultsPage() {
     return unsub;
   }, [pollId]);
 
-  const filteredCards = (
-    filter === "全て" ? cards : cards.filter((c) => c.type === filter)
-  ).sort((a, b) => {
+  const EXCLUDED_CARDS = ["ストライク", "防御"];
+
+  const filteredCards = cards
+    .filter((c) => !EXCLUDED_CARDS.includes(c.name))
+    .filter((c) => filter === "全て" || c.type === filter)
+    .sort((a, b) => {
     if (sortBy === "score") {
       return weightedScore(results[b.id] ?? {}) - weightedScore(results[a.id] ?? {});
     }
-    return a.name.localeCompare(b.name, "ja");
-  });
+      return a.name.localeCompare(b.name, "ja");
+    });
 
   const totalVotesAll = Object.values(results).reduce(
     (sum, r) => sum + totalVotes(r),
