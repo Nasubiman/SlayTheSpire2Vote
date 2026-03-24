@@ -21,6 +21,7 @@ export default function PollPage() {
   const [votes, setVotes] = useState<VoteState>({});
   const [status, setStatus] = useState<StatusState>({});
   const [notFound, setNotFound] = useState(false);
+  const [upgraded, setUpgraded] = useState(false);
 
   // Firestoreからpoll取得
   useEffect(() => {
@@ -111,21 +112,33 @@ export default function PollPage() {
           </Link>
         </div>
 
-        {/* フィルタータブ */}
-        <div className="flex gap-2 mb-6">
-          {CARD_TYPES.map((t) => (
-            <button
-              key={t}
-              onClick={() => setFilter(t)}
-              className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
-                filter === t
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-              }`}
-            >
-              {t}
-            </button>
-          ))}
+        {/* フィルタータブ + 強化トグル */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex gap-2">
+            {CARD_TYPES.map((t) => (
+              <button
+                key={t}
+                onClick={() => setFilter(t)}
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                  filter === t
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => setUpgraded((u) => !u)}
+            className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+              upgraded
+                ? "bg-purple-600 text-white"
+                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+            }`}
+          >
+            {upgraded ? "強化後" : "強化前"}
+          </button>
         </div>
 
         {/* カードグリッド */}
@@ -144,11 +157,11 @@ export default function PollPage() {
                 }`}
               >
                 {/* カード画像 */}
-                {getCardImageUrl(card) && (
+                {(getCardImageUrl(card, upgraded) ?? getCardImageUrl(card)) && (
                   <div className="flex justify-center mb-3">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={getCardImageUrl(card)!}
+                      src={(getCardImageUrl(card, upgraded) ?? getCardImageUrl(card))!}
                       alt={card.name}
                       className="h-52 object-contain rounded"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}

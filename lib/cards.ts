@@ -12,8 +12,9 @@ export function getAllCards(): Card[] {
   return cardsData.cards as Card[];
 }
 
-export function getCardImageUrl(card: Card): string | null {
+export function getCardImageUrl(card: Card, upgraded = false): string | null {
   const safeCardName = card.name.replace(/[/\\:*?"<>|]/g, "_");
-  const key = `${card.characterId}_${safeCardName}`;
+  const suffix = upgraded ? "+" : "";
+  const key = `${card.characterId}_${safeCardName}${suffix}`;
   return (imageUrls as Record<string, string>)[key] ?? null;
 }
