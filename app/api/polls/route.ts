@@ -24,14 +24,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid parameters" }, { status: 400 });
   }
 
-  const db = getAdminDb();
-  const ref = await db.collection("polls").add({
-    title,
-    characterId,
-    characterName: character.name,
-    createdAt: FieldValue.serverTimestamp(),
-  });
-
-  return NextResponse.json({ id: ref.id });
+  try {
+    const db = getAdminDb();
+    const ref = await db.collection("polls").add({
+      title,
+      characterId,
+      characterName: character.name,
+      createdAt: FieldValue.serverTimestamp(),
+    });
+    return NextResponse.json({ id: ref.id });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("polls POST error:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 }
 
