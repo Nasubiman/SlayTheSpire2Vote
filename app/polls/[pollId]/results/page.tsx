@@ -31,7 +31,7 @@ export default function ResultsPage() {
   const [cards, setCards] = useState<Card[]>([]);
   const [results, setResults] = useState<Record<string, CardResult>>({});
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
-  const [sortBy, setSortBy] = useState<"score" | "name">("score");
+  const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
 
   // poll取得（直接IDまたはcharacterIdでフォールバック）
   useEffect(() => {
@@ -84,10 +84,9 @@ export default function ResultsPage() {
     .filter((c) => !EXCLUDED_CARDS.includes(c.name))
     .filter((c) => filter === "全て" || c.type === filter)
     .sort((a, b) => {
-    if (sortBy === "score") {
-      return weightedScore(results[b.id] ?? {}) - weightedScore(results[a.id] ?? {});
-    }
-      return a.name.localeCompare(b.name, "ja");
+    if (sortBy === "score_desc") return weightedScore(results[b.id] ?? {}) - weightedScore(results[a.id] ?? {});
+    if (sortBy === "score_asc") return weightedScore(results[a.id] ?? {}) - weightedScore(results[b.id] ?? {});
+    return a.name.localeCompare(b.name, "ja");
     });
 
   const totalVotesAll = Object.values(results).reduce(
@@ -140,7 +139,7 @@ export default function ResultsPage() {
             ))}
           </div>
           <div className="flex gap-1 ml-auto">
-            {(["score", "name"] as const).map((s) => (
+            {(["score_desc", "score_asc", "name"] as const).map((s) => (
               <button
                 key={s}
                 onClick={() => setSortBy(s)}
@@ -150,7 +149,7 @@ export default function ResultsPage() {
                     : "bg-gray-800 text-gray-400 hover:bg-gray-700"
                 }`}
               >
-                {s === "score" ? "スコア順" : "名前順"}
+                {s === "score_desc" ? "評価高い順" : s === "score_asc" ? "評価低い順" : "名前順"}
               </button>
             ))}
           </div>
