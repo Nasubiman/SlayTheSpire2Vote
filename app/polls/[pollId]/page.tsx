@@ -60,9 +60,21 @@ export default function PollPage() {
       setPoll(p);
       setCards(getCardsByCharacter(data.characterId));
 
-      // localStorageから投票済み状態を復元
+      // localStorageから投票済み状態を復元（1日で期限切れ）
+      const REVOTE_MS = 24 * 60 * 60 * 1000;
       const saved = localStorage.getItem(`votes_${snap.id}`);
-      if (saved) setVotes(JSON.parse(saved));
+      const savedTs = localStorage.getItem(`votesTs_${snap.id}`);
+      if (saved) {
+        const ts = savedTs ? JSON.parse(savedTs) as Record<string, number> : {};
+        const now = Date.now();
+        const valid = JSON.parse(saved) as VoteState;
+        for (const cardId of Object.keys(valid)) {
+          if (ts[cardId] && now - ts[cardId] > REVOTE_MS) {
+            delete valid[cardId];
+          }
+        }
+        setVotes(valid);
+      }
     }
     fetchPoll();
   }, [pollId]);
@@ -99,6 +111,12 @@ export default function PollPage() {
         setVotes((v) => {
           const next = { ...v, [cardId]: rating };
           localStorage.setItem(`votes_${pollDocId}`, JSON.stringify(next));
+          if (res.ok) {
+            const tsKey = `votesTs_${pollDocId}`;
+            const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
+            ts[cardId] = Date.now();
+            localStorage.setItem(tsKey, JSON.stringify(ts));
+          }
           return next;
         });
         setStatus((s) => ({ ...s, [cardId]: "done" }));

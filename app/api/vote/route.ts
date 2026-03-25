@@ -3,6 +3,8 @@ import { getAdminDb } from "@/lib/firebase-admin";
 import { FieldValue } from "firebase-admin/firestore";
 import crypto from "crypto";
 
+const REVOTE_PERIOD_MS = 24 * 60 * 60 * 1000; // 1日
+
 type VoteBody = {
   pollId: string;
   cardId: string;
@@ -33,31 +35,39 @@ export async function POST(req: NextRequest) {
 
   const hashedIp = getHashedIp(req);
   const db = getAdminDb();
-  const voteRef = db
-    .collection("polls")
-    .doc(pollId)
-    .collection("votes")
-    .doc(`${hashedIp}_${cardId}`);
-
-  const resultRef = db
-    .collection("polls")
-    .doc(pollId)
-    .collection("results")
-    .doc(cardId);
+  const voteRef = db.collection("polls").doc(pollId).collection("votes").doc(`${hashedIp}_${cardId}`);
+  const resultRef = db.collection("polls").doc(pollId).collection("results").doc(cardId);
 
   try {
     await db.runTransaction(async (tx) => {
       const voteSnap = await tx.get(voteRef);
-      if (voteSnap.exists) {
-        throw new Error("ALREADY_VOTED");
-      }
 
-      tx.set(voteRef, { rating, votedAt: FieldValue.serverTimestamp() });
-      tx.set(
-        resultRef,
-        { [rating]: FieldValue.increment(1) },
-        { merge: true }
-      );
+      if (voteSnap.exists) {
+        const data = voteSnap.data()!;
+        const votedAt = data.votedAt?.toMillis?.() ?? 0;
+        const expired = Date.now() - votedAt > REVOTE_PERIOD_MS;
+
+        if (!expired) {
+          throw new Error("ALREADY_VOTED");
+        }
+
+        // 再投票: 古い評価を差し引いて新しい評価を加算
+        const oldRating = data.rating as string;
+        tx.update(voteRef, { rating, votedAt: FieldValue.serverTimestamp() });
+        if (oldRating === rating) return; // 同じ評価なら結果変更不要
+        tx.set(
+          resultRef,
+          {
+            [rating]: FieldValue.increment(1),
+            [oldRating]: FieldValue.increment(-1),
+          },
+          { merge: true }
+        );
+      } else {
+        // 新規投票
+        tx.set(voteRef, { rating, votedAt: FieldValue.serverTimestamp() });
+        tx.set(resultRef, { [rating]: FieldValue.increment(1) }, { merge: true });
+      }
     });
   } catch (err) {
     if (err instanceof Error && err.message === "ALREADY_VOTED") {
