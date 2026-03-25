@@ -13,6 +13,7 @@ type StatusState = Record<string, "idle" | "loading" | "done" | "error">;
 type ResultsState = Record<string, { a: number; b: number; c: number; d: number; e: number }>;
 
 const CARD_TYPES = ["全て", "アタック", "スキル", "パワー"] as const;
+const RARITIES = ["全て", "コモン", "アンコモン", "レア", "スターター"] as const;
 
 export default function PollPage() {
   const { pollId } = useParams<{ pollId: string }>();
@@ -20,6 +21,7 @@ export default function PollPage() {
   const [pollDocId, setPollDocId] = useState<string | null>(null);
   const [cards, setCards] = useState<Card[]>([]);
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
+  const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const [votes, setVotes] = useState<VoteState>({});
   const [status, setStatus] = useState<StatusState>({});
   const [notFound, setNotFound] = useState(false);
@@ -112,7 +114,8 @@ export default function PollPage() {
   const filteredCards = cards
     .filter((c) => !EXCLUDED_CARDS.includes(c.name))
     .filter((c) => !!getCardImageUrl(c))
-    .filter((c) => filter === "全て" || c.type === filter);
+    .filter((c) => filter === "全て" || c.type === filter)
+    .filter((c) => rarityFilter === "全て" || c.rarity === rarityFilter);
 
   const votedCount = Object.keys(votes).length;
 
@@ -157,20 +160,37 @@ export default function PollPage() {
         </div>
 
         {/* フィルタータブ */}
-        <div className="flex gap-2 mb-6">
-          {CARD_TYPES.map((t) => (
-            <button
-              key={t}
-              onClick={() => setFilter(t)}
-              className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
-                filter === t
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-              }`}
-            >
-              {t}
-            </button>
-          ))}
+        <div className="flex flex-col gap-2 mb-6">
+          <div className="flex gap-2 flex-wrap">
+            {CARD_TYPES.map((t) => (
+              <button
+                key={t}
+                onClick={() => setFilter(t)}
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                  filter === t
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            {RARITIES.map((r) => (
+              <button
+                key={r}
+                onClick={() => setRarityFilter(r)}
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                  rarityFilter === r
+                    ? "bg-purple-600 text-white"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                }`}
+              >
+                {r}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* カードグリッド */}
