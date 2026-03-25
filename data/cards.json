@@ -93,7 +93,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/ソードブーメラン.webp"
     },
     {
       "id": "ironclad_ツインストライク",
@@ -540,7 +541,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/威圧.webp"
     },
     {
       "id": "ironclad_焦熱の契約",
@@ -569,7 +571,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/非道の刃.webp"
     },
     {
       "id": "ironclad_忘れられし儀式",
@@ -698,7 +701,8 @@
       "rarity": "アンコモン",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/インフェルノ.webp"
     },
     {
       "id": "ironclad_ジャグリング",
@@ -904,7 +908,8 @@
       "rarity": "スターター",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/無力化.webp"
     },
     {
       "id": "silent_スライス",
@@ -913,7 +918,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/スライス.webp"
     },
     {
       "id": "silent_ダガースロー",
@@ -942,7 +948,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/リーディングストライク.webp"
     },
     {
       "id": "silent_五月雨ダガー",
@@ -951,7 +958,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/五月雨ダガー.webp"
     },
     {
       "id": "silent_毒の一刺し",
@@ -960,7 +968,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/毒の一刺し.webp"
     },
     {
       "id": "silent_不意打ち",
@@ -979,7 +988,8 @@
       "rarity": "コモン",
       "type": "アタック",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/跳弾.webp"
     },
     {
       "id": "silent_串刺し",
@@ -1206,7 +1216,8 @@
       "rarity": "コモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/準備.webp"
     },
     {
       "id": "silent_アクロバット",
@@ -1305,7 +1316,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/イカサマ.webp"
     },
     {
       "id": "silent_暗器",
@@ -1492,7 +1504,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/バースト.webp"
     },
     {
       "id": "silent_影との融合",
@@ -1531,7 +1544,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/墨の刃.webp"
     },
     {
       "id": "silent_ナイフの罠",
@@ -1669,7 +1683,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/促進剤.webp"
     },
     {
       "id": "silent_ナイフの雨",
@@ -3784,7 +3799,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/叩き直してやる.webp"
     },
     {
       "id": "regent_不時着",
@@ -4071,7 +4087,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/征服者.webp"
     },
     {
       "id": "regent_突撃せよ！",
@@ -4525,7 +4542,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/一斉射撃.webp"
     },
     {
       "id": "colorless_金の斧",
