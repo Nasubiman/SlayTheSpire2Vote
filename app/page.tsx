@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAdminDb } from "@/lib/firebase-admin";
-import { CHARACTERS, type Poll } from "@/lib/types";
+import { CHARACTERS, RATINGS, type Poll } from "@/lib/types";
 import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
 
 export const dynamic = "force-dynamic";
@@ -47,7 +47,9 @@ function weightedScore(r: Record<string, number>) {
   return (a * 5 + b * 4 + c * 3 + d * 2 + e * 1) / total;
 }
 
-async function getPollsAndTopCards(): Promise<Record<string, { poll: Poll; topCardUrl: string | null; topCardName: string | null; totalVotes: number }>> {
+type CharEntry = { poll: Poll; topCardName: string | null; topCardResult: Record<string, number> | null; totalVotes: number };
+
+async function getPollsAndTopCards(): Promise<Record<string, CharEntry>> {
   try {
     const db = getAdminDb();
     const snap = await db.collection("polls").orderBy("createdAt", "desc").get();
@@ -57,7 +59,7 @@ async function getPollsAndTopCards(): Promise<Record<string, { poll: Poll; topCa
       if (!pollMap[data.characterId]) pollMap[data.characterId] = { id: doc.id, data };
     }
 
-    const result: Record<string, { poll: Poll; topCardUrl: string | null; topCardName: string | null; totalVotes: number }> = {};
+    const result: Record<string, CharEntry> = {};
 
     await Promise.all(
       Object.entries(pollMap).map(async ([characterId, { id, data }]) => {
@@ -94,8 +96,8 @@ async function getPollsAndTopCards(): Promise<Record<string, { poll: Poll; topCa
 
         result[characterId] = {
           poll,
-          topCardUrl: topCard ? getCardImageUrl(topCard) : null,
           topCardName: topCard?.name ?? null,
+          topCardResult: topCard ? (resultsMap[topCard.id] ?? null) : null,
           totalVotes,
         };
       })
@@ -139,20 +141,31 @@ export default async function HomePage() {
                 href={`/polls/${char.id}`}
                 className={`bg-gradient-to-b ${meta.color} rounded-xl p-4 border ${meta.border} transition-all hover:scale-[1.02] flex flex-col`}
               >
-                {/* トップカード画像 */}
-                {entry.topCardUrl && (
-                  <div className="flex justify-center mb-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={entry.topCardUrl}
-                      alt={entry.topCardName ?? ""}
-                      className="h-32 object-contain drop-shadow-lg"
-                    />
-                  </div>
-                )}
-
                 <p className="font-bold text-lg">{char.name}</p>
                 <p className="text-xs text-gray-300 mt-1 leading-relaxed">{meta.description}</p>
+
+                {/* 1位カード */}
+                {entry.topCardName && entry.topCardResult && (() => {
+                  const r = entry.topCardResult;
+                  const total = (r.a||0)+(r.b||0)+(r.c||0)+(r.d||0)+(r.e||0);
+                  return (
+                    <div className="mt-3 bg-black/20 rounded-lg px-3 py-2">
+                      <p className="text-xs text-gray-400 mb-1">現在1位</p>
+                      <p className="text-sm font-semibold truncate">{entry.topCardName}</p>
+                      {total > 0 && (
+                        <div className="flex gap-0.5 h-1.5 mt-1.5">
+                          {RATINGS.map((rt) => {
+                            const pct = ((r[rt.value] || 0) / total) * 100;
+                            return pct > 0 ? (
+                              <div key={rt.value} className={`${rt.color.split(" ")[0]} rounded-sm`} style={{ width: `${pct}%` }} />
+                            ) : null;
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+
                 <div className="flex items-center justify-between mt-3">
                   <span className="text-xs text-gray-400">{entry.totalVotes.toLocaleString()}票</span>
                   <span className="text-xs text-gray-300">投票する →</span>
