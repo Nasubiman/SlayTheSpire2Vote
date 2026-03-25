@@ -193,15 +193,8 @@ export default function PollPage() {
                   </div>
                 )}
 
-                {/* カード情報 + レーティングボタン */}
+                {/* レーティングボタン */}
                 <div className="p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="font-semibold text-sm leading-tight">{card.name}</p>
-                    <div className="flex gap-1 shrink-0 ml-2">
-                      <span className="text-xs bg-gray-700 px-1.5 py-0.5 rounded">{card.type}</span>
-                      <span className="text-xs bg-gray-700 px-1.5 py-0.5 rounded">{card.rarity}</span>
-                    </div>
-                  </div>
                   <div className="flex gap-1.5">
                     {RATINGS.map((r) => (
                       <button
