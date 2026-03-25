@@ -162,7 +162,7 @@ export default function PollPage() {
             return (
               <div
                 key={card.id}
-                className={`rounded-lg p-4 border transition-colors ${
+                className={`rounded-lg overflow-hidden border transition-colors ${
                   voted
                     ? "bg-gray-800 border-gray-600"
                     : "bg-gray-900 border-gray-700"
@@ -170,21 +170,21 @@ export default function PollPage() {
               >
                 {/* カード画像 + 強化トグル */}
                 {imgUrl && (
-                  <div className="flex flex-col items-center mb-3">
+                  <div className="relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={imgUrl}
                       alt={card.name}
-                      className="h-52 object-contain rounded"
+                      className="w-full object-contain"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                     {hasUpgraded && (
                       <button
                         onClick={() => setUpgradedCards((u) => ({ ...u, [card.id]: !u[card.id] }))}
-                        className={`mt-2 px-3 py-0.5 rounded-full text-xs transition-colors ${
+                        className={`absolute bottom-2 right-2 px-2 py-0.5 rounded-full text-xs transition-colors ${
                           isUpgraded
                             ? "bg-purple-600 text-white"
-                            : "bg-gray-700 text-gray-400 hover:bg-gray-600"
+                            : "bg-gray-800/80 text-gray-300 hover:bg-gray-700"
                         }`}
                       >
                         {isUpgraded ? "強化後" : "強化前"}
@@ -193,31 +193,31 @@ export default function PollPage() {
                   </div>
                 )}
 
-                {/* カード情報 */}
-                <div className="mb-3">
-                  <p className="font-semibold leading-tight mb-1">{card.name}</p>
-                  <div className="flex gap-2">
-                    <span className="text-xs text-gray-400">{card.type}</span>
-                    <span className="text-xs text-gray-400">{card.rarity}</span>
+                {/* カード情報 + レーティングボタン */}
+                <div className="p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="font-semibold text-sm leading-tight">{card.name}</p>
+                    <div className="flex gap-1 shrink-0 ml-2">
+                      <span className="text-xs bg-gray-700 px-1.5 py-0.5 rounded">{card.type}</span>
+                      <span className="text-xs bg-gray-700 px-1.5 py-0.5 rounded">{card.rarity}</span>
+                    </div>
                   </div>
-                </div>
-
-                {/* レーティングボタン */}
-                <div className="flex gap-1.5">
-                  {RATINGS.map((r) => (
-                    <button
-                      key={r.value}
-                      onClick={() => vote(card.id, r.value)}
-                      disabled={isLoading}
-                      className={`flex-1 py-1.5 rounded text-sm font-bold transition-all ${
-                        voted === r.value
-                          ? `${r.color} ring-2 ring-white`
-                          : `${r.color} opacity-40 hover:opacity-100`
-                      } disabled:cursor-not-allowed`}
-                    >
-                      {r.label}
-                    </button>
-                  ))}
+                  <div className="flex gap-1.5">
+                    {RATINGS.map((r) => (
+                      <button
+                        key={r.value}
+                        onClick={() => vote(card.id, r.value)}
+                        disabled={isLoading}
+                        className={`flex-1 py-1.5 rounded text-sm font-bold transition-all ${
+                          voted === r.value
+                            ? `${r.color} ring-2 ring-white`
+                            : `${r.color} opacity-40 hover:opacity-100`
+                        } disabled:cursor-not-allowed`}
+                      >
+                        {r.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             );
