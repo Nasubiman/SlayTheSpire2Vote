@@ -119,6 +119,18 @@ export default async function HomePage() {
         <p className="text-gray-400 mb-8">カード強さ投票 — キャラクターを選んでください</p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {/* レリック投票 */}
+          <Link
+            href="/relics"
+            className="bg-gradient-to-b from-amber-900/60 to-gray-900 rounded-xl p-4 border border-amber-700 hover:border-amber-500 transition-all hover:scale-[1.02] flex flex-col"
+          >
+            <p className="font-bold text-lg">全レリック</p>
+            <p className="text-xs text-gray-300 mt-1 leading-relaxed">全キャラクター共通・固有レリックの強さ評価。</p>
+            <div className="flex items-center justify-end mt-auto pt-3">
+              <span className="text-xs text-gray-300">投票する →</span>
+            </div>
+          </Link>
+
           {CHARACTERS.map((char) => {
             const meta = CHARACTER_META[char.id];
             const entry = data[char.id];
