@@ -22,6 +22,7 @@ export default function PollPage() {
   const [cards, setCards] = useState<Card[]>([]);
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
+  const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
   const [votes, setVotes] = useState<VoteState>({});
   const [status, setStatus] = useState<StatusState>({});
   const [notFound, setNotFound] = useState(false);
@@ -130,11 +131,23 @@ export default function PollPage() {
 
   const EXCLUDED_CARDS = ["ストライク", "防御"];
 
+  const weightedScore = (r: ResultsState[string] | undefined) => {
+    if (!r) return 0;
+    const total = (r.a||0)+(r.b||0)+(r.c||0)+(r.d||0)+(r.e||0);
+    if (total === 0) return 0;
+    return ((r.a||0)*5+(r.b||0)*4+(r.c||0)*3+(r.d||0)*2+(r.e||0)*1) / total;
+  };
+
   const filteredCards = cards
     .filter((c) => !EXCLUDED_CARDS.includes(c.name))
     .filter((c) => !!getCardImageUrl(c))
     .filter((c) => filter === "全て" || c.type === filter)
-    .filter((c) => rarityFilter === "全て" || c.rarity === rarityFilter);
+    .filter((c) => rarityFilter === "全て" || c.rarity === rarityFilter)
+    .sort((a, b) => {
+      if (sortBy === "score_desc") return weightedScore(results[b.id]) - weightedScore(results[a.id]);
+      if (sortBy === "score_asc") return weightedScore(results[a.id]) - weightedScore(results[b.id]);
+      return a.name.localeCompare(b.name, "ja");
+    });
 
   const votedCount = Object.keys(votes).length;
 
@@ -207,6 +220,21 @@ export default function PollPage() {
                 }`}
               >
                 {r}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            {(["score_desc", "score_asc", "name"] as const).map((s) => (
+              <button
+                key={s}
+                onClick={() => setSortBy(s)}
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                  sortBy === s
+                    ? "bg-gray-600 text-white"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                }`}
+              >
+                {s === "score_desc" ? "評価高い順" : s === "score_asc" ? "評価低い順" : "名前順"}
               </button>
             ))}
           </div>
