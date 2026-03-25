@@ -118,19 +118,24 @@ export default function PollPage() {
     <main className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* ヘッダー */}
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h1 className="text-2xl font-bold">{poll.title}</h1>
-            <p className="text-gray-400 text-sm mt-1">
-              {poll.characterName} · {votedCount}/{cards.length} 投票済み
-            </p>
-          </div>
-          <Link
-            href={`/polls/${pollId}/results`}
-            className="bg-gray-800 hover:bg-gray-700 rounded-lg px-4 py-2 text-sm transition-colors"
-          >
-            結果を見る →
+        <div className="mb-6">
+          <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
+            ← キャラクター選択に戻る
           </Link>
+          <div className="flex items-center justify-between mt-3">
+            <div>
+              <h1 className="text-2xl font-bold">{poll.title}</h1>
+              <p className="text-gray-400 text-sm mt-1">
+                {poll.characterName} · {votedCount}/{cards.length} 投票済み
+              </p>
+            </div>
+            <Link
+              href={`/polls/${pollId}/results`}
+              className="bg-gray-800 hover:bg-gray-700 rounded-lg px-4 py-2 text-sm transition-colors"
+            >
+              結果を見る →
+            </Link>
+          </div>
         </div>
 
         {/* フィルタータブ */}
