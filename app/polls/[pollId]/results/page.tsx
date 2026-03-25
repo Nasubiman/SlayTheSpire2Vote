@@ -109,19 +109,24 @@ export default function ResultsPage() {
     <main className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* ヘッダー */}
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h1 className="text-2xl font-bold">{poll.title} — 結果</h1>
-            <p className="text-gray-400 text-sm mt-1">
-              {poll.characterName} · 総投票数 {totalVotesAll}
-            </p>
-          </div>
-          <Link
-            href={`/polls/${pollId}`}
-            className="bg-gray-800 hover:bg-gray-700 rounded-lg px-4 py-2 text-sm transition-colors"
-          >
-            ← 投票する
+        <div className="mb-6">
+          <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
+            ← キャラクター選択に戻る
           </Link>
+          <div className="flex items-center justify-between mt-3">
+            <div>
+              <h1 className="text-2xl font-bold">{poll.title} — 結果</h1>
+              <p className="text-gray-400 text-sm mt-1">
+                {poll.characterName} · 総投票数 {totalVotesAll}
+              </p>
+            </div>
+            <Link
+              href={`/polls/${pollId}`}
+              className="bg-gray-800 hover:bg-gray-700 rounded-lg px-4 py-2 text-sm transition-colors"
+            >
+              ← 投票する
+            </Link>
+          </div>
         </div>
 
         {/* フィルター・ソート */}
