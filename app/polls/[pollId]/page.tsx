@@ -182,13 +182,7 @@ export default function PollPage() {
                 {poll.characterName} · {votedCount}/{cards.length} 投票済み
               </p>
             </div>
-            <Link
-              href={`/polls/${pollId}/results`}
-              className="bg-gray-800 hover:bg-gray-700 rounded-lg px-4 py-2 text-sm transition-colors"
-            >
-              結果を見る →
-            </Link>
-          </div>
+            </div>
         </div>
 
         {/* フィルタータブ */}
@@ -303,22 +297,26 @@ export default function PollPage() {
                   </div>
                   {results[card.id] && (() => {
                     const r = results[card.id];
-                    const total = (r.a || 0) + (r.b || 0) + (r.c || 0) + (r.d || 0) + (r.e || 0);
+                    const total = (r.a||0)+(r.b||0)+(r.c||0)+(r.d||0)+(r.e||0);
                     if (total === 0) return null;
+                    const score = weightedScore(r);
                     return (
-                      <div className="mt-2 flex gap-0.5 h-1.5">
-                        {RATINGS.map((rt) => {
-                          const count = r[rt.value as keyof typeof r] || 0;
-                          const pct = (count / total) * 100;
-                          return pct > 0 ? (
-                            <div
-                              key={rt.value}
-                              className={`${rt.color.split(" ")[0]} rounded-sm`}
-                              style={{ width: `${pct}%` }}
-                              title={`${rt.label}: ${count}票`}
-                            />
-                          ) : null;
-                        })}
+                      <div className="mt-2">
+                        <div className="flex gap-0.5 h-1.5">
+                          {RATINGS.map((rt) => {
+                            const count = r[rt.value as keyof typeof r] || 0;
+                            const pct = (count / total) * 100;
+                            return pct > 0 ? (
+                              <div
+                                key={rt.value}
+                                className={`${rt.color.split(" ")[0]} rounded-sm`}
+                                style={{ width: `${pct}%` }}
+                                title={`${rt.label}: ${count}票`}
+                              />
+                            ) : null;
+                          })}
+                        </div>
+                        <p className="text-xs text-gray-400 mt-1">avg {score.toFixed(2)} · {total}票</p>
                       </div>
                     );
                   })()}
