@@ -69,7 +69,8 @@ export default function PollPage() {
         const now = Date.now();
         const valid = JSON.parse(saved) as VoteState;
         for (const cardId of Object.keys(valid)) {
-          if (ts[cardId] && now - ts[cardId] > REVOTE_MS) {
+          // タイムスタンプなし（古いデータ）または期限切れは削除
+          if (!ts[cardId] || now - ts[cardId] > REVOTE_MS) {
             delete valid[cardId];
           }
         }
