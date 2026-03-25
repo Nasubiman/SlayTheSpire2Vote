@@ -3,13 +3,14 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { doc, getDoc, collection, query, where, getDocs, orderBy, limit } from "firebase/firestore";
+import { doc, getDoc, collection, query, where, getDocs, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
 import { RATINGS, type Poll, type Card, type Rating } from "@/lib/types";
 
 type VoteState = Record<string, Rating>;
 type StatusState = Record<string, "idle" | "loading" | "done" | "error">;
+type ResultsState = Record<string, { a: number; b: number; c: number; d: number; e: number }>;
 
 const CARD_TYPES = ["全て", "アタック", "スキル", "パワー"] as const;
 
@@ -23,6 +24,7 @@ export default function PollPage() {
   const [status, setStatus] = useState<StatusState>({});
   const [notFound, setNotFound] = useState(false);
   const [upgradedCards, setUpgradedCards] = useState<Record<string, boolean>>({});
+  const [results, setResults] = useState<ResultsState>({});
 
   // Firestoreからpoll取得（直接IDまたはcharacterIdでフォールバック）
   useEffect(() => {
@@ -62,6 +64,22 @@ export default function PollPage() {
     }
     fetchPoll();
   }, [pollId]);
+
+  // 結果をリアルタイムで購読
+  useEffect(() => {
+    if (!pollDocId) return;
+    const unsub = onSnapshot(
+      collection(db, "polls", pollDocId, "results"),
+      (snap) => {
+        const r: ResultsState = {};
+        snap.forEach((d) => {
+          r[d.id] = d.data() as ResultsState[string];
+        });
+        setResults(r);
+      }
+    );
+    return () => unsub();
+  }, [pollDocId]);
 
   const vote = useCallback(
     async (cardId: string, rating: Rating) => {
@@ -198,7 +216,7 @@ export default function PollPage() {
                   </div>
                 )}
 
-                {/* レーティングボタン */}
+                {/* レーティングボタン + みんなの評価 */}
                 <div className="p-3">
                   <div className="flex gap-1.5">
                     {RATINGS.map((r) => (
@@ -216,6 +234,26 @@ export default function PollPage() {
                       </button>
                     ))}
                   </div>
+                  {results[card.id] && (() => {
+                    const r = results[card.id];
+                    const total = r.a + r.b + r.c + r.d + r.e;
+                    if (total === 0) return null;
+                    return (
+                      <div className="mt-2 flex gap-0.5 h-1.5">
+                        {RATINGS.map((rt) => {
+                          const pct = (r[rt.value as keyof typeof r] / total) * 100;
+                          return pct > 0 ? (
+                            <div
+                              key={rt.value}
+                              className={`${rt.color.split(" ")[0]} rounded-sm`}
+                              style={{ width: `${pct}%` }}
+                              title={`${rt.label}: ${r[rt.value as keyof typeof r]}票`}
+                            />
+                          ) : null;
+                        })}
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             );
