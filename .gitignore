@@ -50,3 +50,6 @@ scripts/
 # 画像ローカルキャッシュ（著作権配慮・Vercel Blobに移行済み）
 data/images/
 data/failed-images.json
+
+CLAUDE.md
+AGENTS.md
