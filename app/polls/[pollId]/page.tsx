@@ -256,18 +256,19 @@ export default function PollPage() {
                   </div>
                   {results[card.id] && (() => {
                     const r = results[card.id];
-                    const total = r.a + r.b + r.c + r.d + r.e;
+                    const total = (r.a || 0) + (r.b || 0) + (r.c || 0) + (r.d || 0) + (r.e || 0);
                     if (total === 0) return null;
                     return (
                       <div className="mt-2 flex gap-0.5 h-1.5">
                         {RATINGS.map((rt) => {
-                          const pct = (r[rt.value as keyof typeof r] / total) * 100;
+                          const count = r[rt.value as keyof typeof r] || 0;
+                          const pct = (count / total) * 100;
                           return pct > 0 ? (
                             <div
                               key={rt.value}
                               className={`${rt.color.split(" ")[0]} rounded-sm`}
                               style={{ width: `${pct}%` }}
-                              title={`${rt.label}: ${r[rt.value as keyof typeof r]}票`}
+                              title={`${rt.label}: ${count}票`}
                             />
                           ) : null;
                         })}
