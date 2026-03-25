@@ -502,7 +502,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/悪魔の盾※マルチプレイ専用.webp"
     },
     {
       "id": "ironclad_激怒",
@@ -780,7 +781,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "ironclad",
-      "characterName": "アイアンクラッド"
+      "characterName": "アイアンクラッド",
+      "imagePath": "data/images/ironclad/タンク※マルチプレイ専用.webp"
     },
     {
       "id": "ironclad_残酷",
@@ -1426,7 +1428,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/挟撃※マルチプレイ専用.webp"
     },
     {
       "id": "silent_足払い",
@@ -1703,7 +1706,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "silent",
-      "characterName": "サイレント"
+      "characterName": "サイレント",
+      "imagePath": "data/images/silent/隠密※マルチプレイ専用.webp"
     },
     {
       "id": "silent_稀代の策士",
@@ -2209,7 +2213,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/エナジーサージ※マルチプレイ専用.webp"
     },
     {
       "id": "defect_ガラス細工",
@@ -2388,7 +2393,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "defect",
-      "characterName": "ディフェクト"
+      "characterName": "ディフェクト",
+      "imagePath": "data/images/defect/イグニッション※マルチプレイ専用.webp"
     },
     {
       "id": "defect_遺伝的アルゴリズム",
@@ -3233,7 +3239,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/骨の軍団※マルチプレイ専用.webp"
     },
     {
       "id": "necro_憂鬱",
@@ -3302,7 +3309,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "necro",
-      "characterName": "ネクロバインダー"
+      "characterName": "ネクロバインダー",
+      "imagePath": "data/images/necro/彼方への一瞥※マルチプレイ専用.webp"
     },
     {
       "id": "necro_変貌",
@@ -4008,7 +4016,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/寛大なる施し※マルチプレイ専用.webp"
     },
     {
       "id": "regent_星の巡り",
@@ -4375,7 +4384,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "regent",
-      "characterName": "リージェント"
+      "characterName": "リージェント",
+      "imagePath": "data/images/regent/ハンマータイム※マルチプレイ専用.webp"
     },
     {
       "id": "regent_剣聖",
@@ -4514,7 +4524,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/総攻撃※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_タッグチーム※マルチプレイ専用",
@@ -4523,7 +4534,8 @@
       "rarity": "アンコモン",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/タッグチーム※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_ボーラ",
@@ -4592,7 +4604,8 @@
       "rarity": "レア",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ノックダウン※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_お前を信じる※マルチプレイ専用",
@@ -4601,7 +4614,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/お前を信じる※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_闇の足枷",
@@ -4710,7 +4724,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/インターセプト※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_スプラッシュ",
@@ -4739,7 +4754,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/作戦会議※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_持ち上げ※マルチプレイ専用",
@@ -4748,7 +4764,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/持ち上げ※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_発見",
@@ -4767,7 +4784,8 @@
       "rarity": "アンコモン",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/連携※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_均衡",
@@ -4856,7 +4874,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ものまね※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_隠された宝石",
@@ -4905,7 +4924,8 @@
       "rarity": "レア",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/結集※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_ビートダウン",
@@ -4994,7 +5014,8 @@
       "rarity": "レア",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/希望の道標※マルチプレイ専用.webp"
     },
     {
       "id": "colorless_郷愁",
