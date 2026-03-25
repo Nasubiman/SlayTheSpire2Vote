@@ -9,6 +9,7 @@ import { getCardsByCharacter } from "@/lib/cards";
 import { RATINGS, type Poll, type Card, type CardResult } from "@/lib/types";
 
 const CARD_TYPES = ["全て", "アタック", "スキル", "パワー"] as const;
+const RARITIES = ["全て", "コモン", "アンコモン", "レア", "スターター"] as const;
 
 function totalVotes(r: CardResult) {
   return (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0);
@@ -32,6 +33,7 @@ export default function ResultsPage() {
   const [results, setResults] = useState<Record<string, CardResult>>({});
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
+  const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
 
   // poll取得（直接IDまたはcharacterIdでフォールバック）
   useEffect(() => {
@@ -83,6 +85,7 @@ export default function ResultsPage() {
   const filteredCards = cards
     .filter((c) => !EXCLUDED_CARDS.includes(c.name))
     .filter((c) => filter === "全て" || c.type === filter)
+    .filter((c) => rarityFilter === "全て" || c.rarity === rarityFilter)
     .sort((a, b) => {
     if (sortBy === "score_desc") return weightedScore(results[b.id] ?? {}) - weightedScore(results[a.id] ?? {});
     if (sortBy === "score_asc") return weightedScore(results[a.id] ?? {}) - weightedScore(results[b.id] ?? {});
@@ -122,8 +125,8 @@ export default function ResultsPage() {
         </div>
 
         {/* フィルター・ソート */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          <div className="flex gap-1">
+        <div className="flex flex-col gap-2 mb-6">
+          <div className="flex flex-wrap gap-1">
             {CARD_TYPES.map((t) => (
               <button
                 key={t}
@@ -138,7 +141,22 @@ export default function ResultsPage() {
               </button>
             ))}
           </div>
-          <div className="flex gap-1 ml-auto">
+          <div className="flex flex-wrap gap-1">
+            {RARITIES.map((r) => (
+              <button
+                key={r}
+                onClick={() => setRarityFilter(r)}
+                className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
+                  rarityFilter === r
+                    ? "bg-purple-600 text-white"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                }`}
+              >
+                {r}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-1">
             {(["score_desc", "score_asc", "name"] as const).map((s) => (
               <button
                 key={s}
