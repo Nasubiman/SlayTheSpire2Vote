@@ -30,6 +30,8 @@ export default function PollPage() {
   const [results, setResults] = useState<ResultsState>({});
   const [sortedCards, setSortedCards] = useState<Card[]>([]);
   const resultsRef = useRef<ResultsState>({});
+  const initialResultsLoaded = useRef(false);
+  const [sortTrigger, setSortTrigger] = useState(0);
 
   // Firestoreからpoll取得（直接IDまたはcharacterIdでフォールバック）
   useEffect(() => {
@@ -94,6 +96,11 @@ export default function PollPage() {
           r[d.id] = d.data() as ResultsState[string];
         });
         setResults(r);
+        // 初回ロード時のみ再ソートをトリガー
+        if (!initialResultsLoaded.current) {
+          initialResultsLoaded.current = true;
+          setSortTrigger((t) => t + 1);
+        }
       }
     );
     return () => unsub();
@@ -158,7 +165,7 @@ export default function PollPage() {
       });
     setSortedCards(sorted);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cards, filter, rarityFilter, sortBy]);
+  }, [cards, filter, rarityFilter, sortBy, sortTrigger]);
 
   const votedCount = Object.keys(votes).length;
 
