@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Slay the Spire 2 (STS2) 全カード強さ評価・投票サイト | 最強カード Tier表",
+  title: "Slay the Spire 2 (STS2) カード・レリック 評価ランキング | 最強カード Tier表",
   description:
-    "Slay the Spire 2（スレイザスパイア2）のカード強さ投票サイトです。アイアンクラッド、サイレント、ディフェクトや新キャラのネクロバインダーのカードを評価して、みんなで作る最強カードTier表（ランキング）を確認しよう！",
+    "Slay the Spire 2（スレイザスパイア2）のカード・レリック評価ランキングサイトです。アイアンクラッド、サイレント、ディフェクトや新キャラのネクロバインダーのカードを評価して、みんなで作る最強カードTier表（ランキング）を確認しよう！",
 };
 
 export default function RootLayout({

@@ -140,7 +140,7 @@ export default function RelicsPage() {
             ← キャラクター選択に戻る
           </Link>
           <div className="mt-3">
-            <h1 className="text-2xl font-bold">全レリック強さ投票</h1>
+            <h1 className="text-2xl font-bold">全レリック 評価ランキング</h1>
             <p className="text-gray-400 text-sm mt-1">
               {votedCount}/{relics.length} 投票済み
             </p>

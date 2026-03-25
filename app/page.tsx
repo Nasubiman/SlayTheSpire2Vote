@@ -116,7 +116,7 @@ export default async function HomePage() {
     <main className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-3xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold mb-2">Slay the Spire 2</h1>
-        <p className="text-gray-400 mb-8">カード・レリック強さ投票</p>
+        <p className="text-gray-400 mb-8">カード・レリック 評価ランキング</p>
 
         {/* レリック */}
         <h2 className="text-lg font-semibold text-gray-300 mb-3">レリック</h2>
