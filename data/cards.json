@@ -5110,7 +5110,8 @@
       "rarity": "ネオー",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ネオーの怒り.webp"
     },
     {
       "id": "colorless_引き裂き",
@@ -5119,7 +5120,8 @@
       "rarity": "タンクス",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/引き裂き.webp"
     },
     {
       "id": "colorless_ホイッスル",
@@ -5128,7 +5130,8 @@
       "rarity": "タンクス",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ホイッスル.webp"
     },
     {
       "id": "colorless_願い",
@@ -5137,7 +5140,8 @@
       "rarity": "ヴァクー",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/願い.webp"
     },
     {
       "id": "colorless_極光の炎",
@@ -5146,7 +5150,8 @@
       "rarity": "テスカタラ",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/極光の炎.webp"
     },
     {
       "id": "colorless_幻姿",
@@ -5155,7 +5160,8 @@
       "rarity": "ヴァクー",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/幻姿.webp"
     },
     {
       "id": "colorless_神格化",
@@ -5164,7 +5170,8 @@
       "rarity": "ノヌペイペ",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/神格化.webp"
     },
     {
       "id": "colorless_リラックス",
@@ -5173,7 +5180,8 @@
       "rarity": "パエル",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/リラックス.webp"
     },
     {
       "id": "colorless_クラッシュ",
@@ -5182,7 +5190,8 @@
       "rarity": "手札のカードがすべてアタックの場合にのみプレイできる。14ダメージを与える。",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/クラッシュ.webp"
     },
     {
       "id": "colorless_ビャードの急襲",
@@ -5191,7 +5200,8 @@
       "rarity": "14ダメージを与える。",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ビャードの急襲.webp"
     },
     {
       "id": "colorless_ついばみ",
@@ -5200,7 +5210,8 @@
       "rarity": "2ダメージを3回与える。",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ついばみ.webp"
     },
     {
       "id": "colorless_リバウンド",
@@ -5218,7 +5229,8 @@
       "rarity": "ランダムな敵に7ダメージを2回与える。",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/狂奔.webp"
     },
     {
       "id": "colorless_押しつぶし",
@@ -5227,7 +5239,8 @@
       "rarity": "10ダメージを与える。弱体2を付与する。",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/押しつぶし.webp"
     },
     {
       "id": "colorless_駆除",
@@ -5236,7 +5249,8 @@
       "rarity": "すべての敵に3ダメージを4回与える。",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/駆除.webp"
     },
     {
       "id": "colorless_フードファイト",
@@ -5245,7 +5259,8 @@
       "rarity": "このターン、筋力5を得る。",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/フードファイト.webp"
     },
     {
       "id": "colorless_啓発",
@@ -5254,7 +5269,8 @@
       "rarity": "このターン、手札の全てのカードのコストを1にする。廃棄。",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/啓発.webp"
     },
     {
       "id": "colorless_スタック",
@@ -5263,7 +5279,8 @@
       "rarity": "捨て札の枚数に等しいブロックを得る。",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/スタック.webp"
     },
     {
       "id": "colorless_先読み",
@@ -5282,7 +5299,8 @@
       "rarity": "ランダムなスキルを1枚手札に加える。このターン、それはコストを支払わずにプレイできる。廃棄。",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/動揺.webp"
     },
     {
       "id": "colorless_二刀流",
@@ -5291,7 +5309,8 @@
       "rarity": "アタックかパワーを1枚選ぶ。そのコピーを1枚手札に加える。",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/二刀流.webp"
     },
     {
       "id": "colorless_メタモルフォーゼ(羽化)",
@@ -5309,7 +5328,8 @@
       "rarity": "5ブロックを得る。次の2ターンの間、ターン開始時に5ブロックを得る。",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/円環の障壁.webp"
     },
     {
       "id": "colorless_塹壕",
@@ -5318,7 +5338,8 @@
       "rarity": "ブロック値を2倍にする。",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/塹壕.webp"
     },
     {
       "id": "colorless_ハロー・ワールド",
@@ -5327,7 +5348,8 @@
       "rarity": "ターン開始時、ランダムなコモンカードを1枚手札に加える",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ハロー・ワールド.webp"
     },
     {
       "id": "colorless_まきびし",
@@ -5345,7 +5367,8 @@
       "rarity": "選択肢に応じて種別と効果が変化する",
       "type": "パワー",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/マッド・サイエンス.webp"
     },
     {
       "id": "colorless_ビャードニスの卵",
@@ -5381,7 +5404,8 @@
       "rarity": "サイレント",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ナイフ.webp"
     },
     {
       "id": "colorless_ミニオンストライク",
@@ -5390,7 +5414,8 @@
       "rarity": "リージェント",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ミニオンストライク.webp"
     },
     {
       "id": "colorless_索敵の眼差し",
@@ -5399,7 +5424,8 @@
       "rarity": "ネクロバインダー",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/索敵の眼差し.webp"
     },
     {
       "id": "colorless_ミニオンの特攻",
@@ -5408,7 +5434,8 @@
       "rarity": "リージェント",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ミニオンの特攻.webp"
     },
     {
       "id": "colorless_巨大な岩",
@@ -5417,7 +5444,8 @@
       "rarity": "アイアンクラッド",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/巨大な岩.webp"
     },
     {
       "id": "colorless_ソヴリン・ブレード",
@@ -5426,7 +5454,8 @@
       "rarity": "リージェント",
       "type": "アタック",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ソヴリン・ブレード.webp"
     },
     {
       "id": "colorless_ソウル",
@@ -5435,7 +5464,8 @@
       "rarity": "ネクロバインダー",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ソウル.webp"
     },
     {
       "id": "colorless_ミニオンの盾",
@@ -5444,7 +5474,8 @@
       "rarity": "リージェント",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/ミニオンの盾.webp"
     },
     {
       "id": "colorless_燃料",
@@ -5453,7 +5484,8 @@
       "rarity": "ディフェクト",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/燃料.webp"
     },
     {
       "id": "colorless_発光",
@@ -5462,7 +5494,8 @@
       "rarity": "- (オロバス)",
       "type": "スキル",
       "characterId": "colorless",
-      "characterName": "無色カード"
+      "characterName": "無色カード",
+      "imagePath": "data/images/colorless/発光.webp"
     }
   ]
 }
