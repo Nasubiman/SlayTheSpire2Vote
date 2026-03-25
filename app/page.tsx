@@ -1,35 +1,114 @@
 import Link from "next/link";
 import { getAdminDb } from "@/lib/firebase-admin";
 import { CHARACTERS, type Poll } from "@/lib/types";
+import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
 
 export const dynamic = "force-dynamic";
 
-async function getPollsByCharacter(): Promise<Record<string, Poll>> {
+const CHARACTER_META: Record<string, { color: string; border: string; description: string }> = {
+  ironclad: {
+    color: "from-red-900/60 to-gray-900",
+    border: "border-red-700 hover:border-red-500",
+    description: "アイアンクラッド族の最後の兵士。不本意ながらも、剣と炎で敵を粉砕する。",
+  },
+  silent: {
+    color: "from-green-900/60 to-gray-900",
+    border: "border-green-700 hover:border-green-500",
+    description: "塔の外から来た狩人。立ちはだかる者はすべて、ナイフと毒で仕留める。",
+  },
+  defect: {
+    color: "from-cyan-900/60 to-gray-900",
+    border: "border-cyan-700 hover:border-cyan-500",
+    description: "生き延びるため、永遠に自身を改造し続けるオートマトン。戦わざるを得ない時は、オーブ機能を展開する。",
+  },
+  necro: {
+    color: "from-purple-900/60 to-gray-900",
+    border: "border-purple-700 hover:border-purple-500",
+    description: "復讐を誓うスパイア生まれのリッチ。戦闘では頼れる相棒、左手のオスティを呼び出す。",
+  },
+  regent: {
+    color: "from-orange-900/60 to-gray-900",
+    border: "border-orange-700 hover:border-orange-500",
+    description: "星の王座の継承者。宇宙の力を行使するが、面倒はミニオン任せ。",
+  },
+  colorless: {
+    color: "from-gray-700/60 to-gray-900",
+    border: "border-gray-600 hover:border-gray-400",
+    description: "特定のキャラクターに属さない汎用カード群。どのデッキにも組み込める多彩な効果を持つ。",
+  },
+};
+
+const EXCLUDED_CARDS = ["ストライク", "防御"];
+
+function weightedScore(r: Record<string, number>) {
+  const a = r.a ?? 0, b = r.b ?? 0, c = r.c ?? 0, d = r.d ?? 0, e = r.e ?? 0;
+  const total = a + b + c + d + e;
+  if (total === 0) return 0;
+  return (a * 5 + b * 4 + c * 3 + d * 2 + e * 1) / total;
+}
+
+async function getPollsAndTopCards(): Promise<Record<string, { poll: Poll; topCardUrl: string | null; topCardName: string | null; totalVotes: number }>> {
   try {
     const db = getAdminDb();
     const snap = await db.collection("polls").orderBy("createdAt", "desc").get();
-    const map: Record<string, Poll> = {};
+    const pollMap: Record<string, { id: string; data: FirebaseFirestore.DocumentData }> = {};
     for (const doc of snap.docs) {
       const data = doc.data();
-      // キャラクターごとに最新のpollだけ保持
-      if (!map[data.characterId]) {
-        map[data.characterId] = {
-          id: doc.id,
+      if (!pollMap[data.characterId]) pollMap[data.characterId] = { id: doc.id, data };
+    }
+
+    const result: Record<string, { poll: Poll; topCardUrl: string | null; topCardName: string | null; totalVotes: number }> = {};
+
+    await Promise.all(
+      Object.entries(pollMap).map(async ([characterId, { id, data }]) => {
+        const poll: Poll = {
+          id,
           title: data.title,
           characterId: data.characterId,
           characterName: data.characterName,
           createdAt: data.createdAt?.toMillis() ?? 0,
         };
-      }
-    }
-    return map;
+
+        // 結果を取得してトップカードを探す
+        const resultsSnap = await db.collection("polls").doc(id).collection("results").get();
+        const resultsMap: Record<string, Record<string, number>> = {};
+        resultsSnap.forEach((d) => { resultsMap[d.id] = d.data() as Record<string, number>; });
+
+        const cards = getCardsByCharacter(characterId).filter(
+          (c) => !EXCLUDED_CARDS.includes(c.name) && !!getCardImageUrl(c)
+        );
+
+        const totalVotes = Object.values(resultsMap).reduce(
+          (sum, r) => sum + (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0),
+          0
+        );
+
+        let topCard = null;
+        let topScore = -1;
+        for (const card of cards) {
+          const r = resultsMap[card.id];
+          if (!r) continue;
+          const score = weightedScore(r);
+          if (score > topScore) { topScore = score; topCard = card; }
+        }
+
+        result[characterId] = {
+          poll,
+          topCardUrl: topCard ? getCardImageUrl(topCard) : null,
+          topCardName: topCard?.name ?? null,
+          totalVotes,
+        };
+      })
+    );
+
+    return result;
   } catch {
     return {};
   }
 }
 
 export default async function HomePage() {
-  const pollsByCharacter = await getPollsByCharacter();
+  const data = await getPollsAndTopCards();
 
   return (
     <main className="min-h-screen bg-gray-950 text-white">
@@ -39,24 +118,46 @@ export default async function HomePage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {CHARACTERS.map((char) => {
-            const poll = pollsByCharacter[char.id];
-            return poll ? (
+            const meta = CHARACTER_META[char.id];
+            const entry = data[char.id];
+
+            if (!entry) {
+              return (
+                <div
+                  key={char.id}
+                  className="bg-gray-900 rounded-xl p-4 opacity-50 cursor-not-allowed border border-gray-800"
+                >
+                  <p className="font-bold text-lg">{char.name}</p>
+                  <p className="text-xs text-gray-600 mt-1">準備中</p>
+                </div>
+              );
+            }
+
+            return (
               <Link
                 key={char.id}
                 href={`/polls/${char.id}`}
-                className="bg-gray-800 hover:bg-gray-700 rounded-xl px-5 py-6 text-center transition-colors"
+                className={`bg-gradient-to-b ${meta.color} rounded-xl p-4 border ${meta.border} transition-all hover:scale-[1.02] flex flex-col`}
               >
+                {/* トップカード画像 */}
+                {entry.topCardUrl && (
+                  <div className="flex justify-center mb-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={entry.topCardUrl}
+                      alt={entry.topCardName ?? ""}
+                      className="h-32 object-contain drop-shadow-lg"
+                    />
+                  </div>
+                )}
+
                 <p className="font-bold text-lg">{char.name}</p>
-                <p className="text-xs text-gray-400 mt-1">投票する →</p>
+                <p className="text-xs text-gray-300 mt-1 leading-relaxed">{meta.description}</p>
+                <div className="flex items-center justify-between mt-3">
+                  <span className="text-xs text-gray-400">{entry.totalVotes.toLocaleString()}票</span>
+                  <span className="text-xs text-gray-300">投票する →</span>
+                </div>
               </Link>
-            ) : (
-              <div
-                key={char.id}
-                className="bg-gray-900 rounded-xl px-5 py-6 text-center opacity-50 cursor-not-allowed"
-              >
-                <p className="font-bold text-lg">{char.name}</p>
-                <p className="text-xs text-gray-600 mt-1">準備中</p>
-              </div>
             );
           })}
         </div>
