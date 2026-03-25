@@ -27,8 +27,8 @@ const CHARACTER_META: Record<string, { color: string; border: string; descriptio
     description: "復讐を誓うスパイア生まれのリッチ。戦闘では頼れる相棒、左手のオスティを呼び出す。",
   },
   regent: {
-    color: "from-orange-900/60 to-gray-900",
-    border: "border-orange-700 hover:border-orange-500",
+    color: "from-orange-600/60 to-gray-900",
+    border: "border-orange-500 hover:border-orange-300",
     description: "星の王座の継承者。宇宙の力を行使するが、面倒はミニオン任せ。",
   },
   colorless: {
