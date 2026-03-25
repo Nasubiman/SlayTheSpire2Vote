@@ -118,21 +118,6 @@ export default async function HomePage() {
         <h1 className="text-3xl font-bold mb-2">Slay the Spire 2</h1>
         <p className="text-gray-400 mb-8">カード・レリック 評価ランキング</p>
 
-        {/* レリック */}
-        <h2 className="text-lg font-semibold text-gray-300 mb-3">レリック</h2>
-        <div className="mb-8">
-          <Link
-            href="/relics"
-            className="inline-flex bg-gradient-to-b from-amber-900/60 to-gray-900 rounded-xl p-4 border border-amber-700 hover:border-amber-500 transition-all hover:scale-[1.02] flex-col w-full sm:w-56"
-          >
-            <p className="font-bold text-lg">全レリック</p>
-            <p className="text-xs text-gray-300 mt-1 leading-relaxed">全キャラクター共通・固有レリックの強さ評価。</p>
-            <div className="flex items-center justify-end mt-3">
-              <span className="text-xs text-gray-300">投票する →</span>
-            </div>
-          </Link>
-        </div>
-
         {/* カード */}
         <h2 className="text-lg font-semibold text-gray-300 mb-3">カード</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -190,6 +175,21 @@ export default async function HomePage() {
               </Link>
             );
           })}
+        </div>
+
+        {/* レリック */}
+        <h2 className="text-lg font-semibold text-gray-300 mt-8 mb-3">レリック</h2>
+        <div>
+          <Link
+            href="/relics"
+            className="inline-flex bg-gradient-to-b from-amber-900/60 to-gray-900 rounded-xl p-4 border border-amber-700 hover:border-amber-500 transition-all hover:scale-[1.02] flex-col w-full sm:w-56"
+          >
+            <p className="font-bold text-lg">全レリック</p>
+            <p className="text-xs text-gray-300 mt-1 leading-relaxed">全キャラクター共通・固有レリックの強さ評価。</p>
+            <div className="flex items-center justify-end mt-3">
+              <span className="text-xs text-gray-300">投票する →</span>
+            </div>
+          </Link>
         </div>
       </div>
     </main>
