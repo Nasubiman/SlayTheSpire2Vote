@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { doc, getDoc, collection, query, where, getDocs, orderBy, limit, onSnapshot } from "firebase/firestore";
@@ -28,6 +28,8 @@ export default function PollPage() {
   const [notFound, setNotFound] = useState(false);
   const [upgradedCards, setUpgradedCards] = useState<Record<string, boolean>>({});
   const [results, setResults] = useState<ResultsState>({});
+  const [sortedCards, setSortedCards] = useState<Card[]>([]);
+  const resultsRef = useRef<ResultsState>({});
 
   // Firestoreからpoll取得（直接IDまたはcharacterIdでフォールバック）
   useEffect(() => {
@@ -138,16 +140,25 @@ export default function PollPage() {
     return ((r.a||0)*5+(r.b||0)*4+(r.c||0)*3+(r.d||0)*2+(r.e||0)*1) / total;
   };
 
-  const filteredCards = cards
-    .filter((c) => !EXCLUDED_CARDS.includes(c.name))
-    .filter((c) => !!getCardImageUrl(c))
-    .filter((c) => filter === "全て" || c.type === filter)
-    .filter((c) => rarityFilter === "全て" || c.rarity === rarityFilter)
-    .sort((a, b) => {
-      if (sortBy === "score_desc") return weightedScore(results[b.id]) - weightedScore(results[a.id]);
-      if (sortBy === "score_asc") return weightedScore(results[a.id]) - weightedScore(results[b.id]);
-      return a.name.localeCompare(b.name, "ja");
-    });
+  // resultsの最新値をrefで保持（ソートには使うがsortedCardsの再計算トリガーにはしない）
+  useEffect(() => { resultsRef.current = results; }, [results]);
+
+  // ソート順はsortBy/filter/rarityFilter/cardsが変わった時のみ再計算
+  useEffect(() => {
+    const r = resultsRef.current;
+    const sorted = cards
+      .filter((c) => !EXCLUDED_CARDS.includes(c.name))
+      .filter((c) => !!getCardImageUrl(c))
+      .filter((c) => filter === "全て" || c.type === filter)
+      .filter((c) => rarityFilter === "全て" || c.rarity === rarityFilter)
+      .sort((a, b) => {
+        if (sortBy === "score_desc") return weightedScore(r[b.id]) - weightedScore(r[a.id]);
+        if (sortBy === "score_asc") return weightedScore(r[a.id]) - weightedScore(r[b.id]);
+        return a.name.localeCompare(b.name, "ja");
+      });
+    setSortedCards(sorted);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cards, filter, rarityFilter, sortBy]);
 
   const votedCount = Object.keys(votes).length;
 
@@ -236,7 +247,7 @@ export default function PollPage() {
 
         {/* カードグリッド */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredCards.map((card) => {
+          {sortedCards.map((card) => {
             const voted = votes[card.id];
             const isLoading = status[card.id] === "loading";
             const isUpgraded = upgradedCards[card.id] ?? false;
