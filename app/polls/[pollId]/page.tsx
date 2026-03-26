@@ -208,7 +208,7 @@ export default function PollPage() {
         {/* ヘッダー */}
         <div className="mb-6">
           <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
-            ← キャラクター選択に戻る
+            ← トップに戻る
           </Link>
           <div className="flex items-center justify-between mt-3">
             <div>
