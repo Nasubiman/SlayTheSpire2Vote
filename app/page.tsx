@@ -71,10 +71,8 @@ async function getPollsAndTopCards(): Promise<Record<string, CharEntry>> {
           createdAt: data.createdAt?.toMillis() ?? 0,
         };
 
-        // 結果を取得してトップカードを探す
-        const resultsSnap = await db.collection("polls").doc(id).collection("results").get();
-        const resultsMap: Record<string, Record<string, number>> = {};
-        resultsSnap.forEach((d) => { resultsMap[d.id] = d.data() as Record<string, number>; });
+        // poll documentのscoresフィールドから結果を取得（subcollection読み取り不要）
+        const resultsMap: Record<string, Record<string, number>> = (data.scores ?? {}) as Record<string, Record<string, number>>;
 
         const cards = getCardsByCharacter(characterId).filter(
           (c) => !EXCLUDED_CARDS.includes(c.name) && !!getCardImageUrl(c)

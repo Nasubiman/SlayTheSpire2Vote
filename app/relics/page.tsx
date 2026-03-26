@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
-import { collection, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getAllRelics, getRelicImageUrl, type Relic } from "@/lib/relics";
 import { RATINGS, type Rating } from "@/lib/types";
@@ -56,16 +56,13 @@ export default function RelicsPage() {
     }
   }, []);
 
-  // 結果をリアルタイムで購読
+  // 結果をリアルタイムで購読（poll documentのscoresフィールドを1読み取りで取得）
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, "polls", POLL_ID, "results"),
+      doc(db, "polls", POLL_ID),
       (snap) => {
-        const r: ResultsState = {};
-        snap.forEach((d) => {
-          r[d.id] = d.data() as ResultsState[string];
-        });
-        setResults(r);
+        const scores = (snap.data()?.scores ?? {}) as ResultsState;
+        setResults(scores);
         if (!initialResultsLoaded.current) {
           initialResultsLoaded.current = true;
           setSortTrigger((t) => t + 1);

@@ -35,8 +35,9 @@ export async function POST(req: NextRequest) {
 
   const hashedIp = getHashedIp(req);
   const db = getAdminDb();
-  const voteRef = db.collection("polls").doc(pollId).collection("votes").doc(`${hashedIp}_${cardId}`);
-  const resultRef = db.collection("polls").doc(pollId).collection("results").doc(cardId);
+  const pollRef = db.collection("polls").doc(pollId);
+  const voteRef = pollRef.collection("votes").doc(`${hashedIp}_${cardId}`);
+  const resultRef = pollRef.collection("results").doc(cardId);
 
   try {
     await db.runTransaction(async (tx) => {
@@ -57,16 +58,20 @@ export async function POST(req: NextRequest) {
         if (oldRating === rating) return; // 同じ評価なら結果変更不要
         tx.set(
           resultRef,
-          {
-            [rating]: FieldValue.increment(1),
-            [oldRating]: FieldValue.increment(-1),
-          },
+          { [rating]: FieldValue.increment(1), [oldRating]: FieldValue.increment(-1) },
           { merge: true }
         );
+        tx.update(pollRef, {
+          [`scores.${cardId}.${rating}`]: FieldValue.increment(1),
+          [`scores.${cardId}.${oldRating}`]: FieldValue.increment(-1),
+        });
       } else {
         // 新規投票
         tx.set(voteRef, { rating, votedAt: FieldValue.serverTimestamp() });
         tx.set(resultRef, { [rating]: FieldValue.increment(1) }, { merge: true });
+        tx.update(pollRef, {
+          [`scores.${cardId}.${rating}`]: FieldValue.increment(1),
+        });
       }
     });
   } catch (err) {

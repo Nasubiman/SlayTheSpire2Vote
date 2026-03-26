@@ -85,18 +85,14 @@ export default function PollPage() {
     fetchPoll();
   }, [pollId]);
 
-  // 結果をリアルタイムで購読
+  // 結果をリアルタイムで購読（poll documentのscoresフィールドを1読み取りで取得）
   useEffect(() => {
     if (!pollDocId) return;
     const unsub = onSnapshot(
-      collection(db, "polls", pollDocId, "results"),
+      doc(db, "polls", pollDocId),
       (snap) => {
-        const r: ResultsState = {};
-        snap.forEach((d) => {
-          r[d.id] = d.data() as ResultsState[string];
-        });
-        setResults(r);
-        // 初回ロード時のみ再ソートをトリガー
+        const scores = (snap.data()?.scores ?? {}) as ResultsState;
+        setResults(scores);
         if (!initialResultsLoaded.current) {
           initialResultsLoaded.current = true;
           setSortTrigger((t) => t + 1);
