@@ -156,7 +156,7 @@ export default function RelicsPage() {
         {/* ヘッダー */}
         <div className="mb-6">
           <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
-            ← キャラクター選択に戻る
+            ← トップに戻る
           </Link>
           <div className="mt-3">
             <h1 className="text-2xl font-bold">全レリック 評価ランキング</h1>
