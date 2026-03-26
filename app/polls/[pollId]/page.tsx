@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { doc, getDoc, collection, query, where, getDocs, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
@@ -289,11 +290,13 @@ export default function PollPage() {
                 {/* カード画像 + 強化トグル */}
                 {imgUrl && (
                   <div className="relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={imgUrl}
                       alt={card.name}
-                      className="w-full object-contain"
+                      width={400}
+                      height={560}
+                      sizes="(max-width: 1024px) 50vw, 33vw"
+                      className="w-full h-auto object-contain"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                     {hasUpgraded && (

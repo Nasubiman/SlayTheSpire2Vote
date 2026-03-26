@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getAllRelics, getRelicImageUrl, type Relic } from "@/lib/relics";
@@ -232,11 +233,13 @@ export default function RelicsPage() {
               >
                 {imgUrl && (
                   <div className="relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={imgUrl}
                       alt={relic.name}
-                      className="w-full object-contain"
+                      width={160}
+                      height={160}
+                      sizes="(max-width: 1024px) 50vw, 33vw"
+                      className="w-full h-auto object-contain"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                   </div>

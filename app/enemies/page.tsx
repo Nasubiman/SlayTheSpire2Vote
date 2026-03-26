@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getAllEnemies, getEnemyImageUrl, type Enemy } from "@/lib/enemies";
@@ -190,11 +191,13 @@ export default function EnemiesPage() {
                 }`}
               >
                 {imgUrl && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={imgUrl}
                     alt={enemy.name}
-                    className="w-full object-contain bg-gray-800"
+                    width={400}
+                    height={400}
+                    sizes="(max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-auto object-contain bg-gray-800"
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                   />
                 )}
