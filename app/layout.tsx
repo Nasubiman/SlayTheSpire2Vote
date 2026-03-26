@@ -12,9 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_TITLE = "Slay the Spire 2 (STS2) カード・レリック 評価ランキング | 最強カード Tier表";
+const SITE_TITLE = "スレスパ2 / Slay the Spire 2 (STS2) カード・レリック 評価ランキング | 最強カード Tier表";
 const SITE_DESCRIPTION =
-  "Slay the Spire 2（スレイザスパイア2）のカード・レリック評価ランキングサイトです。アイアンクラッド、サイレント、ディフェクトや新キャラのネクロバインダーのカードを評価して、みんなで作る最強カードTier表（ランキング）を確認しよう！";
+  "スレスパ2（Slay the Spire 2 / STS2）のカード・レリック評価ランキングサイトです。アイアンクラッド、サイレント、ディフェクトや新キャラのネクロバインダーのカードを評価して、みんなで作る最強カードTier表（ランキング）を確認しよう！";
 
 export const metadata: Metadata = {
   metadataBase: new URL(

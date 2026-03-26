@@ -16,8 +16,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { pollId } = await params;
   const charName = CHARACTER_NAMES[pollId] ?? pollId;
-  const title = `${charName} カード強さ評価ランキング | STS2 カード・レリック投票`;
-  const description = `Slay the Spire 2（STS2）${charName}の全カード強さ評価ランキング。みんなの投票で決まる最強カードTier表を確認しよう。`;
+  const title = `${charName} カード強さ評価ランキング | スレスパ2 (STS2) カード・レリック投票`;
+  const description = `スレスパ2（Slay the Spire 2 / STS2）${charName}の全カード強さ評価ランキング。みんなの投票で決まる最強カードTier表を確認しよう。`;
 
   return {
     title,
