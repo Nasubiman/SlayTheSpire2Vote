@@ -295,6 +295,22 @@ export default async function HomePage() {
             </div>
           </Link>
         </div>
+
+        {/* Tier表 */}
+        <h2 className="text-lg font-semibold text-gray-300 mt-8 mb-3">Tier表</h2>
+        <div>
+          <Link
+            href="/tier-list"
+            className="inline-flex bg-gradient-to-b from-gray-800/60 to-gray-900 rounded-xl p-4 border border-gray-600 hover:border-gray-400 transition-all hover:scale-[1.02] flex-col w-full sm:w-56"
+          >
+            <p className="font-bold text-lg">Tier表を見る</p>
+            <p className="text-xs text-gray-300 mt-1 leading-relaxed">投票結果をもとに自動生成。カード・レリック・敵キャラ対応。</p>
+            <div className="flex items-center justify-between mt-3">
+              <span className="text-xs text-gray-400">S / A / B / C / D</span>
+              <span className="text-xs text-gray-300">見る →</span>
+            </div>
+          </Link>
+        </div>
       </div>
     </main>
   );
