@@ -33,7 +33,7 @@
     {"id": "enemy_ファットグレムリン", "name": "ファットグレムリン", "imageKey": "ファットグレムリン", "area": "地下水路", "type": "通常"},
     {"id": "enemy_幽霊船", "name": "幽霊船", "imageKey": "幽霊船", "area": "地下水路", "type": "通常"},
     {"id": "enemy_幻影蟲", "name": "幻影蟲", "imageKey": "幻影蟲2", "area": "地下水路", "type": "エリート"},
-    {"id": "enemy_ソウルフィッシュ", "name": "ソウルフィッシュ", "imageKey": "ソウルフィッシュ", "area": "地下水路", "type": "エリート"},
+    {"id": "enemy_ソウルフィッシュ", "name": "ソウルフィッシュ", "imageKey": "ソウルフィッシュ", "area": "地下水路", "type": "ボス"},
     {"id": "enemy_ラガヴーリン", "name": "ラガヴーリン", "imageKey": "ラガヴーリン", "area": "地下水路", "type": "ボス"},
     {"id": "enemy_滝の巨人", "name": "滝の巨人", "imageKey": "滝の巨人", "area": "地下水路", "type": "ボス"},
 
