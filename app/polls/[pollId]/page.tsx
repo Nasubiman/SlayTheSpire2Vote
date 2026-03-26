@@ -107,6 +107,18 @@ export default function PollPage() {
       if (!pollDocId) return;
       setStatus((s) => ({ ...s, [cardId]: "loading" }));
 
+      const prevVote = votes[cardId];
+
+      // 楽観的UI更新: APIの応答を待たずに即座に反映
+      setResults((prev) => {
+        const r = { ...(prev[cardId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
+        r[rating] = (r[rating] || 0) + 1;
+        if (prevVote && prevVote !== rating) {
+          r[prevVote] = Math.max(0, (r[prevVote] || 0) - 1);
+        }
+        return { ...prev, [cardId]: r };
+      });
+
       const res = await fetch("/api/vote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -114,7 +126,6 @@ export default function PollPage() {
       });
 
       if (res.ok || res.status === 409) {
-        // 409（投票済み）も含め、選択状態を確定
         setVotes((v) => {
           const next = { ...v, [cardId]: rating };
           localStorage.setItem(`votes_${pollDocId}`, JSON.stringify(next));
@@ -128,10 +139,19 @@ export default function PollPage() {
         });
         setStatus((s) => ({ ...s, [cardId]: "done" }));
       } else {
+        // エラー時は楽観的更新を元に戻す
+        setResults((prev) => {
+          const r = { ...(prev[cardId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
+          r[rating] = Math.max(0, (r[rating] || 0) - 1);
+          if (prevVote && prevVote !== rating) {
+            r[prevVote] = (r[prevVote] || 0) + 1;
+          }
+          return { ...prev, [cardId]: r };
+        });
         setStatus((s) => ({ ...s, [cardId]: "error" }));
       }
     },
-    [pollDocId]
+    [pollDocId, votes]
   );
 
   const EXCLUDED_CARDS = ["ストライク", "防御"];

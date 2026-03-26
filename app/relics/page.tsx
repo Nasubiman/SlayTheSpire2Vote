@@ -75,6 +75,18 @@ export default function RelicsPage() {
   const vote = useCallback(async (relicId: string, rating: Rating) => {
     setStatus((s) => ({ ...s, [relicId]: "loading" }));
 
+    const prevVote = votes[relicId];
+
+    // 楽観的UI更新: APIの応答を待たずに即座に反映
+    setResults((prev) => {
+      const r = { ...(prev[relicId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
+      r[rating] = (r[rating] || 0) + 1;
+      if (prevVote && prevVote !== rating) {
+        r[prevVote] = Math.max(0, (r[prevVote] || 0) - 1);
+      }
+      return { ...prev, [relicId]: r };
+    });
+
     const res = await fetch("/api/vote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -95,9 +107,18 @@ export default function RelicsPage() {
       });
       setStatus((s) => ({ ...s, [relicId]: "done" }));
     } else {
+      // エラー時は楽観的更新を元に戻す
+      setResults((prev) => {
+        const r = { ...(prev[relicId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
+        r[rating] = Math.max(0, (r[rating] || 0) - 1);
+        if (prevVote && prevVote !== rating) {
+          r[prevVote] = (r[prevVote] || 0) + 1;
+        }
+        return { ...prev, [relicId]: r };
+      });
       setStatus((s) => ({ ...s, [relicId]: "error" }));
     }
-  }, []);
+  }, [votes]);
 
   const weightedScore = (r: ResultsState[string] | undefined) => {
     if (!r) return 0;
