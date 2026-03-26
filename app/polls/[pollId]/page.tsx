@@ -121,8 +121,25 @@ export default function PollPage() {
 
   if (!poll) {
     return (
-      <main className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
-        <p className="text-gray-400">読み込み中...</p>
+      <main className="min-h-screen bg-gray-950 text-white">
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <div className="h-5 w-24 bg-gray-800 rounded mb-6 animate-pulse" />
+          <div className="h-8 w-48 bg-gray-800 rounded mb-8 animate-pulse" />
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="rounded-lg overflow-hidden border border-gray-700 bg-gray-900 animate-pulse">
+                <div className="aspect-[400/560] bg-gray-800" />
+                <div className="p-3">
+                  <div className="flex gap-1.5">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <div key={j} className="flex-1 h-8 bg-gray-800 rounded" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </main>
     );
   }
@@ -196,7 +213,7 @@ export default function PollPage() {
 
         {/* カードグリッド */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-          {sortedCards.map((card) => {
+          {sortedCards.map((card, index) => {
             const voted = votes[card.id];
             const isLoading = status[card.id] === "loading";
             const isUpgraded = upgradedCards[card.id] ?? false;
@@ -222,6 +239,7 @@ export default function PollPage() {
                       height={560}
                       sizes="(max-width: 1024px) 50vw, 33vw"
                       className="w-full h-auto object-contain"
+                      priority={index < 4}
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                     {hasUpgraded && (
