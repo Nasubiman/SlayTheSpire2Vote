@@ -23,6 +23,7 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor(storageKey);
   const tierGridRef = useRef<HTMLDivElement>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const filtered = cards.filter((c) => {
     if (typeFilter !== "全て" && c.type !== typeFilter) return false;
@@ -34,6 +35,11 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
   for (const card of filtered) {
     grouped[getEffectiveTier(card.id, card.tier)].push(card);
   }
+
+  const handleDrop = (tier: Tier | "unrated", id: string) => {
+    moveItem(id, tier);
+    setSelectedId(null);
+  };
 
   return (
     <div>
@@ -58,8 +64,8 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
       </div>
 
       {/* 編集ボタン */}
-      <div className="flex gap-2 mb-4">
-        <button onClick={() => setIsEditing((v) => !v)}
+      <div className="flex gap-2 mb-4 flex-wrap">
+        <button onClick={() => { setIsEditing((v) => !v); setSelectedId(null); }}
           className={`px-4 py-1.5 rounded-full text-sm transition-colors ${isEditing ? "bg-white text-gray-900" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}>
           {isEditing ? "編集完了" : "編集"}
         </button>
@@ -71,53 +77,61 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
         <TierShareButton targetRef={tierGridRef} filename="slay2-card-tier.png" title="スレスパ2 カードTier表" />
       </div>
 
+      {isEditing && selectedId && (
+        <p className="text-xs text-yellow-400 mb-2">移動先のTierをタップしてください</p>
+      )}
+
       {/* Tier表 */}
       <div ref={tierGridRef} className="space-y-2">
         {TIERS.map((tier) => (
-          <TierRow
-            key={tier}
-            tier={tier}
-            label={tierLabels[tier]}
-            isEditing={isEditing}
+          <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
             onLabelChange={(label) => updateLabel(tier, label)}
-            onDrop={(id) => moveItem(id, tier)}
-            isEmpty={grouped[tier].length === 0}
-          >
+            onDrop={(id) => handleDrop(tier, id)}
+            selectedId={selectedId}
+            isEmpty={grouped[tier].length === 0}>
             {grouped[tier].map((card) => (
-              <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl} isEditing={isEditing} imgHeight={78} />
+              <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl}
+                isEditing={isEditing} imgHeight={78}
+                isSelected={selectedId === card.id}
+                onSelect={() => setSelectedId(selectedId === card.id ? null : card.id)} />
             ))}
           </TierRow>
         ))}
-
-        <TierRow
-          tier="unrated"
-          label="未評価"
-          isEditing={isEditing}
-          onDrop={(id) => moveItem(id, "unrated")}
-          isEmpty={grouped.unrated.length === 0}
-        >
+        <TierRow tier="unrated" label="未評価" isEditing={isEditing}
+          onDrop={(id) => handleDrop("unrated", id)}
+          selectedId={selectedId}
+          isEmpty={grouped.unrated.length === 0}>
           {grouped.unrated.map((card) => (
-            <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl} isEditing={isEditing} imgHeight={78} muted />
+            <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl}
+              isEditing={isEditing} imgHeight={78} muted
+              isSelected={selectedId === card.id}
+              onSelect={() => setSelectedId(selectedId === card.id ? null : card.id)} />
           ))}
         </TierRow>
       </div>
 
       <p className="text-xs text-gray-600 mt-6">
         S: 4.2以上 / A: 3.5以上 / B: 2.8以上 / C: 2.0以上 / D: 2.0未満（加重平均スコア）
-        {isEditing && <span className="ml-2 text-gray-500">・ドラッグして移動、ラベルをクリックして編集</span>}
+        {isEditing && <span className="ml-2 text-gray-500">・PC: ドラッグ / スマホ: タップして選択→移動先タップ</span>}
       </p>
     </div>
   );
 }
 
-function DraggableItem({ id, name, imgUrl, isEditing, imgHeight, muted }: {
-  id: string; name: string; imgUrl: string; isEditing: boolean; imgHeight: number; muted?: boolean;
+function DraggableItem({ id, name, imgUrl, isEditing, imgHeight, muted, isSelected, onSelect }: {
+  id: string; name: string; imgUrl: string; isEditing: boolean; imgHeight: number;
+  muted?: boolean; isSelected?: boolean; onSelect?: () => void;
 }) {
   return (
     <div
       draggable={isEditing}
       onDragStart={(e) => { e.dataTransfer.setData("itemId", id); }}
-      className={`flex flex-col items-center w-14 ${isEditing ? "cursor-grab active:cursor-grabbing" : ""} ${muted ? "opacity-50" : ""}`}
+      onClick={(e) => { if (isEditing) { e.stopPropagation(); onSelect?.(); } }}
+      className={`flex flex-col items-center w-14 transition-all
+        ${isEditing ? "cursor-pointer" : ""}
+        ${muted && !isSelected ? "opacity-50" : ""}
+        ${isSelected ? "ring-2 ring-yellow-400 rounded scale-110" : ""}
+      `}
     >
       <Image src={imgUrl} alt={name} width={56} height={imgHeight} className="object-contain rounded pointer-events-none" />
     </div>
