@@ -10,6 +10,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const tierListUrls = [
+    { url: `${BASE_URL}/tier-list`, changeFrequency: "daily" as const, priority: 0.9 },
+    { url: `${BASE_URL}/tier-list/relics`, changeFrequency: "daily" as const, priority: 0.9 },
+    { url: `${BASE_URL}/tier-list/enemies`, changeFrequency: "daily" as const, priority: 0.9 },
+    ...CHARACTERS.map((c) => ({
+      url: `${BASE_URL}/tier-list?char=${c.id}`,
+      changeFrequency: "daily" as const,
+      priority: 0.9,
+    })),
+  ];
+
   return [
     {
       url: BASE_URL,
@@ -27,5 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...characterUrls,
+    ...tierListUrls,
   ];
 }
