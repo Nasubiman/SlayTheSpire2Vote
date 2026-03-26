@@ -2,27 +2,14 @@
 
 import Image from "next/image";
 import { useState } from "react";
-
-const TIERS = ["S", "A", "B", "C", "D"] as const;
-type Tier = (typeof TIERS)[number];
-
-const TIER_STYLES: Record<Tier, { bg: string; text: string; rowBg: string }> = {
-  S: { bg: "bg-yellow-400", text: "text-black", rowBg: "bg-yellow-400/10 border-yellow-400/30" },
-  A: { bg: "bg-red-500",    text: "text-white",  rowBg: "bg-red-500/10 border-red-500/30" },
-  B: { bg: "bg-green-500",  text: "text-white",  rowBg: "bg-green-500/10 border-green-500/30" },
-  C: { bg: "bg-blue-500",   text: "text-white",  rowBg: "bg-blue-500/10 border-blue-500/30" },
-  D: { bg: "bg-gray-500",   text: "text-white",  rowBg: "bg-gray-500/10 border-gray-500/30" },
-};
+import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
+import { TierRow } from "./TierRow";
 
 const RARITIES = ["全て", "スターター", "コモン", "アンコモン", "レア", "エンシェント", "ショップ"] as const;
 const CHARACTERS = ["全て", "全キャラ共通", "アイアンクラッド", "サイレント", "ディフェクト", "ネクロバインダー", "リージェント"] as const;
 const CHAR_ID_MAP: Record<string, string> = {
-  "全キャラ共通": "all",
-  "アイアンクラッド": "ironclad",
-  "サイレント": "silent",
-  "ディフェクト": "defect",
-  "ネクロバインダー": "necro",
-  "リージェント": "regent",
+  "全キャラ共通": "all", "アイアンクラッド": "ironclad", "サイレント": "silent",
+  "ディフェクト": "defect", "ネクロバインダー": "necro", "リージェント": "regent",
 };
 
 export type RelicItem = {
@@ -37,6 +24,7 @@ export type RelicItem = {
 export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const [charFilter, setCharFilter] = useState<(typeof CHARACTERS)[number]>("全て");
+  const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_relics");
 
   const filtered = relics.filter((r) => {
     if (rarityFilter !== "全て" && r.rarity !== rarityFilter) return false;
@@ -44,11 +32,9 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
     return true;
   });
 
-  const tiered: Record<Tier, RelicItem[]> = { S: [], A: [], B: [], C: [], D: [] };
-  const unvoted: RelicItem[] = [];
+  const grouped: Record<Tier | "unrated", RelicItem[]> = { S: [], A: [], B: [], C: [], D: [], unrated: [] };
   for (const relic of filtered) {
-    if (relic.tier === null) unvoted.push(relic);
-    else tiered[relic.tier].push(relic);
+    grouped[getEffectiveTier(relic.id, relic.tier)].push(relic);
   }
 
   return (
@@ -57,75 +43,70 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
       <div className="flex flex-col gap-2 mb-4">
         <div className="flex gap-2 flex-wrap">
           {RARITIES.map((r) => (
-            <button
-              key={r}
-              onClick={() => setRarityFilter(r)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                rarityFilter === r ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-              }`}
-            >
+            <button key={r} onClick={() => setRarityFilter(r)}
+              className={`px-3 py-1 rounded-full text-sm transition-colors ${rarityFilter === r ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"}`}>
               {r}
             </button>
           ))}
         </div>
         <div className="flex gap-2 flex-wrap">
           {CHARACTERS.map((c) => (
-            <button
-              key={c}
-              onClick={() => setCharFilter(c)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                charFilter === c ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-              }`}
-            >
+            <button key={c} onClick={() => setCharFilter(c)}
+              className={`px-3 py-1 rounded-full text-sm transition-colors ${charFilter === c ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"}`}>
               {c}
             </button>
           ))}
         </div>
       </div>
 
+      {/* 編集ボタン */}
+      <div className="flex gap-2 mb-4">
+        <button onClick={() => setIsEditing((v) => !v)}
+          className={`px-4 py-1.5 rounded-full text-sm transition-colors ${isEditing ? "bg-white text-gray-900" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}>
+          {isEditing ? "編集完了" : "編集"}
+        </button>
+        {isEditing && (
+          <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+            リセット
+          </button>
+        )}
+      </div>
+
       {/* Tier表 */}
       <div className="space-y-2">
-        {TIERS.map((tier) => {
-          const items = tiered[tier];
-          if (items.length === 0) return null;
-          const style = TIER_STYLES[tier];
-          return (
-            <div key={tier} className={`flex rounded-lg overflow-hidden border ${style.rowBg}`}>
-              <div className={`${style.bg} ${style.text} w-12 flex-shrink-0 flex items-center justify-center font-bold text-xl`}>
-                {tier}
-              </div>
-              <div className="flex flex-wrap gap-2 p-2">
-                {items.map((relic) => (
-                  <div key={relic.id} className="flex flex-col items-center w-14">
-                    <Image src={relic.imgUrl} alt={relic.name} width={56} height={56} className="object-contain rounded" />
-                    <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-300">{relic.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-
-        {unvoted.length > 0 && (
-          <div className="flex rounded-lg overflow-hidden border border-gray-700/30 mt-4">
-            <div className="bg-gray-700 text-gray-300 w-12 flex-shrink-0 flex items-center justify-center font-bold text-xs text-center leading-tight px-1">
-              未評価
-            </div>
-            <div className="flex flex-wrap gap-2 p-2">
-              {unvoted.map((relic) => (
-                <div key={relic.id} className="flex flex-col items-center w-14 opacity-50">
-                  <Image src={relic.imgUrl} alt={relic.name} width={56} height={56} className="object-contain rounded" />
-                  <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-400">{relic.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        {TIERS.map((tier) => (
+          <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
+            onLabelChange={(label) => updateLabel(tier, label)}
+            onDrop={(id) => moveItem(id, tier)} isEmpty={grouped[tier].length === 0}>
+            {grouped[tier].map((relic) => (
+              <DraggableItem key={relic.id} id={relic.id} name={relic.name} imgUrl={relic.imgUrl} isEditing={isEditing} />
+            ))}
+          </TierRow>
+        ))}
+        <TierRow tier="unrated" label="未評価" isEditing={isEditing}
+          onDrop={(id) => moveItem(id, "unrated")} isEmpty={grouped.unrated.length === 0}>
+          {grouped.unrated.map((relic) => (
+            <DraggableItem key={relic.id} id={relic.id} name={relic.name} imgUrl={relic.imgUrl} isEditing={isEditing} muted />
+          ))}
+        </TierRow>
       </div>
 
       <p className="text-xs text-gray-600 mt-6">
         S: 4.2以上 / A: 3.5以上 / B: 2.8以上 / C: 2.0以上 / D: 2.0未満（加重平均スコア）
+        {isEditing && <span className="ml-2 text-gray-500">・ドラッグして移動、ラベルをクリックして編集</span>}
       </p>
+    </div>
+  );
+}
+
+function DraggableItem({ id, name, imgUrl, isEditing, muted }: {
+  id: string; name: string; imgUrl: string; isEditing: boolean; muted?: boolean;
+}) {
+  return (
+    <div draggable={isEditing} onDragStart={(e) => e.dataTransfer.setData("itemId", id)}
+      className={`flex flex-col items-center w-14 ${isEditing ? "cursor-grab active:cursor-grabbing" : ""} ${muted ? "opacity-50" : ""}`}>
+      <Image src={imgUrl} alt={name} width={56} height={56} className="object-contain rounded pointer-events-none" />
+      <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-300">{name}</p>
     </div>
   );
 }

@@ -2,17 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-
-const TIERS = ["S", "A", "B", "C", "D"] as const;
-type Tier = (typeof TIERS)[number];
-
-const TIER_STYLES: Record<Tier, { bg: string; text: string; rowBg: string }> = {
-  S: { bg: "bg-yellow-400", text: "text-black", rowBg: "bg-yellow-400/10 border-yellow-400/30" },
-  A: { bg: "bg-red-500",    text: "text-white",  rowBg: "bg-red-500/10 border-red-500/30" },
-  B: { bg: "bg-green-500",  text: "text-white",  rowBg: "bg-green-500/10 border-green-500/30" },
-  C: { bg: "bg-blue-500",   text: "text-white",  rowBg: "bg-blue-500/10 border-blue-500/30" },
-  D: { bg: "bg-gray-500",   text: "text-white",  rowBg: "bg-gray-500/10 border-gray-500/30" },
-};
+import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
+import { TierRow } from "./TierRow";
 
 const CARD_TYPES = ["全て", "アタック", "スキル", "パワー"] as const;
 const RARITIES = ["全て", "コモン", "アンコモン", "レア", "スターター"] as const;
@@ -26,9 +17,10 @@ export type CardItem = {
   tier: Tier | null;
 };
 
-export function CardTierGrid({ cards }: { cards: CardItem[] }) {
+export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storageKey: string }) {
   const [typeFilter, setTypeFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
+  const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor(storageKey);
 
   const filtered = cards.filter((c) => {
     if (typeFilter !== "全て" && c.type !== typeFilter) return false;
@@ -36,11 +28,9 @@ export function CardTierGrid({ cards }: { cards: CardItem[] }) {
     return true;
   });
 
-  const tiered: Record<Tier, CardItem[]> = { S: [], A: [], B: [], C: [], D: [] };
-  const unvoted: CardItem[] = [];
+  const grouped: Record<Tier | "unrated", CardItem[]> = { S: [], A: [], B: [], C: [], D: [], unrated: [] };
   for (const card of filtered) {
-    if (card.tier === null) unvoted.push(card);
-    else tiered[card.tier].push(card);
+    grouped[getEffectiveTier(card.id, card.tier)].push(card);
   }
 
   return (
@@ -49,75 +39,85 @@ export function CardTierGrid({ cards }: { cards: CardItem[] }) {
       <div className="flex flex-col gap-2 mb-4">
         <div className="flex gap-2 flex-wrap">
           {CARD_TYPES.map((t) => (
-            <button
-              key={t}
-              onClick={() => setTypeFilter(t)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                typeFilter === t ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-              }`}
-            >
+            <button key={t} onClick={() => setTypeFilter(t)}
+              className={`px-3 py-1 rounded-full text-sm transition-colors ${typeFilter === t ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"}`}>
               {t}
             </button>
           ))}
         </div>
         <div className="flex gap-2 flex-wrap">
           {RARITIES.map((r) => (
-            <button
-              key={r}
-              onClick={() => setRarityFilter(r)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                rarityFilter === r ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-              }`}
-            >
+            <button key={r} onClick={() => setRarityFilter(r)}
+              className={`px-3 py-1 rounded-full text-sm transition-colors ${rarityFilter === r ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"}`}>
               {r}
             </button>
           ))}
         </div>
       </div>
 
+      {/* 編集ボタン */}
+      <div className="flex gap-2 mb-4">
+        <button onClick={() => setIsEditing((v) => !v)}
+          className={`px-4 py-1.5 rounded-full text-sm transition-colors ${isEditing ? "bg-white text-gray-900" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}>
+          {isEditing ? "編集完了" : "編集"}
+        </button>
+        {isEditing && (
+          <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+            リセット
+          </button>
+        )}
+      </div>
+
       {/* Tier表 */}
       <div className="space-y-2">
-        {TIERS.map((tier) => {
-          const items = tiered[tier];
-          if (items.length === 0) return null;
-          const style = TIER_STYLES[tier];
-          return (
-            <div key={tier} className={`flex rounded-lg overflow-hidden border ${style.rowBg}`}>
-              <div className={`${style.bg} ${style.text} w-12 flex-shrink-0 flex items-center justify-center font-bold text-xl`}>
-                {tier}
-              </div>
-              <div className="flex flex-wrap gap-2 p-2">
-                {items.map((card) => (
-                  <div key={card.id} className="flex flex-col items-center w-14">
-                    <Image src={card.imgUrl} alt={card.name} width={56} height={78} className="object-contain rounded" />
-                    <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-300">{card.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+        {TIERS.map((tier) => (
+          <TierRow
+            key={tier}
+            tier={tier}
+            label={tierLabels[tier]}
+            isEditing={isEditing}
+            onLabelChange={(label) => updateLabel(tier, label)}
+            onDrop={(id) => moveItem(id, tier)}
+            isEmpty={grouped[tier].length === 0}
+          >
+            {grouped[tier].map((card) => (
+              <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl} isEditing={isEditing} imgHeight={78} />
+            ))}
+          </TierRow>
+        ))}
 
-        {unvoted.length > 0 && (
-          <div className="flex rounded-lg overflow-hidden border border-gray-700/30 mt-4">
-            <div className="bg-gray-700 text-gray-300 w-12 flex-shrink-0 flex items-center justify-center font-bold text-xs text-center leading-tight px-1">
-              未評価
-            </div>
-            <div className="flex flex-wrap gap-2 p-2">
-              {unvoted.map((card) => (
-                <div key={card.id} className="flex flex-col items-center w-14 opacity-50">
-                  <Image src={card.imgUrl} alt={card.name} width={56} height={78} className="object-contain rounded" />
-                  <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-400">{card.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        <TierRow
+          tier="unrated"
+          label="未評価"
+          isEditing={isEditing}
+          onDrop={(id) => moveItem(id, "unrated")}
+          isEmpty={grouped.unrated.length === 0}
+        >
+          {grouped.unrated.map((card) => (
+            <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl} isEditing={isEditing} imgHeight={78} muted />
+          ))}
+        </TierRow>
       </div>
 
       <p className="text-xs text-gray-600 mt-6">
         S: 4.2以上 / A: 3.5以上 / B: 2.8以上 / C: 2.0以上 / D: 2.0未満（加重平均スコア）
+        {isEditing && <span className="ml-2 text-gray-500">・ドラッグして移動、ラベルをクリックして編集</span>}
       </p>
+    </div>
+  );
+}
+
+function DraggableItem({ id, name, imgUrl, isEditing, imgHeight, muted }: {
+  id: string; name: string; imgUrl: string; isEditing: boolean; imgHeight: number; muted?: boolean;
+}) {
+  return (
+    <div
+      draggable={isEditing}
+      onDragStart={(e) => { e.dataTransfer.setData("itemId", id); }}
+      className={`flex flex-col items-center w-14 ${isEditing ? "cursor-grab active:cursor-grabbing" : ""} ${muted ? "opacity-50" : ""}`}
+    >
+      <Image src={imgUrl} alt={name} width={56} height={imgHeight} className="object-contain rounded pointer-events-none" />
+      <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-300">{name}</p>
     </div>
   );
 }

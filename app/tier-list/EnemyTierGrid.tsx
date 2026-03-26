@@ -2,17 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-
-const TIERS = ["S", "A", "B", "C", "D"] as const;
-type Tier = (typeof TIERS)[number];
-
-const TIER_STYLES: Record<Tier, { bg: string; text: string; rowBg: string }> = {
-  S: { bg: "bg-yellow-400", text: "text-black", rowBg: "bg-yellow-400/10 border-yellow-400/30" },
-  A: { bg: "bg-red-500",    text: "text-white",  rowBg: "bg-red-500/10 border-red-500/30" },
-  B: { bg: "bg-green-500",  text: "text-white",  rowBg: "bg-green-500/10 border-green-500/30" },
-  C: { bg: "bg-blue-500",   text: "text-white",  rowBg: "bg-blue-500/10 border-blue-500/30" },
-  D: { bg: "bg-gray-500",   text: "text-white",  rowBg: "bg-gray-500/10 border-gray-500/30" },
-};
+import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
+import { TierRow } from "./TierRow";
 
 const AREAS = ["全て", "繁茂の地", "地下水路", "魔窟", "栄光の路"] as const;
 const TYPES = ["全て", "通常", "エリート", "ボス"] as const;
@@ -29,6 +20,7 @@ export type EnemyItem = {
 export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
   const [areaFilter, setAreaFilter] = useState<(typeof AREAS)[number]>("全て");
   const [typeFilter, setTypeFilter] = useState<(typeof TYPES)[number]>("全て");
+  const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_enemies");
 
   const filtered = enemies.filter((e) => {
     if (areaFilter !== "全て" && e.area !== areaFilter) return false;
@@ -36,11 +28,9 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
     return true;
   });
 
-  const tiered: Record<Tier, EnemyItem[]> = { S: [], A: [], B: [], C: [], D: [] };
-  const unvoted: EnemyItem[] = [];
+  const grouped: Record<Tier | "unrated", EnemyItem[]> = { S: [], A: [], B: [], C: [], D: [], unrated: [] };
   for (const enemy of filtered) {
-    if (enemy.tier === null) unvoted.push(enemy);
-    else tiered[enemy.tier].push(enemy);
+    grouped[getEffectiveTier(enemy.id, enemy.tier)].push(enemy);
   }
 
   return (
@@ -49,75 +39,70 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
       <div className="flex flex-col gap-2 mb-4">
         <div className="flex gap-2 flex-wrap">
           {AREAS.map((a) => (
-            <button
-              key={a}
-              onClick={() => setAreaFilter(a)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                areaFilter === a ? "bg-green-700 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-              }`}
-            >
+            <button key={a} onClick={() => setAreaFilter(a)}
+              className={`px-3 py-1 rounded-full text-sm transition-colors ${areaFilter === a ? "bg-green-700 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"}`}>
               {a}
             </button>
           ))}
         </div>
         <div className="flex gap-2 flex-wrap">
           {TYPES.map((t) => (
-            <button
-              key={t}
-              onClick={() => setTypeFilter(t)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                typeFilter === t ? "bg-red-700 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-              }`}
-            >
+            <button key={t} onClick={() => setTypeFilter(t)}
+              className={`px-3 py-1 rounded-full text-sm transition-colors ${typeFilter === t ? "bg-red-700 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"}`}>
               {t}
             </button>
           ))}
         </div>
       </div>
 
+      {/* 編集ボタン */}
+      <div className="flex gap-2 mb-4">
+        <button onClick={() => setIsEditing((v) => !v)}
+          className={`px-4 py-1.5 rounded-full text-sm transition-colors ${isEditing ? "bg-white text-gray-900" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}>
+          {isEditing ? "編集完了" : "編集"}
+        </button>
+        {isEditing && (
+          <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+            リセット
+          </button>
+        )}
+      </div>
+
       {/* Tier表 */}
       <div className="space-y-2">
-        {TIERS.map((tier) => {
-          const items = tiered[tier];
-          if (items.length === 0) return null;
-          const style = TIER_STYLES[tier];
-          return (
-            <div key={tier} className={`flex rounded-lg overflow-hidden border ${style.rowBg}`}>
-              <div className={`${style.bg} ${style.text} w-12 flex-shrink-0 flex items-center justify-center font-bold text-xl`}>
-                {tier}
-              </div>
-              <div className="flex flex-wrap gap-2 p-2">
-                {items.map((enemy) => (
-                  <div key={enemy.id} className="flex flex-col items-center w-14">
-                    <Image src={enemy.imgUrl} alt={enemy.name} width={56} height={56} className="object-contain rounded bg-gray-800" />
-                    <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-300">{enemy.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-
-        {unvoted.length > 0 && (
-          <div className="flex rounded-lg overflow-hidden border border-gray-700/30 mt-4">
-            <div className="bg-gray-700 text-gray-300 w-12 flex-shrink-0 flex items-center justify-center font-bold text-xs text-center leading-tight px-1">
-              未評価
-            </div>
-            <div className="flex flex-wrap gap-2 p-2">
-              {unvoted.map((enemy) => (
-                <div key={enemy.id} className="flex flex-col items-center w-14 opacity-50">
-                  <Image src={enemy.imgUrl} alt={enemy.name} width={56} height={56} className="object-contain rounded bg-gray-800" />
-                  <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-400">{enemy.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        {TIERS.map((tier) => (
+          <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
+            onLabelChange={(label) => updateLabel(tier, label)}
+            onDrop={(id) => moveItem(id, tier)} isEmpty={grouped[tier].length === 0}>
+            {grouped[tier].map((enemy) => (
+              <DraggableItem key={enemy.id} id={enemy.id} name={enemy.name} imgUrl={enemy.imgUrl} isEditing={isEditing} />
+            ))}
+          </TierRow>
+        ))}
+        <TierRow tier="unrated" label="未評価" isEditing={isEditing}
+          onDrop={(id) => moveItem(id, "unrated")} isEmpty={grouped.unrated.length === 0}>
+          {grouped.unrated.map((enemy) => (
+            <DraggableItem key={enemy.id} id={enemy.id} name={enemy.name} imgUrl={enemy.imgUrl} isEditing={isEditing} muted />
+          ))}
+        </TierRow>
       </div>
 
       <p className="text-xs text-gray-600 mt-6">
         S: 4.2以上 / A: 3.5以上 / B: 2.8以上 / C: 2.0以上 / D: 2.0未満（加重平均スコア）
+        {isEditing && <span className="ml-2 text-gray-500">・ドラッグして移動、ラベルをクリックして編集</span>}
       </p>
+    </div>
+  );
+}
+
+function DraggableItem({ id, name, imgUrl, isEditing, muted }: {
+  id: string; name: string; imgUrl: string; isEditing: boolean; muted?: boolean;
+}) {
+  return (
+    <div draggable={isEditing} onDragStart={(e) => e.dataTransfer.setData("itemId", id)}
+      className={`flex flex-col items-center w-14 ${isEditing ? "cursor-grab active:cursor-grabbing" : ""} ${muted ? "opacity-50" : ""}`}>
+      <Image src={imgUrl} alt={name} width={56} height={56} className="object-contain rounded bg-gray-800 pointer-events-none" />
+      <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-300">{name}</p>
     </div>
   );
 }

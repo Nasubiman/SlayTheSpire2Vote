@@ -87,7 +87,7 @@ export default async function TierListCardsPage({
 
       <h2 className="text-lg font-semibold mb-4">{currentChar.name} カード Tier表</h2>
 
-      <CardTierGrid cards={cards} />
+      <CardTierGrid cards={cards} storageKey={`tier_overrides_cards_${charId}`} />
     </div>
   );
 }
