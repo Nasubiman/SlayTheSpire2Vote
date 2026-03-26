@@ -51,132 +51,109 @@ function weightedScore(r: Record<string, number>) {
 
 type CharEntry = { poll: Poll; topCardName: string | null; topCardResult: Record<string, number> | null; totalVotes: number };
 
-async function getPollsAndTopCards(): Promise<Record<string, CharEntry>> {
-  try {
-    const db = getAdminDb();
-    const snap = await db.collection("polls").orderBy("createdAt", "desc").get();
-    const pollMap: Record<string, { id: string; data: FirebaseFirestore.DocumentData }> = {};
-    for (const doc of snap.docs) {
-      const data = doc.data();
-      if (!pollMap[data.characterId]) pollMap[data.characterId] = { id: doc.id, data };
-    }
-
-    const result: Record<string, CharEntry> = {};
-
-    await Promise.all(
-      Object.entries(pollMap).map(async ([characterId, { id, data }]) => {
-        const poll: Poll = {
-          id,
-          title: data.title,
-          characterId: data.characterId,
-          characterName: data.characterName,
-          createdAt: data.createdAt?.toMillis() ?? 0,
-        };
-
-        // poll documentのscoresフィールドから結果を取得（subcollection読み取り不要）
-        const resultsMap: Record<string, Record<string, number>> = (data.scores ?? {}) as Record<string, Record<string, number>>;
-
-        const cards = getCardsByCharacter(characterId).filter(
-          (c) => !EXCLUDED_CARDS.includes(c.name) && !!getCardImageUrl(c)
-        );
-
-        const totalVotes = Object.values(resultsMap).reduce(
-          (sum, r) => sum + (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0),
-          0
-        );
-
-        let topCard = null;
-        let topScore = -1;
-        for (const card of cards) {
-          const r = resultsMap[card.id];
-          if (!r) continue;
-          const score = weightedScore(r);
-          if (score > topScore) { topScore = score; topCard = card; }
-        }
-
-        result[characterId] = {
-          poll,
-          topCardName: topCard?.name ?? null,
-          topCardResult: topCard ? (resultsMap[topCard.id] ?? null) : null,
-          totalVotes,
-        };
-      })
-    );
-
-    return result;
-  } catch {
-    return {};
-  }
-}
-
 type TopEntry = { topName: string | null; topResult: Record<string, number> | null; totalVotes: number };
 
-async function getTopRelic(): Promise<TopEntry> {
-  try {
-    const db = getAdminDb();
-    const snap = await db.collection("polls").doc("relics").get();
-    const scores = (snap.data()?.scores ?? {}) as Record<string, Record<string, number>>;
-
-    const relics = getAllRelics().filter((r) => !!getRelicImageUrl(r));
-    const totalVotes = Object.values(scores).reduce(
-      (sum, r) => sum + (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0),
-      0
-    );
-
-    let topRelic = null;
-    let topScore = -1;
-    for (const relic of relics) {
-      const r = scores[relic.id];
-      if (!r) continue;
-      const score = weightedScore(r);
-      if (score > topScore) { topScore = score; topRelic = relic; }
-    }
-
-    return {
-      topName: topRelic?.name ?? null,
-      topResult: topRelic ? (scores[topRelic.id] ?? null) : null,
-      totalVotes,
-    };
-  } catch {
-    return { topName: null, topResult: null, totalVotes: 0 };
+function computeTopEntry<T extends { id: string; name: string }>(
+  scores: Record<string, Record<string, number>>,
+  items: T[]
+): TopEntry {
+  const totalVotes = Object.values(scores).reduce(
+    (sum, r) => sum + (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0),
+    0
+  );
+  let top: T | null = null;
+  let topScore = -1;
+  for (const item of items) {
+    const r = scores[item.id];
+    if (!r) continue;
+    const s = weightedScore(r);
+    if (s > topScore) { topScore = s; top = item; }
   }
+  return { topName: top?.name ?? null, topResult: top ? (scores[top.id] ?? null) : null, totalVotes };
 }
 
-async function getTopEnemy(): Promise<TopEntry> {
+type HomeData = { chars: Record<string, CharEntry>; relic: TopEntry; enemy: TopEntry };
+
+async function getHomeData(): Promise<HomeData> {
+  const empty: HomeData = {
+    chars: {},
+    relic: { topName: null, topResult: null, totalVotes: 0 },
+    enemy: { topName: null, topResult: null, totalVotes: 0 },
+  };
   try {
     const db = getAdminDb();
-    const snap = await db.collection("polls").doc("enemies").get();
-    const scores = (snap.data()?.scores ?? {}) as Record<string, Record<string, number>>;
+    // orderBy を使わず全ドキュメントを取得（relics/enemies も含む）
+    const snap = await db.collection("polls").get();
 
-    const enemies = getAllEnemies().filter((e) => !!getEnemyImageUrl(e));
-    const totalVotes = Object.values(scores).reduce(
-      (sum, r) => sum + (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0),
-      0
-    );
+    // createdAt降順でソートしてから処理
+    const sorted = snap.docs.slice().sort((a, b) => {
+      const at = a.data().createdAt?.toMillis?.() ?? 0;
+      const bt = b.data().createdAt?.toMillis?.() ?? 0;
+      return bt - at;
+    });
 
-    let topEnemy = null;
-    let topScore = -1;
-    for (const enemy of enemies) {
-      const r = scores[enemy.id];
-      if (!r) continue;
-      const score = weightedScore(r);
-      if (score > topScore) { topScore = score; topEnemy = enemy; }
+    const pollMap: Record<string, { id: string; data: FirebaseFirestore.DocumentData }> = {};
+    let relicsScores: Record<string, Record<string, number>> = {};
+    let enemiesScores: Record<string, Record<string, number>> = {};
+
+    for (const doc of sorted) {
+      if (doc.id === "relics") {
+        relicsScores = (doc.data().scores ?? {}) as Record<string, Record<string, number>>;
+      } else if (doc.id === "enemies") {
+        enemiesScores = (doc.data().scores ?? {}) as Record<string, Record<string, number>>;
+      } else {
+        const data = doc.data();
+        if (data.characterId && !pollMap[data.characterId]) {
+          pollMap[data.characterId] = { id: doc.id, data };
+        }
+      }
+    }
+
+    const chars: Record<string, CharEntry> = {};
+    for (const [characterId, { id, data }] of Object.entries(pollMap)) {
+      const poll: Poll = {
+        id,
+        title: data.title,
+        characterId: data.characterId,
+        characterName: data.characterName,
+        createdAt: data.createdAt?.toMillis() ?? 0,
+      };
+      const resultsMap = (data.scores ?? {}) as Record<string, Record<string, number>>;
+      const cards = getCardsByCharacter(characterId).filter(
+        (c) => !EXCLUDED_CARDS.includes(c.name) && !!getCardImageUrl(c)
+      );
+      const totalVotes = Object.values(resultsMap).reduce(
+        (sum, r) => sum + (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0),
+        0
+      );
+      let topCard = null;
+      let topScore = -1;
+      for (const card of cards) {
+        const r = resultsMap[card.id];
+        if (!r) continue;
+        const s = weightedScore(r);
+        if (s > topScore) { topScore = s; topCard = card; }
+      }
+      chars[characterId] = {
+        poll,
+        topCardName: topCard?.name ?? null,
+        topCardResult: topCard ? (resultsMap[topCard.id] ?? null) : null,
+        totalVotes,
+      };
     }
 
     return {
-      topName: topEnemy?.name ?? null,
-      topResult: topEnemy ? (scores[topEnemy.id] ?? null) : null,
-      totalVotes,
+      chars,
+      relic: computeTopEntry(relicsScores, getAllRelics().filter((r) => !!getRelicImageUrl(r))),
+      enemy: computeTopEntry(enemiesScores, getAllEnemies().filter((e) => !!getEnemyImageUrl(e))),
     };
   } catch {
-    return { topName: null, topResult: null, totalVotes: 0 };
+    return empty;
   }
 }
 
 export default async function HomePage() {
-  const [data, relicEntry, enemyEntry] = await Promise.all([
-    getPollsAndTopCards(), getTopRelic(), getTopEnemy(),
-  ]);
+  const { chars: data, relic: relicEntry, enemy: enemyEntry } = await getHomeData();
 
   return (
     <main className="min-h-screen bg-gray-950 text-white">

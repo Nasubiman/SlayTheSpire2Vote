@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getAllRelics, getRelicImageUrl, type Relic } from "@/lib/relics";
-import { RATINGS, type Rating } from "@/lib/types";
+import { RATINGS } from "@/lib/types";
+import { useVote } from "@/lib/useVote";
 
-type VoteState = Record<string, Rating>;
-type StatusState = Record<string, "idle" | "loading" | "done" | "error">;
 type ResultsState = Record<string, { a: number; b: number; c: number; d: number; e: number }>;
+
 
 const RARITIES = ["全て", "スターター", "コモン", "アンコモン", "レア", "エンシェント", "ショップ"] as const;
 const CHARACTERS = ["全て", "全キャラ共通", "アイアンクラッド", "サイレント", "ディフェクト", "ネクロバインダー", "リージェント"] as const;
@@ -31,91 +31,25 @@ export default function RelicsPage() {
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const [charFilter, setCharFilter] = useState<(typeof CHARACTERS)[number]>("全て");
   const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
-  const [votes, setVotes] = useState<VoteState>({});
-  const [status, setStatus] = useState<StatusState>({});
+  const { votes, status, vote } = useVote(POLL_ID);
   const [results, setResults] = useState<ResultsState>({});
   const [sortedRelics, setSortedRelics] = useState<Relic[]>([]);
   const resultsRef = useRef<ResultsState>({});
   const initialResultsLoaded = useRef(false);
   const [sortTrigger, setSortTrigger] = useState(0);
 
-  // localStorageから投票済み状態を復元
+  // 結果をリアルタイムで購読
   useEffect(() => {
-    const REVOTE_MS = 24 * 60 * 60 * 1000;
-    const saved = localStorage.getItem(`votes_${POLL_ID}`);
-    const savedTs = localStorage.getItem(`votesTs_${POLL_ID}`);
-    if (saved) {
-      const ts = savedTs ? JSON.parse(savedTs) as Record<string, number> : {};
-      const now = Date.now();
-      const valid = JSON.parse(saved) as VoteState;
-      for (const relicId of Object.keys(valid)) {
-        if (!ts[relicId] || now - ts[relicId] > REVOTE_MS) {
-          delete valid[relicId];
-        }
+    const unsub = onSnapshot(doc(db, "polls", POLL_ID), (snap) => {
+      const scores = (snap.data()?.scores ?? {}) as ResultsState;
+      setResults(scores);
+      if (!initialResultsLoaded.current) {
+        initialResultsLoaded.current = true;
+        setSortTrigger((t) => t + 1);
       }
-      setVotes(valid);
-    }
-  }, []);
-
-  // 結果をリアルタイムで購読（poll documentのscoresフィールドを1読み取りで取得）
-  useEffect(() => {
-    const unsub = onSnapshot(
-      doc(db, "polls", POLL_ID),
-      (snap) => {
-        const scores = (snap.data()?.scores ?? {}) as ResultsState;
-        setResults(scores);
-        if (!initialResultsLoaded.current) {
-          initialResultsLoaded.current = true;
-          setSortTrigger((t) => t + 1);
-        }
-      }
-    );
+    });
     return () => unsub();
   }, []);
-
-  const vote = useCallback(async (relicId: string, rating: Rating) => {
-    if (votes[relicId] === rating) return;
-
-    const prevVote = votes[relicId];
-
-    // ボタン状態のみ楽観的更新（results はonSnapshotに任せる）
-    setVotes((v) => ({ ...v, [relicId]: rating }));
-    setStatus((s) => ({ ...s, [relicId]: "loading" }));
-
-    try {
-      const res = await fetch("/api/vote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pollId: POLL_ID, cardId: relicId, rating }),
-      });
-
-      if (res.ok || res.status === 409) {
-        const savedVotes = { ...votes, [relicId]: rating };
-        localStorage.setItem(`votes_${POLL_ID}`, JSON.stringify(savedVotes));
-        const tsKey = `votesTs_${POLL_ID}`;
-        const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-        if (!ts[relicId] || res.ok) ts[relicId] = Date.now();
-        localStorage.setItem(tsKey, JSON.stringify(ts));
-        setStatus((s) => ({ ...s, [relicId]: "done" }));
-      } else {
-        // サーバーエラー: ボタン状態を元に戻す
-        setVotes((v) => {
-          const next = { ...v };
-          if (prevVote !== undefined) next[relicId] = prevVote; else delete next[relicId];
-          return next;
-        });
-        setStatus((s) => ({ ...s, [relicId]: "error" }));
-      }
-    } catch {
-      // ネットワークエラー: ボタン状態を元に戻す
-      setVotes((v) => {
-        const next = { ...v };
-        if (prevVote !== undefined) next[relicId] = prevVote; else delete next[relicId];
-        return next;
-      });
-      setStatus((s) => ({ ...s, [relicId]: "error" }));
-    }
-  }, [votes]);
 
   const weightedScore = (r: ResultsState[string] | undefined) => {
     if (!r) return 0;

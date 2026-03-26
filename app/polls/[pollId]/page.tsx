@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { doc, getDoc, collection, query, where, getDocs, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
-import { RATINGS, type Poll, type Card, type Rating } from "@/lib/types";
+import { RATINGS, type Poll, type Card } from "@/lib/types";
+import { useVote } from "@/lib/useVote";
 
-type VoteState = Record<string, Rating>;
-type StatusState = Record<string, "idle" | "loading" | "done" | "error">;
 type ResultsState = Record<string, { a: number; b: number; c: number; d: number; e: number }>;
 
 const CARD_TYPES = ["全て", "アタック", "スキル", "パワー"] as const;
@@ -24,8 +23,7 @@ export default function PollPage() {
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
-  const [votes, setVotes] = useState<VoteState>({});
-  const [status, setStatus] = useState<StatusState>({});
+  const { votes, status, vote } = useVote(pollDocId);
   const [notFound, setNotFound] = useState(false);
   const [upgradedCards, setUpgradedCards] = useState<Record<string, boolean>>({});
   const [results, setResults] = useState<ResultsState>({});
@@ -39,7 +37,6 @@ export default function PollPage() {
     async function fetchPoll() {
       let snap = await getDoc(doc(db, "polls", pollId));
 
-      // 直接IDで見つからない場合はcharacterIdで検索
       if (!snap.exists()) {
         const q = query(
           collection(db, "polls"),
@@ -65,91 +62,23 @@ export default function PollPage() {
       setPollDocId(snap.id);
       setPoll(p);
       setCards(getCardsByCharacter(data.characterId));
-
-      // localStorageから投票済み状態を復元（1日で期限切れ）
-      const REVOTE_MS = 24 * 60 * 60 * 1000;
-      const saved = localStorage.getItem(`votes_${snap.id}`);
-      const savedTs = localStorage.getItem(`votesTs_${snap.id}`);
-      if (saved) {
-        const ts = savedTs ? JSON.parse(savedTs) as Record<string, number> : {};
-        const now = Date.now();
-        const valid = JSON.parse(saved) as VoteState;
-        for (const cardId of Object.keys(valid)) {
-          // タイムスタンプなし（古いデータ）または期限切れは削除
-          if (!ts[cardId] || now - ts[cardId] > REVOTE_MS) {
-            delete valid[cardId];
-          }
-        }
-        setVotes(valid);
-      }
     }
     fetchPoll();
   }, [pollId]);
 
-  // 結果をリアルタイムで購読（poll documentのscoresフィールドを1読み取りで取得）
+  // 結果をリアルタイムで購読
   useEffect(() => {
     if (!pollDocId) return;
-    const unsub = onSnapshot(
-      doc(db, "polls", pollDocId),
-      (snap) => {
-        const scores = (snap.data()?.scores ?? {}) as ResultsState;
-        setResults(scores);
-        if (!initialResultsLoaded.current) {
-          initialResultsLoaded.current = true;
-          setSortTrigger((t) => t + 1);
-        }
+    const unsub = onSnapshot(doc(db, "polls", pollDocId), (snap) => {
+      const scores = (snap.data()?.scores ?? {}) as ResultsState;
+      setResults(scores);
+      if (!initialResultsLoaded.current) {
+        initialResultsLoaded.current = true;
+        setSortTrigger((t) => t + 1);
       }
-    );
+    });
     return () => unsub();
   }, [pollDocId]);
-
-  const vote = useCallback(
-    async (cardId: string, rating: Rating) => {
-      if (!pollDocId) return;
-      if (votes[cardId] === rating) return;
-
-      const prevVote = votes[cardId];
-
-      // ボタン状態のみ楽観的更新（results はonSnapshotに任せる）
-      setVotes((v) => ({ ...v, [cardId]: rating }));
-      setStatus((s) => ({ ...s, [cardId]: "loading" }));
-
-      try {
-        const res = await fetch("/api/vote", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pollId: pollDocId, cardId, rating }),
-        });
-
-        if (res.ok || res.status === 409) {
-          const savedVotes = { ...votes, [cardId]: rating };
-          localStorage.setItem(`votes_${pollDocId}`, JSON.stringify(savedVotes));
-          const tsKey = `votesTs_${pollDocId}`;
-          const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-          if (!ts[cardId] || res.ok) ts[cardId] = Date.now();
-          localStorage.setItem(tsKey, JSON.stringify(ts));
-          setStatus((s) => ({ ...s, [cardId]: "done" }));
-        } else {
-          // サーバーエラー: ボタン状態を元に戻す
-          setVotes((v) => {
-            const next = { ...v };
-            if (prevVote !== undefined) next[cardId] = prevVote; else delete next[cardId];
-            return next;
-          });
-          setStatus((s) => ({ ...s, [cardId]: "error" }));
-        }
-      } catch {
-        // ネットワークエラー: ボタン状態を元に戻す
-        setVotes((v) => {
-          const next = { ...v };
-          if (prevVote !== undefined) next[cardId] = prevVote; else delete next[cardId];
-          return next;
-        });
-        setStatus((s) => ({ ...s, [cardId]: "error" }));
-      }
-    },
-    [pollDocId, votes]
-  );
 
   const EXCLUDED_CARDS = ["ストライク", "防御"];
 

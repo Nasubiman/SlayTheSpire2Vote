@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getAllEnemies, getEnemyImageUrl, type Enemy } from "@/lib/enemies";
-import { RATINGS, type Rating } from "@/lib/types";
+import { RATINGS } from "@/lib/types";
+import { useVote } from "@/lib/useVote";
 
-type VoteState = Record<string, Rating>;
-type StatusState = Record<string, "idle" | "loading" | "done" | "error">;
 type ResultsState = Record<string, { a: number; b: number; c: number; d: number; e: number }>;
 
 const AREAS = ["全て", "繁茂の地", "地下水路", "魔窟", "栄光の路"] as const;
@@ -22,29 +21,14 @@ export default function EnemiesPage() {
   const [areaFilter, setAreaFilter] = useState<(typeof AREAS)[number]>("全て");
   const [typeFilter, setTypeFilter] = useState<(typeof TYPES)[number]>("全て");
   const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
-  const [votes, setVotes] = useState<VoteState>({});
-  const [status, setStatus] = useState<StatusState>({});
+  const { votes, status, vote } = useVote(POLL_ID);
   const [results, setResults] = useState<ResultsState>({});
   const [sortedEnemies, setSortedEnemies] = useState<Enemy[]>([]);
   const resultsRef = useRef<ResultsState>({});
   const initialResultsLoaded = useRef(false);
   const [sortTrigger, setSortTrigger] = useState(0);
 
-  useEffect(() => {
-    const REVOTE_MS = 24 * 60 * 60 * 1000;
-    const saved = localStorage.getItem(`votes_${POLL_ID}`);
-    const savedTs = localStorage.getItem(`votesTs_${POLL_ID}`);
-    if (saved) {
-      const ts = savedTs ? (JSON.parse(savedTs) as Record<string, number>) : {};
-      const now = Date.now();
-      const valid = JSON.parse(saved) as VoteState;
-      for (const id of Object.keys(valid)) {
-        if (!ts[id] || now - ts[id] > REVOTE_MS) delete valid[id];
-      }
-      setVotes(valid);
-    }
-  }, []);
-
+  // 結果をリアルタイムで購読
   useEffect(() => {
     const unsub = onSnapshot(doc(db, "polls", POLL_ID), (snap) => {
       const scores = (snap.data()?.scores ?? {}) as ResultsState;
@@ -78,50 +62,6 @@ export default function EnemiesPage() {
       });
     setSortedEnemies(filtered);
   }, [enemies, areaFilter, typeFilter, sortBy, sortTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const vote = useCallback(async (enemyId: string, rating: Rating) => {
-    if (votes[enemyId] === rating) return;
-
-    const prevVote = votes[enemyId];
-
-    // ボタン状態のみ楽観的更新（results はonSnapshotに任せる）
-    setVotes((v) => ({ ...v, [enemyId]: rating }));
-    setStatus((s) => ({ ...s, [enemyId]: "loading" }));
-
-    try {
-      const res = await fetch("/api/vote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pollId: POLL_ID, cardId: enemyId, rating }),
-      });
-
-      if (res.ok || res.status === 409) {
-        const savedVotes = { ...votes, [enemyId]: rating };
-        localStorage.setItem(`votes_${POLL_ID}`, JSON.stringify(savedVotes));
-        const tsKey = `votesTs_${POLL_ID}`;
-        const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-        if (!ts[enemyId] || res.ok) ts[enemyId] = Date.now();
-        localStorage.setItem(tsKey, JSON.stringify(ts));
-        setStatus((s) => ({ ...s, [enemyId]: "done" }));
-      } else {
-        // サーバーエラー: ボタン状態を元に戻す
-        setVotes((v) => {
-          const next = { ...v };
-          if (prevVote !== undefined) next[enemyId] = prevVote; else delete next[enemyId];
-          return next;
-        });
-        setStatus((s) => ({ ...s, [enemyId]: "error" }));
-      }
-    } catch {
-      // ネットワークエラー: ボタン状態を元に戻す
-      setVotes((v) => {
-        const next = { ...v };
-        if (prevVote !== undefined) next[enemyId] = prevVote; else delete next[enemyId];
-        return next;
-      });
-      setStatus((s) => ({ ...s, [enemyId]: "error" }));
-    }
-  }, [votes]);
 
   const votedCount = Object.keys(votes).length;
 
