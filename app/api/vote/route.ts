@@ -3,8 +3,6 @@ import { getAdminDb } from "@/lib/firebase-admin";
 import { FieldValue } from "firebase-admin/firestore";
 import crypto from "crypto";
 
-const REVOTE_PERIOD_MS = 24 * 60 * 60 * 1000; // 1日
-
 type VoteBody = {
   pollId: string;
   cardId: string;
@@ -45,14 +43,6 @@ export async function POST(req: NextRequest) {
 
       if (voteSnap.exists) {
         const data = voteSnap.data()!;
-        const votedAt = data.votedAt?.toMillis?.() ?? 0;
-        const expired = Date.now() - votedAt > REVOTE_PERIOD_MS;
-
-        if (!expired) {
-          throw new Error("ALREADY_VOTED");
-        }
-
-        // 再投票: 古い評価を差し引いて新しい評価を加算
         const oldRating = data.rating as string;
         tx.update(voteRef, { rating, votedAt: FieldValue.serverTimestamp() });
         if (oldRating === rating) return; // 同じ評価なら結果変更不要
@@ -75,12 +65,6 @@ export async function POST(req: NextRequest) {
       }
     });
   } catch (err) {
-    if (err instanceof Error && err.message === "ALREADY_VOTED") {
-      return NextResponse.json(
-        { error: "すでにこのカードに投票済みです" },
-        { status: 409 }
-      );
-    }
     console.error(err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
