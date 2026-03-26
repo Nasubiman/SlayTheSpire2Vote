@@ -100,12 +100,10 @@ export default function EnemiesPage() {
       setVotes((v) => {
         const next = { ...v, [enemyId]: rating };
         localStorage.setItem(`votes_${POLL_ID}`, JSON.stringify(next));
-        if (res.ok) {
-          const tsKey = `votesTs_${POLL_ID}`;
-          const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-          ts[enemyId] = Date.now();
-          localStorage.setItem(tsKey, JSON.stringify(ts));
-        }
+        const tsKey = `votesTs_${POLL_ID}`;
+        const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
+        if (!ts[enemyId]) ts[enemyId] = Date.now();
+        localStorage.setItem(tsKey, JSON.stringify(ts));
         return next;
       });
       setStatus((s) => ({ ...s, [enemyId]: "done" }));

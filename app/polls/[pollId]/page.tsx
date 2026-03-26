@@ -130,12 +130,10 @@ export default function PollPage() {
         setVotes((v) => {
           const next = { ...v, [cardId]: rating };
           localStorage.setItem(`votes_${pollDocId}`, JSON.stringify(next));
-          if (res.ok) {
-            const tsKey = `votesTs_${pollDocId}`;
-            const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-            ts[cardId] = Date.now();
-            localStorage.setItem(tsKey, JSON.stringify(ts));
-          }
+          const tsKey = `votesTs_${pollDocId}`;
+          const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
+          if (!ts[cardId]) ts[cardId] = Date.now();
+          localStorage.setItem(tsKey, JSON.stringify(ts));
           return next;
         });
         setStatus((s) => ({ ...s, [cardId]: "done" }));

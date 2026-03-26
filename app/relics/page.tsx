@@ -98,12 +98,10 @@ export default function RelicsPage() {
       setVotes((v) => {
         const next = { ...v, [relicId]: rating };
         localStorage.setItem(`votes_${POLL_ID}`, JSON.stringify(next));
-        if (res.ok) {
-          const tsKey = `votesTs_${POLL_ID}`;
-          const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-          ts[relicId] = Date.now();
-          localStorage.setItem(tsKey, JSON.stringify(ts));
-        }
+        const tsKey = `votesTs_${POLL_ID}`;
+        const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
+        if (!ts[relicId]) ts[relicId] = Date.now();
+        localStorage.setItem(tsKey, JSON.stringify(ts));
         return next;
       });
       setStatus((s) => ({ ...s, [relicId]: "done" }));
