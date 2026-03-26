@@ -75,46 +75,43 @@ export default function RelicsPage() {
 
   const vote = useCallback(async (relicId: string, rating: Rating) => {
     if (votes[relicId] === rating) return;
-    setStatus((s) => ({ ...s, [relicId]: "loading" }));
 
     const prevVote = votes[relicId];
 
-    // 楽観的UI更新: APIの応答を待たずに即座に反映
-    setResults((prev) => {
-      const r = { ...(prev[relicId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
-      r[rating] = (r[rating] || 0) + 1;
-      if (prevVote && prevVote !== rating) {
-        r[prevVote] = Math.max(0, (r[prevVote] || 0) - 1);
-      }
-      return { ...prev, [relicId]: r };
-    });
+    // ボタン状態のみ楽観的更新（results はonSnapshotに任せる）
+    setVotes((v) => ({ ...v, [relicId]: rating }));
+    setStatus((s) => ({ ...s, [relicId]: "loading" }));
 
-    const res = await fetch("/api/vote", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pollId: POLL_ID, cardId: relicId, rating }),
-    });
+    try {
+      const res = await fetch("/api/vote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pollId: POLL_ID, cardId: relicId, rating }),
+      });
 
-    if (res.ok || res.status === 409) {
-      setVotes((v) => {
-        const next = { ...v, [relicId]: rating };
-        localStorage.setItem(`votes_${POLL_ID}`, JSON.stringify(next));
+      if (res.ok || res.status === 409) {
+        const savedVotes = { ...votes, [relicId]: rating };
+        localStorage.setItem(`votes_${POLL_ID}`, JSON.stringify(savedVotes));
         const tsKey = `votesTs_${POLL_ID}`;
         const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-        if (!ts[relicId]) ts[relicId] = Date.now();
+        if (!ts[relicId] || res.ok) ts[relicId] = Date.now();
         localStorage.setItem(tsKey, JSON.stringify(ts));
+        setStatus((s) => ({ ...s, [relicId]: "done" }));
+      } else {
+        // サーバーエラー: ボタン状態を元に戻す
+        setVotes((v) => {
+          const next = { ...v };
+          if (prevVote !== undefined) next[relicId] = prevVote; else delete next[relicId];
+          return next;
+        });
+        setStatus((s) => ({ ...s, [relicId]: "error" }));
+      }
+    } catch {
+      // ネットワークエラー: ボタン状態を元に戻す
+      setVotes((v) => {
+        const next = { ...v };
+        if (prevVote !== undefined) next[relicId] = prevVote; else delete next[relicId];
         return next;
-      });
-      setStatus((s) => ({ ...s, [relicId]: "done" }));
-    } else {
-      // エラー時は楽観的更新を元に戻す
-      setResults((prev) => {
-        const r = { ...(prev[relicId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
-        r[rating] = Math.max(0, (r[rating] || 0) - 1);
-        if (prevVote && prevVote !== rating) {
-          r[prevVote] = (r[prevVote] || 0) + 1;
-        }
-        return { ...prev, [relicId]: r };
       });
       setStatus((s) => ({ ...s, [relicId]: "error" }));
     }

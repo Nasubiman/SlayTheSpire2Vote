@@ -81,39 +81,43 @@ export default function EnemiesPage() {
 
   const vote = useCallback(async (enemyId: string, rating: Rating) => {
     if (votes[enemyId] === rating) return;
-    setStatus((s) => ({ ...s, [enemyId]: "loading" }));
+
     const prevVote = votes[enemyId];
 
-    setResults((prev) => {
-      const r = { ...(prev[enemyId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
-      r[rating] = (r[rating] || 0) + 1;
-      if (prevVote && prevVote !== rating) r[prevVote] = Math.max(0, (r[prevVote] || 0) - 1);
-      return { ...prev, [enemyId]: r };
-    });
+    // ボタン状態のみ楽観的更新（results はonSnapshotに任せる）
+    setVotes((v) => ({ ...v, [enemyId]: rating }));
+    setStatus((s) => ({ ...s, [enemyId]: "loading" }));
 
-    const res = await fetch("/api/vote", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pollId: POLL_ID, cardId: enemyId, rating }),
-    });
+    try {
+      const res = await fetch("/api/vote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pollId: POLL_ID, cardId: enemyId, rating }),
+      });
 
-    if (res.ok || res.status === 409) {
-      setVotes((v) => {
-        const next = { ...v, [enemyId]: rating };
-        localStorage.setItem(`votes_${POLL_ID}`, JSON.stringify(next));
+      if (res.ok || res.status === 409) {
+        const savedVotes = { ...votes, [enemyId]: rating };
+        localStorage.setItem(`votes_${POLL_ID}`, JSON.stringify(savedVotes));
         const tsKey = `votesTs_${POLL_ID}`;
         const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-        if (!ts[enemyId]) ts[enemyId] = Date.now();
+        if (!ts[enemyId] || res.ok) ts[enemyId] = Date.now();
         localStorage.setItem(tsKey, JSON.stringify(ts));
+        setStatus((s) => ({ ...s, [enemyId]: "done" }));
+      } else {
+        // サーバーエラー: ボタン状態を元に戻す
+        setVotes((v) => {
+          const next = { ...v };
+          if (prevVote !== undefined) next[enemyId] = prevVote; else delete next[enemyId];
+          return next;
+        });
+        setStatus((s) => ({ ...s, [enemyId]: "error" }));
+      }
+    } catch {
+      // ネットワークエラー: ボタン状態を元に戻す
+      setVotes((v) => {
+        const next = { ...v };
+        if (prevVote !== undefined) next[enemyId] = prevVote; else delete next[enemyId];
         return next;
-      });
-      setStatus((s) => ({ ...s, [enemyId]: "done" }));
-    } else {
-      setResults((prev) => {
-        const r = { ...(prev[enemyId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
-        r[rating] = Math.max(0, (r[rating] || 0) - 1);
-        if (prevVote && prevVote !== rating) r[prevVote] = (r[prevVote] || 0) + 1;
-        return { ...prev, [enemyId]: r };
       });
       setStatus((s) => ({ ...s, [enemyId]: "error" }));
     }

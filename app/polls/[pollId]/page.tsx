@@ -107,46 +107,43 @@ export default function PollPage() {
     async (cardId: string, rating: Rating) => {
       if (!pollDocId) return;
       if (votes[cardId] === rating) return;
-      setStatus((s) => ({ ...s, [cardId]: "loading" }));
 
       const prevVote = votes[cardId];
 
-      // 楽観的UI更新: APIの応答を待たずに即座に反映
-      setResults((prev) => {
-        const r = { ...(prev[cardId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
-        r[rating] = (r[rating] || 0) + 1;
-        if (prevVote && prevVote !== rating) {
-          r[prevVote] = Math.max(0, (r[prevVote] || 0) - 1);
-        }
-        return { ...prev, [cardId]: r };
-      });
+      // ボタン状態のみ楽観的更新（results はonSnapshotに任せる）
+      setVotes((v) => ({ ...v, [cardId]: rating }));
+      setStatus((s) => ({ ...s, [cardId]: "loading" }));
 
-      const res = await fetch("/api/vote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pollId: pollDocId, cardId, rating }),
-      });
+      try {
+        const res = await fetch("/api/vote", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pollId: pollDocId, cardId, rating }),
+        });
 
-      if (res.ok || res.status === 409) {
-        setVotes((v) => {
-          const next = { ...v, [cardId]: rating };
-          localStorage.setItem(`votes_${pollDocId}`, JSON.stringify(next));
+        if (res.ok || res.status === 409) {
+          const savedVotes = { ...votes, [cardId]: rating };
+          localStorage.setItem(`votes_${pollDocId}`, JSON.stringify(savedVotes));
           const tsKey = `votesTs_${pollDocId}`;
           const ts = JSON.parse(localStorage.getItem(tsKey) ?? "{}") as Record<string, number>;
-          if (!ts[cardId]) ts[cardId] = Date.now();
+          if (!ts[cardId] || res.ok) ts[cardId] = Date.now();
           localStorage.setItem(tsKey, JSON.stringify(ts));
+          setStatus((s) => ({ ...s, [cardId]: "done" }));
+        } else {
+          // サーバーエラー: ボタン状態を元に戻す
+          setVotes((v) => {
+            const next = { ...v };
+            if (prevVote !== undefined) next[cardId] = prevVote; else delete next[cardId];
+            return next;
+          });
+          setStatus((s) => ({ ...s, [cardId]: "error" }));
+        }
+      } catch {
+        // ネットワークエラー: ボタン状態を元に戻す
+        setVotes((v) => {
+          const next = { ...v };
+          if (prevVote !== undefined) next[cardId] = prevVote; else delete next[cardId];
           return next;
-        });
-        setStatus((s) => ({ ...s, [cardId]: "done" }));
-      } else {
-        // エラー時は楽観的更新を元に戻す
-        setResults((prev) => {
-          const r = { ...(prev[cardId] ?? { a: 0, b: 0, c: 0, d: 0, e: 0 }) };
-          r[rating] = Math.max(0, (r[rating] || 0) - 1);
-          if (prevVote && prevVote !== rating) {
-            r[prevVote] = (r[prevVote] || 0) + 1;
-          }
-          return { ...prev, [cardId]: r };
         });
         setStatus((s) => ({ ...s, [cardId]: "error" }));
       }
