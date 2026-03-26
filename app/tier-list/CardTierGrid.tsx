@@ -141,14 +141,14 @@ function DraggableItem({ id, name, imgUrl, isEditing, imgHeight, muted, isSelect
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}
       onClick={(e) => { if (isEditing) { e.stopPropagation(); onSelect?.(); } }}
-      className={`flex flex-col items-center w-14
+      className={`flex flex-col items-center w-full sm:w-14
         ${isEditing ? "touch-none" : ""}
         ${isDragging ? "opacity-50" : "transition-transform"}
         ${isEditing ? "cursor-grab active:cursor-grabbing" : ""}
         ${muted && !isSelected ? "opacity-50" : ""}
         ${isSelected ? "ring-2 ring-yellow-400 rounded scale-110" : ""}
       `}>
-      <Image src={imgUrl} alt={name} width={56} height={imgHeight} className="object-contain rounded pointer-events-none" />
+      <Image src={imgUrl} alt={name} width={56} height={imgHeight} className="w-full h-auto object-contain rounded pointer-events-none" />
     </div>
   );
 }

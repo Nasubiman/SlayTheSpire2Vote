@@ -97,7 +97,7 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
             <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
               onLabelChange={(label) => updateLabel(tier, label)}
               selectedId={selectedId} onTapDrop={(id) => handleTapDrop(tier, id)}
-              isEmpty={grouped[tier].length === 0}>
+              isEmpty={grouped[tier].length === 0} mobileColumns={5}>
               {grouped[tier].map((relic) => (
                 <DraggableItem key={relic.id} id={relic.id} name={relic.name} imgUrl={relic.imgUrl}
                   isEditing={isEditing}
@@ -108,7 +108,7 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
           ))}
           <TierRow tier="unrated" label="未評価" isEditing={isEditing}
             selectedId={selectedId} onTapDrop={(id) => handleTapDrop("unrated", id)}
-            isEmpty={grouped.unrated.length === 0}>
+            isEmpty={grouped.unrated.length === 0} mobileColumns={5}>
             {grouped.unrated.map((relic) => (
               <DraggableItem key={relic.id} id={relic.id} name={relic.name} imgUrl={relic.imgUrl}
                 isEditing={isEditing} muted
@@ -137,14 +137,14 @@ function DraggableItem({ id, name, imgUrl, isEditing, muted, isSelected, onSelec
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}
       onClick={(e) => { if (isEditing) { e.stopPropagation(); onSelect?.(); } }}
-      className={`flex flex-col items-center w-14
+      className={`flex flex-col items-center w-full sm:w-14
         ${isEditing ? "touch-none" : ""}
         ${isDragging ? "opacity-50" : "transition-transform"}
         ${isEditing ? "cursor-grab active:cursor-grabbing" : ""}
         ${muted && !isSelected ? "opacity-50" : ""}
         ${isSelected ? "ring-2 ring-yellow-400 rounded scale-110" : ""}
       `}>
-      <Image src={imgUrl} alt={name} width={56} height={56} className="object-contain rounded pointer-events-none" />
+      <Image src={imgUrl} alt={name} width={56} height={56} className="w-full h-auto object-contain rounded pointer-events-none" />
     </div>
   );
 }

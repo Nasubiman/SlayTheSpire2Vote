@@ -21,9 +21,10 @@ type Props = {
   onTapDrop?: (id: string) => void;
   children: React.ReactNode;
   isEmpty?: boolean;
+  mobileColumns?: 4 | 5;
 };
 
-export function TierRow({ tier, label, isEditing, onLabelChange, selectedId, onTapDrop, children, isEmpty }: Props) {
+export function TierRow({ tier, label, isEditing, onLabelChange, selectedId, onTapDrop, children, isEmpty, mobileColumns = 4 }: Props) {
   const { setNodeRef, isOver } = useDroppable({ id: tier, disabled: !isEditing });
   const style = TIER_STYLES[tier];
 
@@ -56,7 +57,10 @@ export function TierRow({ tier, label, isEditing, onLabelChange, selectedId, onT
       </div>
 
       {/* アイテム */}
-      <div className={`grid grid-cols-4 sm:flex sm:flex-wrap gap-2 p-2 min-h-[3.5rem] flex-1 ${isEmpty && isEditing ? "items-center" : ""}`}>
+      <div className={`grid sm:flex sm:flex-wrap gap-2 p-2 min-h-[3.5rem] flex-1
+        ${mobileColumns === 5 ? "grid-cols-5" : "grid-cols-4"}
+        ${isEmpty && isEditing ? "items-center" : ""}
+      `}>
         {isEmpty && isEditing ? (
           <span className="text-xs text-gray-500 px-2">
             {canTapDrop ? "ここをタップして移動" : "ここにドロップ"}
