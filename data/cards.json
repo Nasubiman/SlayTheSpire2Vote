@@ -5283,16 +5283,6 @@
       "imagePath": "data/images/colorless/スタック.webp"
     },
     {
-      "id": "colorless_先読み",
-      "name": "先読み",
-      "cost": "1",
-      "rarity": "次のターン、●●を得る。",
-      "type": "スキル",
-      "characterId": "colorless",
-      "characterName": "無色カード",
-      "imagePath": "data/images/colorless/先読み.webp"
-    },
-    {
       "id": "colorless_動揺",
       "name": "動揺",
       "cost": "1",
