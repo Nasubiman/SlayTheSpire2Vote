@@ -1,5 +1,5 @@
 import { getAdminDb } from "@/lib/firebase-admin";
-import { getAllRelics, getRelicImageUrl } from "@/lib/relics";
+import { getAllRelics, getRelicCompactImageUrl } from "@/lib/relics";
 import { RelicTierGrid, type RelicItem } from "../RelicTierGrid";
 
 export const dynamic = "force-dynamic";
@@ -33,7 +33,7 @@ async function getRelicScores(): Promise<Record<string, Record<string, number>>>
 
 export default async function TierListRelicsPage() {
   const scores = await getRelicScores();
-  const rawRelics = getAllRelics().filter((r) => !!getRelicImageUrl(r));
+  const rawRelics = getAllRelics().filter((r) => !!getRelicCompactImageUrl(r));
 
   const relics: RelicItem[] = rawRelics.map((relic) => {
     const r = scores[relic.id];
@@ -43,7 +43,7 @@ export default async function TierListRelicsPage() {
       name: relic.name,
       rarity: relic.rarity,
       characterId: relic.characterId,
-      imgUrl: getRelicImageUrl(relic)!,
+      imgUrl: getRelicCompactImageUrl(relic)!,
       tier: total > 0 ? getTier(weightedScore(r)) : null,
     };
   });
