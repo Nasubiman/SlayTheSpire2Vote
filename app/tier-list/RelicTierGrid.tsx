@@ -106,7 +106,6 @@ function DraggableItem({ id, name, imgUrl, isEditing, muted }: {
     <div draggable={isEditing} onDragStart={(e) => e.dataTransfer.setData("itemId", id)}
       className={`flex flex-col items-center w-14 ${isEditing ? "cursor-grab active:cursor-grabbing" : ""} ${muted ? "opacity-50" : ""}`}>
       <Image src={imgUrl} alt={name} width={56} height={56} className="object-contain rounded pointer-events-none" />
-      <p className="text-xs text-center mt-0.5 line-clamp-2 leading-tight w-full text-gray-300">{name}</p>
     </div>
   );
 }
