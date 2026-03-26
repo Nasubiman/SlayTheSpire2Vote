@@ -1,188 +1,1168 @@
 {
   "relics": [
-    {"id": "relic_バーニングブラッド", "name": "バーニングブラッド", "rarity": "スターター", "characterId": "ironclad"},
-    {"id": "relic_ブラックブラッド", "name": "ブラックブラッド", "rarity": "スターター", "characterId": "ironclad"},
-    {"id": "relic_蛇の指輪", "name": "蛇の指輪", "rarity": "スターター", "characterId": "silent"},
-    {"id": "relic_ドレイクの指輪", "name": "ドレイクの指輪", "rarity": "スターター", "characterId": "silent"},
-    {"id": "relic_ひび割れたコア", "name": "ひび割れたコア", "rarity": "スターター", "characterId": "defect"},
-    {"id": "relic_インフューズドコア", "name": "インフューズドコア", "rarity": "スターター", "characterId": "defect"},
-    {"id": "relic_封じられし霊箱", "name": "封じられし霊箱", "rarity": "スターター", "characterId": "necro"},
-    {"id": "relic_解き放たれし霊箱", "name": "解き放たれし霊箱", "rarity": "スターター", "characterId": "necro"},
-    {"id": "relic_神授王権", "name": "神授王権", "rarity": "スターター", "characterId": "regent"},
-    {"id": "relic_神授天命", "name": "神授天命", "rarity": "スターター", "characterId": "regent"},
-
-    {"id": "relic_アメジストのナス", "name": "アメジストのナス", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_イカリ", "name": "イカリ", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_イチゴ", "name": "イチゴ", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_ヴァジュラ", "name": "ヴァジュラ", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_お食事券", "name": "お食事券", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_クラッカー", "name": "クラッカー", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_ゴルゲット", "name": "ゴルゲット", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_ストライク・ダミー", "name": "ストライク・ダミー", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_すべすべ石", "name": "すべすべ石", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_バックパック", "name": "バックパック", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_ハッピーフラワー", "name": "ハッピーフラワー", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_ポーションベルト", "name": "ポーションベルト", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_ランタン", "name": "ランタン", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_永久凍土", "name": "永久凍土", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_血のガラス瓶", "name": "血のガラス瓶", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_古びたティーセット", "name": "古びたティーセット", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_五輪書", "name": "五輪書", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_高貴な枕", "name": "高貴な枕", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_小さなポスト", "name": "小さなポスト", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_振り子", "name": "振り子", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_数珠", "name": "数珠", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_青銅のウロコ", "name": "青銅のウロコ", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_戦化粧", "name": "戦化粧", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_砥石", "name": "砥石", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_百年パズル", "name": "百年パズル", "rarity": "コモン", "characterId": "all"},
-    {"id": "relic_赤い頭蓋骨", "name": "赤い頭蓋骨", "rarity": "コモン", "characterId": "ironclad"},
-    {"id": "relic_スネッコスカル", "name": "スネッコスカル", "rarity": "コモン", "characterId": "silent"},
-    {"id": "relic_剣術教本", "name": "剣術教本", "rarity": "コモン", "characterId": "regent"},
-    {"id": "relic_骨のフルート", "name": "骨のフルート", "rarity": "コモン", "characterId": "necro"},
-    {"id": "relic_データディスク", "name": "データディスク", "rarity": "コモン", "characterId": "defect"},
-
-    {"id": "relic_ヴァンプレイス", "name": "ヴァンプレイス", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_エターナルフェザー", "name": "エターナルフェザー", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_オリハルコン", "name": "オリハルコン", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_キラめく口紅", "name": "キラめく口紅", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_グレムリンの角", "name": "グレムリンの角", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_ヌンチャク", "name": "ヌンチャク", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_パリィシールド", "name": "パリィシールド", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_パンタグラフ", "name": "パンタグラフ", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_ビー玉袋", "name": "ビー玉袋", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_ふいご", "name": "ふいご", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_ペン先", "name": "ペン先", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_ホーンクリート", "name": "ホーンクリート", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_ミニ大砲", "name": "ミニ大砲", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_レターオープナー", "name": "レターオープナー", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_レッドマスク", "name": "レッドマスク", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_音叉", "name": "音叉", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_幸運の魚", "name": "幸運の魚", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_鎖鎌", "name": "鎖鎌", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_山高帽", "name": "山高帽", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_燭台", "name": "燭台", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_水銀の砂時計", "name": "水銀の砂時計", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_星座早見盤", "name": "星座早見盤", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_石のクラッカー", "name": "石のクラッカー", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_石化したカエル", "name": "石化したカエル", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_赤べこ", "name": "赤べこ", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_扇子", "name": "扇子", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_波紋の鉢", "name": "波紋の鉢", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_冥銭", "name": "冥銭", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_洋ナシ", "name": "洋ナシ", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_爬虫類のトリンケット", "name": "爬虫類のトリンケット", "rarity": "アンコモン", "characterId": "all"},
-    {"id": "relic_折りキャエル", "name": "折りキャエル", "rarity": "アンコモン", "characterId": "ironclad"},
-    {"id": "relic_自己形成粘土", "name": "自己形成粘土", "rarity": "アンコモン", "characterId": "ironclad"},
-    {"id": "relic_ティンシャ", "name": "ティンシャ", "rarity": "アンコモン", "characterId": "silent"},
-    {"id": "relic_歪んだ漏斗", "name": "歪んだ漏斗", "rarity": "アンコモン", "characterId": "silent"},
-    {"id": "relic_星屑", "name": "星屑", "rarity": "アンコモン", "characterId": "regent"},
-    {"id": "relic_レガライト", "name": "レガライト", "rarity": "アンコモン", "characterId": "regent"},
-    {"id": "relic_製本用ナイフ", "name": "製本用ナイフ", "rarity": "アンコモン", "characterId": "necro"},
-    {"id": "relic_デスマスク", "name": "デスマスク", "rarity": "アンコモン", "characterId": "necro"},
-    {"id": "relic_金メッキケーブル", "name": "金メッキケーブル", "rarity": "アンコモン", "characterId": "defect"},
-    {"id": "relic_共生ウイルス", "name": "共生ウイルス", "rarity": "アンコモン", "characterId": "defect"},
-
-    {"id": "relic_アイスクリーム", "name": "アイスクリーム", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_ギャンブルチップ", "name": "ギャンブルチップ", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_クナイ", "name": "クナイ", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_ゲームの駒", "name": "ゲームの駒", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_ケトルベル", "name": "ケトルベル", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_シャンデリア", "name": "シャンデリア", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_ショベル", "name": "ショベル", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_タングステンの棒", "name": "タングステンの棒", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_トカゲのしっぽ", "name": "トカゲのしっぽ", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_ホワイトスター", "name": "ホワイトスター", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_マニ車", "name": "マニ車", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_マンゴー", "name": "マンゴー", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_マントの留め具", "name": "マントの留め具", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_ミイラの手", "name": "ミイラの手", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_威圧の兜", "name": "威圧の兜", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_永久コマ", "name": "永久コマ", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_懐中時計", "name": "懐中時計", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_頑丈なクランプ", "name": "頑丈なクランプ", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_古いコイン", "name": "古いコイン", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_骨付き肉", "name": "骨付き肉", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_手裏剣", "name": "手裏剣", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_船長の舵輪", "name": "船長の舵輪", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_孫子兵法", "name": "孫子兵法", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_長持ちキャンディ", "name": "長持ちキャンディ", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_剃刀の牙", "name": "剃刀の牙", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_凍った卵", "name": "凍った卵", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_毒の卵", "name": "毒の卵", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_難解なパズル", "name": "難解なパズル", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_虹の指輪", "name": "虹の指輪", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_配達人", "name": "配達人", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_白き獣の像", "name": "白き獣の像", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_不気味なランプ", "name": "不気味なランプ", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_脈打つ亡骸", "name": "脈打つ亡骸", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_溶融した卵", "name": "溶融した卵", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_暦石", "name": "暦石", "rarity": "レア", "characterId": "all"},
-    {"id": "relic_カロンの遺灰", "name": "カロンの遺灰", "rarity": "レア", "characterId": "ironclad"},
-    {"id": "relic_悪魔の舌", "name": "悪魔の舌", "rarity": "レア", "characterId": "ironclad"},
-    {"id": "relic_朽ちた兜", "name": "朽ちた兜", "rarity": "レア", "characterId": "ironclad"},
-    {"id": "relic_螺旋のダーツ", "name": "螺旋のダーツ", "rarity": "レア", "characterId": "silent"},
-    {"id": "relic_折りズル", "name": "折りズル", "rarity": "レア", "characterId": "silent"},
-    {"id": "relic_丈夫な包帯", "name": "丈夫な包帯", "rarity": "レア", "characterId": "silent"},
-    {"id": "relic_月餅", "name": "月餅", "rarity": "レア", "characterId": "regent"},
-    {"id": "relic_ちびリージェント", "name": "ちびリージェント", "rarity": "レア", "characterId": "regent"},
-    {"id": "relic_オレンジ色の生地", "name": "オレンジ色の生地", "rarity": "レア", "characterId": "regent"},
-    {"id": "relic_ビッグハット", "name": "ビッグハット", "rarity": "レア", "characterId": "necro"},
-    {"id": "relic_栞", "name": "栞", "rarity": "レア", "characterId": "necro"},
-    {"id": "relic_象牙の牌", "name": "象牙の牌", "rarity": "レア", "characterId": "necro"},
-    {"id": "relic_感情制御回路", "name": "感情制御回路", "rarity": "レア", "characterId": "defect"},
-    {"id": "relic_メトロノーム", "name": "メトロノーム", "rarity": "レア", "characterId": "defect"},
-    {"id": "relic_パワーセル", "name": "パワーセル", "rarity": "レア", "characterId": "defect"},
-
-    {"id": "relic_ネオーの苦悶", "name": "ネオーの苦悶", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_ポマンダー", "name": "ポマンダー", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_栄養満点のカキ", "name": "栄養満点のカキ", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_鉛の文鎮", "name": "鉛の文鎮", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_黄金の真珠", "name": "黄金の真珠", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_巻物箱", "name": "巻物箱", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_危険な大鋏", "name": "危険な大鋏", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_巨大な巻物", "name": "巨大な巻物", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_銀のるつぼ", "name": "銀のるつぼ", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_轟音のほら貝", "name": "轟音のほら貝", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_失われし金庫", "name": "失われし金庫", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_若葉", "name": "若葉", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_呪いの真珠", "name": "呪いの真珠", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_小さなカプセル", "name": "小さなカプセル", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_精密なハサミ", "name": "精密なハサミ", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_石の加湿器", "name": "石の加湿器", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_大きなカプセル", "name": "大きなカプセル", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_秘術の巻物", "name": "秘術の巻物", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_薬草の湿布", "name": "薬草の湿布", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_溶岩石", "name": "溶岩石", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_オロバスの指先", "name": "オロバスの指先", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_ガラスの眼", "name": "ガラスの眼", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_シーグラス", "name": "シーグラス", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_プリズムジェム", "name": "プリズムジェム", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_古代の牙", "name": "古代の牙", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_光り輝く真珠", "name": "光り輝く真珠", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_砂の城", "name": "砂の城", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_電気エビ", "name": "電気エビ", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_流木", "name": "流木", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_錬金術の宝庫", "name": "錬金術の宝庫", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの角", "name": "パエルの角", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの眼", "name": "パエルの眼", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの軍勢", "name": "パエルの軍勢", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの血", "name": "パエルの血", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの歯", "name": "パエルの歯", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの爪", "name": "パエルの爪", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの肉", "name": "パエルの肉", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの膿", "name": "パエルの膿", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの翼", "name": "パエルの翼", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_パエルの涙", "name": "パエルの涙", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_アツアツの愛情", "name": "アツアツの愛情", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_あったか手袋", "name": "あったか手袋", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_おいしいクッキー", "name": "おいしいクッキー", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_おもちゃ箱", "name": "おもちゃ箱", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_カボチャのキャンドル", "name": "カボチャのキャンドル", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_栄養満点のスープ", "name": "栄養満点のスープ", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_黄金の印章", "name": "黄金の印章", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_黄金の羅針盤", "name": "黄金の羅針盤", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_絵本", "name": "絵本", "rarity": "エンシェント", "characterId": "all"},
-    {"id": "relic_激熱ココア", "name": "激熱ココア", "rarity": "エンシェント", "characterId": "all"}
+    {
+      "id": "relic_バーニングブラッド",
+      "name": "バーニングブラッド",
+      "rarity": "スターター",
+      "characterId": "ironclad"
+    },
+    {
+      "id": "relic_ブラックブラッド",
+      "name": "ブラックブラッド",
+      "rarity": "スターター",
+      "characterId": "ironclad"
+    },
+    {
+      "id": "relic_蛇の指輪",
+      "name": "蛇の指輪",
+      "rarity": "スターター",
+      "characterId": "silent"
+    },
+    {
+      "id": "relic_ドレイクの指輪",
+      "name": "ドレイクの指輪",
+      "rarity": "スターター",
+      "characterId": "silent"
+    },
+    {
+      "id": "relic_ひび割れたコア",
+      "name": "ひび割れたコア",
+      "rarity": "スターター",
+      "characterId": "defect"
+    },
+    {
+      "id": "relic_インフューズドコア",
+      "name": "インフューズドコア",
+      "rarity": "スターター",
+      "characterId": "defect"
+    },
+    {
+      "id": "relic_封じられし霊箱",
+      "name": "封じられし霊箱",
+      "rarity": "スターター",
+      "characterId": "necro"
+    },
+    {
+      "id": "relic_解き放たれし霊箱",
+      "name": "解き放たれし霊箱",
+      "rarity": "スターター",
+      "characterId": "necro"
+    },
+    {
+      "id": "relic_神授王権",
+      "name": "神授王権",
+      "rarity": "スターター",
+      "characterId": "regent"
+    },
+    {
+      "id": "relic_神授天命",
+      "name": "神授天命",
+      "rarity": "スターター",
+      "characterId": "regent"
+    },
+    {
+      "id": "relic_アメジストのナス",
+      "name": "アメジストのナス",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_イカリ",
+      "name": "イカリ",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_イチゴ",
+      "name": "イチゴ",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ヴァジュラ",
+      "name": "ヴァジュラ",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_お食事券",
+      "name": "お食事券",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_クラッカー",
+      "name": "クラッカー",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ゴルゲット",
+      "name": "ゴルゲット",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ストライク・ダミー",
+      "name": "ストライク・ダミー",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_すべすべ石",
+      "name": "すべすべ石",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_バックパック",
+      "name": "バックパック",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ハッピーフラワー",
+      "name": "ハッピーフラワー",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ポーションベルト",
+      "name": "ポーションベルト",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ランタン",
+      "name": "ランタン",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_永久凍土",
+      "name": "永久凍土",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_血のガラス瓶",
+      "name": "血のガラス瓶",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_古びたティーセット",
+      "name": "古びたティーセット",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_五輪書",
+      "name": "五輪書",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_高貴な枕",
+      "name": "高貴な枕",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_小さなポスト",
+      "name": "小さなポスト",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_振り子",
+      "name": "振り子",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_数珠",
+      "name": "数珠",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_青銅のウロコ",
+      "name": "青銅のウロコ",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_戦化粧",
+      "name": "戦化粧",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_砥石",
+      "name": "砥石",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_百年パズル",
+      "name": "百年パズル",
+      "rarity": "コモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_赤い頭蓋骨",
+      "name": "赤い頭蓋骨",
+      "rarity": "コモン",
+      "characterId": "ironclad"
+    },
+    {
+      "id": "relic_スネッコスカル",
+      "name": "スネッコスカル",
+      "rarity": "コモン",
+      "characterId": "silent"
+    },
+    {
+      "id": "relic_剣術教本",
+      "name": "剣術教本",
+      "rarity": "コモン",
+      "characterId": "regent"
+    },
+    {
+      "id": "relic_骨のフルート",
+      "name": "骨のフルート",
+      "rarity": "コモン",
+      "characterId": "necro"
+    },
+    {
+      "id": "relic_データディスク",
+      "name": "データディスク",
+      "rarity": "コモン",
+      "characterId": "defect"
+    },
+    {
+      "id": "relic_ヴァンプレイス",
+      "name": "ヴァンプレイス",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_エターナルフェザー",
+      "name": "エターナルフェザー",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_オリハルコン",
+      "name": "オリハルコン",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_キラめく口紅",
+      "name": "キラめく口紅",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_グレムリンの角",
+      "name": "グレムリンの角",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ヌンチャク",
+      "name": "ヌンチャク",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パリィシールド",
+      "name": "パリィシールド",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パンタグラフ",
+      "name": "パンタグラフ",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ビー玉袋",
+      "name": "ビー玉袋",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ふいご",
+      "name": "ふいご",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ペン先",
+      "name": "ペン先",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ホーンクリート",
+      "name": "ホーンクリート",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ミニ大砲",
+      "name": "ミニ大砲",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_レターオープナー",
+      "name": "レターオープナー",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_レッドマスク",
+      "name": "レッドマスク",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_音叉",
+      "name": "音叉",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_幸運の魚",
+      "name": "幸運の魚",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_鎖鎌",
+      "name": "鎖鎌",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_山高帽",
+      "name": "山高帽",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_燭台",
+      "name": "燭台",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_水銀の砂時計",
+      "name": "水銀の砂時計",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_星座早見盤",
+      "name": "星座早見盤",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_石のクラッカー",
+      "name": "石のクラッカー",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_石化したカエル",
+      "name": "石化したカエル",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_赤べこ",
+      "name": "赤べこ",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_扇子",
+      "name": "扇子",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_波紋の鉢",
+      "name": "波紋の鉢",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_冥銭",
+      "name": "冥銭",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_洋ナシ",
+      "name": "洋ナシ",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_爬虫類のトリンケット",
+      "name": "爬虫類のトリンケット",
+      "rarity": "アンコモン",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_折りキャエル",
+      "name": "折りキャエル",
+      "rarity": "アンコモン",
+      "characterId": "ironclad"
+    },
+    {
+      "id": "relic_自己形成粘土",
+      "name": "自己形成粘土",
+      "rarity": "アンコモン",
+      "characterId": "ironclad"
+    },
+    {
+      "id": "relic_ティンシャ",
+      "name": "ティンシャ",
+      "rarity": "アンコモン",
+      "characterId": "silent"
+    },
+    {
+      "id": "relic_歪んだ漏斗",
+      "name": "歪んだ漏斗",
+      "rarity": "アンコモン",
+      "characterId": "silent"
+    },
+    {
+      "id": "relic_星屑",
+      "name": "星屑",
+      "rarity": "アンコモン",
+      "characterId": "regent"
+    },
+    {
+      "id": "relic_レガライト",
+      "name": "レガライト",
+      "rarity": "アンコモン",
+      "characterId": "regent"
+    },
+    {
+      "id": "relic_製本用ナイフ",
+      "name": "製本用ナイフ",
+      "rarity": "アンコモン",
+      "characterId": "necro"
+    },
+    {
+      "id": "relic_デスマスク",
+      "name": "デスマスク",
+      "rarity": "アンコモン",
+      "characterId": "necro"
+    },
+    {
+      "id": "relic_金メッキケーブル",
+      "name": "金メッキケーブル",
+      "rarity": "アンコモン",
+      "characterId": "defect"
+    },
+    {
+      "id": "relic_共生ウイルス",
+      "name": "共生ウイルス",
+      "rarity": "アンコモン",
+      "characterId": "defect"
+    },
+    {
+      "id": "relic_アイスクリーム",
+      "name": "アイスクリーム",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ギャンブルチップ",
+      "name": "ギャンブルチップ",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_クナイ",
+      "name": "クナイ",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ゲームの駒",
+      "name": "ゲームの駒",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ケトルベル",
+      "name": "ケトルベル",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_シャンデリア",
+      "name": "シャンデリア",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ショベル",
+      "name": "ショベル",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_タングステンの棒",
+      "name": "タングステンの棒",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_トカゲのしっぽ",
+      "name": "トカゲのしっぽ",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ホワイトスター",
+      "name": "ホワイトスター",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_マニ車",
+      "name": "マニ車",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_マンゴー",
+      "name": "マンゴー",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_マントの留め具",
+      "name": "マントの留め具",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ミイラの手",
+      "name": "ミイラの手",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_威圧の兜",
+      "name": "威圧の兜",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_永久コマ",
+      "name": "永久コマ",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_懐中時計",
+      "name": "懐中時計",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_頑丈なクランプ",
+      "name": "頑丈なクランプ",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_古いコイン",
+      "name": "古いコイン",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_骨付き肉",
+      "name": "骨付き肉",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_手裏剣",
+      "name": "手裏剣",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_船長の舵輪",
+      "name": "船長の舵輪",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_孫子兵法",
+      "name": "孫子兵法",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_長持ちキャンディ",
+      "name": "長持ちキャンディ",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_剃刀の牙",
+      "name": "剃刀の牙",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_凍った卵",
+      "name": "凍った卵",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_毒の卵",
+      "name": "毒の卵",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_難解なパズル",
+      "name": "難解なパズル",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_虹の指輪",
+      "name": "虹の指輪",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_配達人",
+      "name": "配達人",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_白き獣の像",
+      "name": "白き獣の像",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_不気味なランプ",
+      "name": "不気味なランプ",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_脈打つ亡骸",
+      "name": "脈打つ亡骸",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_溶融した卵",
+      "name": "溶融した卵",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_暦石",
+      "name": "暦石",
+      "rarity": "レア",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_カロンの遺灰",
+      "name": "カロンの遺灰",
+      "rarity": "レア",
+      "characterId": "ironclad"
+    },
+    {
+      "id": "relic_悪魔の舌",
+      "name": "悪魔の舌",
+      "rarity": "レア",
+      "characterId": "ironclad"
+    },
+    {
+      "id": "relic_朽ちた兜",
+      "name": "朽ちた兜",
+      "rarity": "レア",
+      "characterId": "ironclad"
+    },
+    {
+      "id": "relic_螺旋のダーツ",
+      "name": "螺旋のダーツ",
+      "rarity": "レア",
+      "characterId": "silent"
+    },
+    {
+      "id": "relic_折りズル",
+      "name": "折りズル",
+      "rarity": "レア",
+      "characterId": "silent"
+    },
+    {
+      "id": "relic_丈夫な包帯",
+      "name": "丈夫な包帯",
+      "rarity": "レア",
+      "characterId": "silent"
+    },
+    {
+      "id": "relic_月餅",
+      "name": "月餅",
+      "rarity": "レア",
+      "characterId": "regent"
+    },
+    {
+      "id": "relic_ちびリージェント",
+      "name": "ちびリージェント",
+      "rarity": "レア",
+      "characterId": "regent"
+    },
+    {
+      "id": "relic_オレンジ色の生地",
+      "name": "オレンジ色の生地",
+      "rarity": "レア",
+      "characterId": "regent"
+    },
+    {
+      "id": "relic_ビッグハット",
+      "name": "ビッグハット",
+      "rarity": "レア",
+      "characterId": "necro"
+    },
+    {
+      "id": "relic_栞",
+      "name": "栞",
+      "rarity": "レア",
+      "characterId": "necro"
+    },
+    {
+      "id": "relic_象牙の牌",
+      "name": "象牙の牌",
+      "rarity": "レア",
+      "characterId": "necro"
+    },
+    {
+      "id": "relic_感情制御回路",
+      "name": "感情制御回路",
+      "rarity": "レア",
+      "characterId": "defect"
+    },
+    {
+      "id": "relic_メトロノーム",
+      "name": "メトロノーム",
+      "rarity": "レア",
+      "characterId": "defect"
+    },
+    {
+      "id": "relic_パワーセル",
+      "name": "パワーセル",
+      "rarity": "レア",
+      "characterId": "defect"
+    },
+    {
+      "id": "relic_ネオーの苦悶",
+      "name": "ネオーの苦悶",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ポマンダー",
+      "name": "ポマンダー",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_栄養満点のカキ",
+      "name": "栄養満点のカキ",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_鉛の文鎮",
+      "name": "鉛の文鎮",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_黄金の真珠",
+      "name": "黄金の真珠",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_巻物箱",
+      "name": "巻物箱",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_危険な大鋏",
+      "name": "危険な大鋏",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_巨大な巻物",
+      "name": "巨大な巻物",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_銀のるつぼ",
+      "name": "銀のるつぼ",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_轟音のほら貝",
+      "name": "轟音のほら貝",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_失われし金庫",
+      "name": "失われし金庫",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_若葉",
+      "name": "若葉",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_呪いの真珠",
+      "name": "呪いの真珠",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_小さなカプセル",
+      "name": "小さなカプセル",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_精密なハサミ",
+      "name": "精密なハサミ",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_石の加湿器",
+      "name": "石の加湿器",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_大きなカプセル",
+      "name": "大きなカプセル",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_秘術の巻物",
+      "name": "秘術の巻物",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_薬草の湿布",
+      "name": "薬草の湿布",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_溶岩石",
+      "name": "溶岩石",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_オロバスの指先",
+      "name": "オロバスの指先",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ガラスの眼",
+      "name": "ガラスの眼",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_シーグラス",
+      "name": "シーグラス",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_プリズムジェム",
+      "name": "プリズムジェム",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_古代の牙",
+      "name": "古代の牙",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_光り輝く真珠",
+      "name": "光り輝く真珠",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_砂の城",
+      "name": "砂の城",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_電気エビ",
+      "name": "電気エビ",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_流木",
+      "name": "流木",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_錬金術の宝庫",
+      "name": "錬金術の宝庫",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの角",
+      "name": "パエルの角",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの眼",
+      "name": "パエルの眼",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの軍勢",
+      "name": "パエルの軍勢",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの血",
+      "name": "パエルの血",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの歯",
+      "name": "パエルの歯",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの爪",
+      "name": "パエルの爪",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの肉",
+      "name": "パエルの肉",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの膿",
+      "name": "パエルの膿",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの翼",
+      "name": "パエルの翼",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パエルの涙",
+      "name": "パエルの涙",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_アツアツの愛情",
+      "name": "アツアツの愛情",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_あったか手袋",
+      "name": "あったか手袋",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_おいしいクッキー",
+      "name": "おいしいクッキー",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_おもちゃ箱",
+      "name": "おもちゃ箱",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_カボチャのキャンドル",
+      "name": "カボチャのキャンドル",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_栄養満点のスープ",
+      "name": "栄養満点のスープ",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_黄金の印章",
+      "name": "黄金の印章",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_黄金の羅針盤",
+      "name": "黄金の羅針盤",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_絵本",
+      "name": "絵本",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_激熱ココア",
+      "name": "激熱ココア",
+      "rarity": "エンシェント",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ケミカルX",
+      "name": "ケミカルX",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_そろばん",
+      "name": "そろばん",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ドラゴンフルーツ",
+      "name": "ドラゴンフルーツ",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ドリーの鏡",
+      "name": "ドリーの鏡",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パン",
+      "name": "パン",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_パンチダガー",
+      "name": "パンチダガー",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ベルトの留め具",
+      "name": "ベルトの留め具",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_ミニテント",
+      "name": "ミニテント",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_リーのワッフル",
+      "name": "リーのワッフル",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_王家の刻印",
+      "name": "王家の刻印",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_会員カード",
+      "name": "会員カード",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_共鳴するトライアングル",
+      "name": "共鳴するトライアングル",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_護摩木",
+      "name": "護摩木",
+      "rarity": "ショップ",
+      "characterId": "all"
+    },
+    {
+      "id": "relic_神秘のライター",
+      "name": "神秘のライター",
+      "rarity": "ショップ",
+      "characterId": "all"
+    }
   ]
 }

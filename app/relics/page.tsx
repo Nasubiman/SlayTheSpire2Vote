@@ -11,7 +11,7 @@ type VoteState = Record<string, Rating>;
 type StatusState = Record<string, "idle" | "loading" | "done" | "error">;
 type ResultsState = Record<string, { a: number; b: number; c: number; d: number; e: number }>;
 
-const RARITIES = ["全て", "スターター", "コモン", "アンコモン", "レア", "エンシェント"] as const;
+const RARITIES = ["全て", "スターター", "コモン", "アンコモン", "レア", "エンシェント", "ショップ"] as const;
 const CHARACTERS = ["全て", "全キャラ共通", "アイアンクラッド", "サイレント", "ディフェクト", "ネクロバインダー", "リージェント"] as const;
 
 const CHAR_ID_MAP: Record<string, string> = {
