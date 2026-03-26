@@ -52,6 +52,7 @@ data/images/
 data/failed-images.json
 data/relic-images/
 data/failed-relic-images.json
+data/enemy-images/
 
 CLAUDE.md
 AGENTS.md

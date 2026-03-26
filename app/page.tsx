@@ -3,6 +3,7 @@ import { getAdminDb } from "@/lib/firebase-admin";
 import { CHARACTERS, RATINGS, type Poll } from "@/lib/types";
 import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
 import { getAllRelics, getRelicImageUrl } from "@/lib/relics";
+import { getAllEnemies, getEnemyImageUrl } from "@/lib/enemies";
 
 export const dynamic = "force-dynamic";
 
@@ -108,9 +109,9 @@ async function getPollsAndTopCards(): Promise<Record<string, CharEntry>> {
   }
 }
 
-type RelicEntry = { topRelicName: string | null; topRelicResult: Record<string, number> | null; totalVotes: number };
+type TopEntry = { topName: string | null; topResult: Record<string, number> | null; totalVotes: number };
 
-async function getTopRelic(): Promise<RelicEntry> {
+async function getTopRelic(): Promise<TopEntry> {
   try {
     const db = getAdminDb();
     const snap = await db.collection("polls").doc("relics").get();
@@ -132,17 +133,50 @@ async function getTopRelic(): Promise<RelicEntry> {
     }
 
     return {
-      topRelicName: topRelic?.name ?? null,
-      topRelicResult: topRelic ? (scores[topRelic.id] ?? null) : null,
+      topName: topRelic?.name ?? null,
+      topResult: topRelic ? (scores[topRelic.id] ?? null) : null,
       totalVotes,
     };
   } catch {
-    return { topRelicName: null, topRelicResult: null, totalVotes: 0 };
+    return { topName: null, topResult: null, totalVotes: 0 };
+  }
+}
+
+async function getTopEnemy(): Promise<TopEntry> {
+  try {
+    const db = getAdminDb();
+    const snap = await db.collection("polls").doc("enemies").get();
+    const scores = (snap.data()?.scores ?? {}) as Record<string, Record<string, number>>;
+
+    const enemies = getAllEnemies().filter((e) => !!getEnemyImageUrl(e));
+    const totalVotes = Object.values(scores).reduce(
+      (sum, r) => sum + (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0),
+      0
+    );
+
+    let topEnemy = null;
+    let topScore = -1;
+    for (const enemy of enemies) {
+      const r = scores[enemy.id];
+      if (!r) continue;
+      const score = weightedScore(r);
+      if (score > topScore) { topScore = score; topEnemy = enemy; }
+    }
+
+    return {
+      topName: topEnemy?.name ?? null,
+      topResult: topEnemy ? (scores[topEnemy.id] ?? null) : null,
+      totalVotes,
+    };
+  } catch {
+    return { topName: null, topResult: null, totalVotes: 0 };
   }
 }
 
 export default async function HomePage() {
-  const [data, relicEntry] = await Promise.all([getPollsAndTopCards(), getTopRelic()]);
+  const [data, relicEntry, enemyEntry] = await Promise.all([
+    getPollsAndTopCards(), getTopRelic(), getTopEnemy(),
+  ]);
 
   return (
     <main className="min-h-screen bg-gray-950 text-white">
@@ -219,13 +253,13 @@ export default async function HomePage() {
             <p className="font-bold text-lg">全レリック</p>
             <p className="text-xs text-gray-300 mt-1 leading-relaxed">全キャラクター共通・固有レリックの強さ評価。</p>
 
-            {relicEntry.topRelicName && relicEntry.topRelicResult && (() => {
-              const r = relicEntry.topRelicResult;
+            {relicEntry.topName && relicEntry.topResult && (() => {
+              const r = relicEntry.topResult;
               const total = (r.a||0)+(r.b||0)+(r.c||0)+(r.d||0)+(r.e||0);
               return (
                 <div className="mt-3 bg-black/20 rounded-lg px-3 py-2">
                   <p className="text-xs text-gray-400 mb-1">現在1位</p>
-                  <p className="text-sm font-semibold truncate">{relicEntry.topRelicName}</p>
+                  <p className="text-sm font-semibold truncate">{relicEntry.topName}</p>
                   {total > 0 && (
                     <div className="flex gap-0.5 h-1.5 mt-1.5">
                       {RATINGS.map((rt) => {
@@ -242,6 +276,44 @@ export default async function HomePage() {
 
             <div className="flex items-center justify-between mt-3">
               <span className="text-xs text-gray-400">{relicEntry.totalVotes.toLocaleString()}票</span>
+              <span className="text-xs text-gray-300">投票する →</span>
+            </div>
+          </Link>
+        </div>
+
+        {/* 敵キャラ */}
+        <h2 className="text-lg font-semibold text-gray-300 mt-8 mb-3">敵キャラ</h2>
+        <div>
+          <Link
+            href="/enemies"
+            className="inline-flex bg-gradient-to-b from-red-950/60 to-gray-900 rounded-xl p-4 border border-red-800 hover:border-red-600 transition-all hover:scale-[1.02] flex-col w-full sm:w-56"
+          >
+            <p className="font-bold text-lg">全敵キャラ</p>
+            <p className="text-xs text-gray-300 mt-1 leading-relaxed">通常・エリート・ボス敵の強さ評価。</p>
+
+            {enemyEntry.topName && enemyEntry.topResult && (() => {
+              const r = enemyEntry.topResult;
+              const total = (r.a||0)+(r.b||0)+(r.c||0)+(r.d||0)+(r.e||0);
+              return (
+                <div className="mt-3 bg-black/20 rounded-lg px-3 py-2">
+                  <p className="text-xs text-gray-400 mb-1">現在1位</p>
+                  <p className="text-sm font-semibold truncate">{enemyEntry.topName}</p>
+                  {total > 0 && (
+                    <div className="flex gap-0.5 h-1.5 mt-1.5">
+                      {RATINGS.map((rt) => {
+                        const pct = ((r[rt.value] || 0) / total) * 100;
+                        return pct > 0 ? (
+                          <div key={rt.value} className={`${rt.color.split(" ")[0]} rounded-sm`} style={{ width: `${pct}%` }} />
+                        ) : null;
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+
+            <div className="flex items-center justify-between mt-3">
+              <span className="text-xs text-gray-400">{enemyEntry.totalVotes.toLocaleString()}票</span>
               <span className="text-xs text-gray-300">投票する →</span>
             </div>
           </Link>
