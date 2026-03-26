@@ -33,7 +33,7 @@ export function useVote(pollId: string | null) {
         const res = await fetch("/api/vote", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pollId, cardId: itemId, rating }),
+          body: JSON.stringify({ pollId, cardId: itemId, rating, prevRating: prevVote }),
         });
 
         if (res.ok) {
