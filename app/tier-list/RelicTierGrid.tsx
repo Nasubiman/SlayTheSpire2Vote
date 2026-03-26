@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
 import { TierRow } from "./TierRow";
+import { TierShareButton } from "./TierShareButton";
 
 const RARITIES = ["全て", "スターター", "コモン", "アンコモン", "レア", "エンシェント", "ショップ"] as const;
 const CHARACTERS = ["全て", "全キャラ共通", "アイアンクラッド", "サイレント", "ディフェクト", "ネクロバインダー", "リージェント"] as const;
@@ -25,6 +26,7 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const [charFilter, setCharFilter] = useState<(typeof CHARACTERS)[number]>("全て");
   const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_relics");
+  const tierGridRef = useRef<HTMLDivElement>(null);
 
   const filtered = relics.filter((r) => {
     if (rarityFilter !== "全て" && r.rarity !== rarityFilter) return false;
@@ -70,10 +72,11 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
             リセット
           </button>
         )}
+        <TierShareButton targetRef={tierGridRef} filename="slay2-relic-tier.png" title="スレスパ2 レリックTier表" />
       </div>
 
       {/* Tier表 */}
-      <div className="space-y-2">
+      <div ref={tierGridRef} className="space-y-2">
         {TIERS.map((tier) => (
           <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
             onLabelChange={(label) => updateLabel(tier, label)}

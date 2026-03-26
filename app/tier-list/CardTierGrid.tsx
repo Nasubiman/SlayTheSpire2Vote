@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
 import { TierRow } from "./TierRow";
+import { TierShareButton } from "./TierShareButton";
 
 const CARD_TYPES = ["全て", "アタック", "スキル", "パワー"] as const;
 const RARITIES = ["全て", "コモン", "アンコモン", "レア", "スターター"] as const;
@@ -21,6 +22,7 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
   const [typeFilter, setTypeFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor(storageKey);
+  const tierGridRef = useRef<HTMLDivElement>(null);
 
   const filtered = cards.filter((c) => {
     if (typeFilter !== "全て" && c.type !== typeFilter) return false;
@@ -66,10 +68,11 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
             リセット
           </button>
         )}
+        <TierShareButton targetRef={tierGridRef} filename="slay2-card-tier.png" title="スレスパ2 カードTier表" />
       </div>
 
       {/* Tier表 */}
-      <div className="space-y-2">
+      <div ref={tierGridRef} className="space-y-2">
         {TIERS.map((tier) => (
           <TierRow
             key={tier}

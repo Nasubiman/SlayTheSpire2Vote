@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
 import { TierRow } from "./TierRow";
+import { TierShareButton } from "./TierShareButton";
 
 const AREAS = ["全て", "繁茂の地", "地下水路", "魔窟", "栄光の路"] as const;
 const TYPES = ["全て", "通常", "エリート", "ボス"] as const;
@@ -21,6 +22,7 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
   const [areaFilter, setAreaFilter] = useState<(typeof AREAS)[number]>("全て");
   const [typeFilter, setTypeFilter] = useState<(typeof TYPES)[number]>("全て");
   const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_enemies");
+  const tierGridRef = useRef<HTMLDivElement>(null);
 
   const filtered = enemies.filter((e) => {
     if (areaFilter !== "全て" && e.area !== areaFilter) return false;
@@ -66,10 +68,11 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
             リセット
           </button>
         )}
+        <TierShareButton targetRef={tierGridRef} filename="slay2-enemy-tier.png" title="スレスパ2 敵キャラTier表" />
       </div>
 
       {/* Tier表 */}
-      <div className="space-y-2">
+      <div ref={tierGridRef} className="space-y-2">
         {TIERS.map((tier) => (
           <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
             onLabelChange={(label) => updateLabel(tier, label)}
