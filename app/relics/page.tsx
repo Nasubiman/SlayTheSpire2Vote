@@ -37,6 +37,7 @@ export default function RelicsPage() {
   const resultsRef = useRef<ResultsState>({});
   const initialResultsLoaded = useRef(false);
   const [sortTrigger, setSortTrigger] = useState(0);
+  const [listReady, setListReady] = useState(false);
 
   // 結果をリアルタイムで購読
   useEffect(() => {
@@ -75,6 +76,7 @@ export default function RelicsPage() {
         return a.name.localeCompare(b.name, "ja");
       });
     setSortedRelics(filtered);
+    setListReady(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [relics, rarityFilter, charFilter, sortBy, sortTrigger]);
 
@@ -146,8 +148,25 @@ export default function RelicsPage() {
         </div>
 
         {/* レリックグリッド */}
+        {!listReady ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="rounded-lg overflow-hidden border border-gray-700 bg-gray-900 animate-pulse">
+                <div className="aspect-square bg-gray-800" />
+                <div className="p-3 space-y-2">
+                  <div className="h-4 bg-gray-800 rounded w-3/4" />
+                  <div className="flex gap-1.5">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <div key={j} className="flex-1 h-8 bg-gray-800 rounded" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-          {sortedRelics.map((relic) => {
+          {sortedRelics.map((relic, index) => {
             const voted = votes[relic.id];
             const isLoading = status[relic.id] === "loading";
             const imgUrl = getRelicImageUrl(relic);
@@ -170,6 +189,7 @@ export default function RelicsPage() {
                       height={160}
                       sizes="(max-width: 1024px) 50vw, 33vw"
                       className="w-full h-auto object-contain"
+                      priority={index < 4}
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                   </div>
@@ -240,6 +260,7 @@ export default function RelicsPage() {
             );
           })}
         </div>
+        )}
       </div>
     </main>
   );

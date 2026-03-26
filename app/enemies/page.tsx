@@ -27,6 +27,7 @@ export default function EnemiesPage() {
   const resultsRef = useRef<ResultsState>({});
   const initialResultsLoaded = useRef(false);
   const [sortTrigger, setSortTrigger] = useState(0);
+  const [listReady, setListReady] = useState(false);
 
   // 結果をリアルタイムで購読
   useEffect(() => {
@@ -61,6 +62,7 @@ export default function EnemiesPage() {
         return a.name.localeCompare(b.name, "ja");
       });
     setSortedEnemies(filtered);
+    setListReady(true);
   }, [enemies, areaFilter, typeFilter, sortBy, sortTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const votedCount = Object.keys(votes).length;
@@ -120,8 +122,25 @@ export default function EnemiesPage() {
           </div>
         </div>
 
+        {!listReady ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="rounded-lg overflow-hidden border border-gray-700 bg-gray-900 animate-pulse">
+                <div className="aspect-square bg-gray-800" />
+                <div className="p-3 space-y-2">
+                  <div className="h-4 bg-gray-800 rounded w-3/4" />
+                  <div className="flex gap-1.5">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <div key={j} className="flex-1 h-8 bg-gray-800 rounded" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-          {sortedEnemies.map((enemy) => {
+          {sortedEnemies.map((enemy, index) => {
             const voted = votes[enemy.id];
             const isLoading = status[enemy.id] === "loading";
             const imgUrl = getEnemyImageUrl(enemy);
@@ -141,6 +160,7 @@ export default function EnemiesPage() {
                     height={400}
                     sizes="(max-width: 1024px) 50vw, 33vw"
                     className="w-full h-auto object-contain bg-gray-800"
+                    priority={index < 4}
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                   />
                 )}
@@ -203,6 +223,7 @@ export default function EnemiesPage() {
             );
           })}
         </div>
+        )}
       </div>
     </main>
   );
