@@ -56,7 +56,7 @@ export function TierRow({ tier, label, isEditing, onLabelChange, selectedId, onT
       </div>
 
       {/* アイテム */}
-      <div className={`flex flex-wrap gap-2 p-2 min-h-[3.5rem] flex-1 ${isEmpty && isEditing ? "items-center" : ""}`}>
+      <div className={`grid grid-cols-4 sm:flex sm:flex-wrap gap-2 p-2 min-h-[3.5rem] flex-1 ${isEmpty && isEditing ? "items-center" : ""}`}>
         {isEmpty && isEditing ? (
           <span className="text-xs text-gray-500 px-2">
             {canTapDrop ? "ここをタップして移動" : "ここにドロップ"}

@@ -133,7 +133,8 @@ function DraggableItem({ id, name, imgUrl, isEditing, muted, isSelected, onSelec
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}
       onClick={(e) => { if (isEditing) { e.stopPropagation(); onSelect?.(); } }}
-      className={`flex flex-col items-center w-14 touch-none
+      className={`flex flex-col items-center w-14
+        ${isEditing ? "touch-none" : ""}
         ${isDragging ? "opacity-50" : "transition-transform"}
         ${isEditing ? "cursor-grab active:cursor-grabbing" : ""}
         ${muted && !isSelected ? "opacity-50" : ""}
