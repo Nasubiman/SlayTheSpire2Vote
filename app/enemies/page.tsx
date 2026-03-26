@@ -80,6 +80,7 @@ export default function EnemiesPage() {
   }, [enemies, areaFilter, typeFilter, sortBy, sortTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const vote = useCallback(async (enemyId: string, rating: Rating) => {
+    if (votes[enemyId] === rating) return;
     setStatus((s) => ({ ...s, [enemyId]: "loading" }));
     const prevVote = votes[enemyId];
 

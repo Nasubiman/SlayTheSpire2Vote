@@ -106,6 +106,7 @@ export default function PollPage() {
   const vote = useCallback(
     async (cardId: string, rating: Rating) => {
       if (!pollDocId) return;
+      if (votes[cardId] === rating) return;
       setStatus((s) => ({ ...s, [cardId]: "loading" }));
 
       const prevVote = votes[cardId];

@@ -74,6 +74,7 @@ export default function RelicsPage() {
   }, []);
 
   const vote = useCallback(async (relicId: string, rating: Rating) => {
+    if (votes[relicId] === rating) return;
     setStatus((s) => ({ ...s, [relicId]: "loading" }));
 
     const prevVote = votes[relicId];
