@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAdminDb } from "@/lib/firebase-admin";
 import { CHARACTERS, RATINGS, type Poll } from "@/lib/types";
 import { getCardsByCharacter, getCardImageUrl } from "@/lib/cards";
+import { getAllRelics, getRelicImageUrl } from "@/lib/relics";
 
 export const dynamic = "force-dynamic";
 
@@ -107,8 +108,41 @@ async function getPollsAndTopCards(): Promise<Record<string, CharEntry>> {
   }
 }
 
+type RelicEntry = { topRelicName: string | null; topRelicResult: Record<string, number> | null; totalVotes: number };
+
+async function getTopRelic(): Promise<RelicEntry> {
+  try {
+    const db = getAdminDb();
+    const snap = await db.collection("polls").doc("relics").get();
+    const scores = (snap.data()?.scores ?? {}) as Record<string, Record<string, number>>;
+
+    const relics = getAllRelics().filter((r) => !!getRelicImageUrl(r));
+    const totalVotes = Object.values(scores).reduce(
+      (sum, r) => sum + (r.a ?? 0) + (r.b ?? 0) + (r.c ?? 0) + (r.d ?? 0) + (r.e ?? 0),
+      0
+    );
+
+    let topRelic = null;
+    let topScore = -1;
+    for (const relic of relics) {
+      const r = scores[relic.id];
+      if (!r) continue;
+      const score = weightedScore(r);
+      if (score > topScore) { topScore = score; topRelic = relic; }
+    }
+
+    return {
+      topRelicName: topRelic?.name ?? null,
+      topRelicResult: topRelic ? (scores[topRelic.id] ?? null) : null,
+      totalVotes,
+    };
+  } catch {
+    return { topRelicName: null, topRelicResult: null, totalVotes: 0 };
+  }
+}
+
 export default async function HomePage() {
-  const data = await getPollsAndTopCards();
+  const [data, relicEntry] = await Promise.all([getPollsAndTopCards(), getTopRelic()]);
 
   return (
     <main className="min-h-screen bg-gray-950 text-white">
@@ -184,7 +218,30 @@ export default async function HomePage() {
           >
             <p className="font-bold text-lg">全レリック</p>
             <p className="text-xs text-gray-300 mt-1 leading-relaxed">全キャラクター共通・固有レリックの強さ評価。</p>
-            <div className="flex items-center justify-end mt-3">
+
+            {relicEntry.topRelicName && relicEntry.topRelicResult && (() => {
+              const r = relicEntry.topRelicResult;
+              const total = (r.a||0)+(r.b||0)+(r.c||0)+(r.d||0)+(r.e||0);
+              return (
+                <div className="mt-3 bg-black/20 rounded-lg px-3 py-2">
+                  <p className="text-xs text-gray-400 mb-1">現在1位</p>
+                  <p className="text-sm font-semibold truncate">{relicEntry.topRelicName}</p>
+                  {total > 0 && (
+                    <div className="flex gap-0.5 h-1.5 mt-1.5">
+                      {RATINGS.map((rt) => {
+                        const pct = ((r[rt.value] || 0) / total) * 100;
+                        return pct > 0 ? (
+                          <div key={rt.value} className={`${rt.color.split(" ")[0]} rounded-sm`} style={{ width: `${pct}%` }} />
+                        ) : null;
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+
+            <div className="flex items-center justify-between mt-3">
+              <span className="text-xs text-gray-400">{relicEntry.totalVotes.toLocaleString()}票</span>
               <span className="text-xs text-gray-300">投票する →</span>
             </div>
           </Link>
