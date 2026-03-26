@@ -76,8 +76,7 @@ export default function EnemiesPage() {
         return a.name.localeCompare(b.name, "ja");
       });
     setSortedEnemies(filtered);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enemies, areaFilter, typeFilter, sortBy, sortTrigger]);
+  }, [enemies, areaFilter, typeFilter, sortBy, sortTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const vote = useCallback(async (enemyId: string, rating: Rating) => {
     setStatus((s) => ({ ...s, [enemyId]: "loading" }));
@@ -130,7 +129,7 @@ export default function EnemiesPage() {
             ← トップに戻る
           </Link>
           <div className="mt-3">
-            <h1 className="text-2xl font-bold">全敵キャラ 評価ランキング</h1>
+            <h1 className="text-2xl font-bold">全敵キャラ 強さランキング</h1>
             <p className="text-gray-400 text-sm mt-1">{votedCount}/{enemies.length} 投票済み</p>
           </div>
         </div>
@@ -191,6 +190,7 @@ export default function EnemiesPage() {
                 }`}
               >
                 {imgUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={imgUrl}
                     alt={enemy.name}

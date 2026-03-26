@@ -289,7 +289,7 @@ export default async function HomePage() {
             className="inline-flex bg-gradient-to-b from-red-950/60 to-gray-900 rounded-xl p-4 border border-red-800 hover:border-red-600 transition-all hover:scale-[1.02] flex-col w-full sm:w-56"
           >
             <p className="font-bold text-lg">全敵キャラ</p>
-            <p className="text-xs text-gray-300 mt-1 leading-relaxed">通常・エリート・ボス敵の強さ評価。</p>
+            <p className="text-xs text-gray-300 mt-1 leading-relaxed">通常・エリート・ボス敵の強さランキング。</p>
 
             {enemyEntry.topName && enemyEntry.topResult && (() => {
               const r = enemyEntry.topResult;
