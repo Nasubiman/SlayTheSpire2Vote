@@ -31,6 +31,7 @@ export default function PollPage() {
   const resultsRef = useRef<ResultsState>({});
   const initialResultsLoaded = useRef(false);
   const [sortTrigger, setSortTrigger] = useState(0);
+  const [listReady, setListReady] = useState(false);
 
   // Firestoreからpoll取得（直接IDまたはcharacterIdでフォールバック）
   useEffect(() => {
@@ -106,6 +107,7 @@ export default function PollPage() {
         return a.name.localeCompare(b.name, "ja");
       });
     setSortedCards(sorted);
+    setListReady(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cards, filter, rarityFilter, sortBy, sortTrigger]);
 
@@ -212,6 +214,22 @@ export default function PollPage() {
         </div>
 
         {/* カードグリッド */}
+        {!listReady ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="rounded-lg overflow-hidden border border-gray-700 bg-gray-900 animate-pulse">
+                <div className="aspect-[400/560] bg-gray-800" />
+                <div className="p-3">
+                  <div className="flex gap-1.5">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <div key={j} className="flex-1 h-8 bg-gray-800 rounded" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           {sortedCards.map((card, index) => {
             const voted = votes[card.id];
@@ -321,6 +339,7 @@ export default function PollPage() {
             );
           })}
         </div>
+        )}
       </div>
     </main>
   );
