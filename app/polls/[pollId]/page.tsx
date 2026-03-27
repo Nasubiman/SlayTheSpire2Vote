@@ -19,7 +19,7 @@ export default function PollPage() {
   const { pollId } = useParams<{ pollId: string }>();
   const [poll, setPoll] = useState<Poll | null>(null);
   const [pollDocId, setPollDocId] = useState<string | null>(null);
-  const [cards, setCards] = useState<Card[]>([]);
+  const [cards, setCards] = useState<Card[]>(() => getCardsByCharacter(pollId));
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
@@ -121,31 +121,6 @@ export default function PollPage() {
     );
   }
 
-  if (!poll) {
-    return (
-      <main className="min-h-screen bg-gray-950 text-white">
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <div className="h-5 w-24 bg-gray-800 rounded mb-6 animate-pulse" />
-          <div className="h-8 w-48 bg-gray-800 rounded mb-8 animate-pulse" />
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <div key={i} className="rounded-lg overflow-hidden border border-gray-700 bg-gray-900 animate-pulse">
-                <div className="aspect-[400/560] bg-gray-800" />
-                <div className="p-3">
-                  <div className="flex gap-1.5">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <div key={j} className="flex-1 h-8 bg-gray-800 rounded" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </main>
-    );
-  }
-
   return (
     <main className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -154,14 +129,21 @@ export default function PollPage() {
           <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
             ← トップに戻る
           </Link>
-          <div className="flex items-center justify-between mt-3">
-            <div>
-              <h1 className="text-2xl font-bold">{poll.title}</h1>
-              <p className="text-gray-400 text-sm mt-1">
-                {poll.characterName} · {votedCount}/{cards.length} 投票済み
-              </p>
-            </div>
-            </div>
+          <div className="mt-3">
+            {!poll ? (
+              <>
+                <div className="h-8 w-48 bg-gray-800 rounded animate-pulse" />
+                <div className="h-4 w-32 bg-gray-800 rounded animate-pulse mt-1" />
+              </>
+            ) : (
+              <>
+                <h1 className="text-2xl font-bold">{poll.title}</h1>
+                <p className="text-gray-400 text-sm mt-1">
+                  {poll.characterName} · {votedCount}/{cards.length} 投票済み
+                </p>
+              </>
+            )}
+          </div>
         </div>
 
         {/* フィルタータブ */}
@@ -320,7 +302,7 @@ export default function PollPage() {
                   })()}
                   {voted && (() => {
                     const ratingLabel = RATINGS.find((r) => r.value === voted)?.label ?? voted;
-                    const text = `【スレスパ2】${poll.characterName} / ${card.name} を ${ratingLabel} ランクと評価しました！ #スレスパ2 #STS2\nhttps://slaythespire2vote.vercel.app/polls/${pollId}`;
+                    const text = `【スレスパ2】${poll?.characterName ?? ""} / ${card.name} を ${ratingLabel} ランクと評価しました！ #スレスパ2 #STS2\nhttps://slaythespire2vote.vercel.app/polls/${pollId}`;
                     const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
                     return (
                       <a
