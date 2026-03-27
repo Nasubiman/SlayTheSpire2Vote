@@ -70,14 +70,19 @@ export default function PollPage() {
   // 結果をリアルタイムで購読（pollIdで即座に開始し、fetchPollと並列化）
   useEffect(() => {
     const targetId = pollDocId ?? pollId;
-    const unsub = onSnapshot(doc(db, "polls", targetId), (snap) => {
-      const scores = (snap.data()?.scores ?? {}) as ResultsState;
-      setResults(scores);
-      if (!initialResultsLoaded.current) {
-        initialResultsLoaded.current = true;
-        setSortTrigger((t) => t + 1);
+    const unsub = onSnapshot(
+      doc(db, "polls", targetId),
+      { includeMetadataChanges: true },
+      (snap) => {
+        if (snap.metadata.fromCache) return; // キャッシュは無視してサーバーデータを待つ
+        const scores = (snap.data()?.scores ?? {}) as ResultsState;
+        setResults(scores);
+        if (!initialResultsLoaded.current) {
+          initialResultsLoaded.current = true;
+          setSortTrigger((t) => t + 1);
+        }
       }
-    });
+    );
     return () => unsub();
   }, [pollDocId, pollId]);
 
