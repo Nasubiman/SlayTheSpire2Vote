@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
 import { DndContext, PointerSensor, useSensor, useSensors, useDraggable, type DragEndEvent } from "@dnd-kit/core";
-import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
+import { type Tier, useTierEditor } from "./useTierEditor";
 import { TierRow } from "./TierRow";
 import { TierShareButton } from "./TierShareButton";
 
@@ -22,7 +22,7 @@ export type EnemyItem = {
 export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
   const [areaFilter, setAreaFilter] = useState<(typeof AREAS)[number]>("全て");
   const [typeFilter, setTypeFilter] = useState<(typeof TYPES)[number]>("全て");
-  const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_enemies");
+  const { isEditing, setIsEditing, tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_enemies");
   const tierGridRef = useRef<HTMLDivElement>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -34,17 +34,19 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
     return true;
   });
 
-  const grouped: Record<Tier | "unrated", EnemyItem[]> = { S: [], A: [], B: [], C: [], D: [], unrated: [] };
+  const grouped: Record<string, EnemyItem[]> = {};
+  for (const tier of [...tiers, "unrated"]) grouped[tier] = [];
   for (const enemy of filtered) {
-    grouped[getEffectiveTier(enemy.id, enemy.tier)].push(enemy);
+    const t = getEffectiveTier(enemy.id, enemy.tier);
+    (grouped[t] ?? grouped["unrated"]).push(enemy);
   }
 
   const handleDragEnd = (e: DragEndEvent) => {
-    if (e.over) moveItem(String(e.active.id), e.over.id as Tier | "unrated");
+    if (e.over) moveItem(String(e.active.id), String(e.over.id));
     setSelectedId(null);
   };
 
-  const handleTapDrop = (tier: Tier | "unrated", id: string) => {
+  const handleTapDrop = (tier: string, id: string) => {
     moveItem(id, tier);
     setSelectedId(null);
   };
@@ -77,9 +79,14 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
             {isEditing ? "編集完了" : "編集"}
           </button>
           {isEditing && (
-            <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
-              リセット
-            </button>
+            <>
+              <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
+                + Tier追加
+              </button>
+              <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+                リセット
+              </button>
+            </>
           )}
           <TierShareButton targetRef={tierGridRef} filename="slay2-enemy-tier.png" title="スレスパ2 敵キャラTier表" />
         </div>
@@ -89,12 +96,13 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
         )}
 
         <div ref={tierGridRef} className="space-y-2">
-          {TIERS.map((tier) => (
-            <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
+          {tiers.map((tier, index) => (
+            <TierRow key={tier} tier={tier} tierIndex={index} label={tierLabels[tier] ?? tier} isEditing={isEditing}
               onLabelChange={(label) => updateLabel(tier, label)}
+              onRemove={() => removeTier(tier)}
               selectedId={selectedId} onTapDrop={(id) => handleTapDrop(tier, id)}
-              isEmpty={grouped[tier].length === 0}>
-              {grouped[tier].map((enemy) => (
+              isEmpty={(grouped[tier] ?? []).length === 0}>
+              {(grouped[tier] ?? []).map((enemy) => (
                 <DraggableItem key={enemy.id} id={enemy.id} name={enemy.name} imgUrl={enemy.imgUrl}
                   isEditing={isEditing}
                   isSelected={selectedId === enemy.id}
@@ -104,8 +112,8 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
           ))}
           <TierRow tier="unrated" label="未評価" isEditing={isEditing}
             selectedId={selectedId} onTapDrop={(id) => handleTapDrop("unrated", id)}
-            isEmpty={grouped.unrated.length === 0}>
-            {grouped.unrated.map((enemy) => (
+            isEmpty={(grouped["unrated"] ?? []).length === 0}>
+            {(grouped["unrated"] ?? []).map((enemy) => (
               <DraggableItem key={enemy.id} id={enemy.id} name={enemy.name} imgUrl={enemy.imgUrl}
                 isEditing={isEditing} muted
                 isSelected={selectedId === enemy.id}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import { DndContext, PointerSensor, useSensor, useSensors, type DragEndEvent } from "@dnd-kit/core";
 import { useDraggable } from "@dnd-kit/core";
-import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
+import { type Tier, useTierEditor } from "./useTierEditor";
 import { TierRow } from "./TierRow";
 import { TierShareButton } from "./TierShareButton";
 
@@ -23,7 +23,7 @@ export type CardItem = {
 export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storageKey: string }) {
   const [typeFilter, setTypeFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
-  const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor(storageKey);
+  const { isEditing, setIsEditing, tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor(storageKey);
   const tierGridRef = useRef<HTMLDivElement>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -35,19 +35,19 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
     return true;
   });
 
-  const grouped: Record<Tier | "unrated", CardItem[]> = { S: [], A: [], B: [], C: [], D: [], unrated: [] };
+  const grouped: Record<string, CardItem[]> = {};
+  for (const tier of [...tiers, "unrated"]) grouped[tier] = [];
   for (const card of filtered) {
-    grouped[getEffectiveTier(card.id, card.tier)].push(card);
+    const t = getEffectiveTier(card.id, card.tier);
+    (grouped[t] ?? (grouped["unrated"])).push(card);
   }
 
   const handleDragEnd = (e: DragEndEvent) => {
-    if (e.over) {
-      moveItem(String(e.active.id), e.over.id as Tier | "unrated");
-    }
+    if (e.over) moveItem(String(e.active.id), String(e.over.id));
     setSelectedId(null);
   };
 
-  const handleTapDrop = (tier: Tier | "unrated", id: string) => {
+  const handleTapDrop = (tier: string, id: string) => {
     moveItem(id, tier);
     setSelectedId(null);
   };
@@ -82,9 +82,14 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
             {isEditing ? "編集完了" : "編集"}
           </button>
           {isEditing && (
-            <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
-              リセット
-            </button>
+            <>
+              <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
+                + Tier追加
+              </button>
+              <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+                リセット
+              </button>
+            </>
           )}
           <TierShareButton targetRef={tierGridRef} filename="slay2-card-tier.png" title="スレスパ2 カードTier表" />
         </div>
@@ -95,13 +100,14 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
 
         {/* Tier表 */}
         <div ref={tierGridRef} className="space-y-2">
-          {TIERS.map((tier) => (
-            <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
+          {tiers.map((tier, index) => (
+            <TierRow key={tier} tier={tier} tierIndex={index} label={tierLabels[tier] ?? tier} isEditing={isEditing}
               onLabelChange={(label) => updateLabel(tier, label)}
+              onRemove={() => removeTier(tier)}
               selectedId={selectedId}
               onTapDrop={(id) => handleTapDrop(tier, id)}
-              isEmpty={grouped[tier].length === 0}>
-              {grouped[tier].map((card) => (
+              isEmpty={(grouped[tier] ?? []).length === 0}>
+              {(grouped[tier] ?? []).map((card) => (
                 <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl}
                   isEditing={isEditing} imgHeight={78}
                   isSelected={selectedId === card.id}
@@ -112,8 +118,8 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
           <TierRow tier="unrated" label="未評価" isEditing={isEditing}
             selectedId={selectedId}
             onTapDrop={(id) => handleTapDrop("unrated", id)}
-            isEmpty={grouped.unrated.length === 0}>
-            {grouped.unrated.map((card) => (
+            isEmpty={(grouped["unrated"] ?? []).length === 0}>
+            {(grouped["unrated"] ?? []).map((card) => (
               <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl}
                 isEditing={isEditing} imgHeight={78} muted
                 isSelected={selectedId === card.id}

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
 import { DndContext, PointerSensor, useSensor, useSensors, useDraggable, type DragEndEvent } from "@dnd-kit/core";
-import { TIERS, type Tier, useTierEditor } from "./useTierEditor";
+import { type Tier, useTierEditor } from "./useTierEditor";
 import { TierRow } from "./TierRow";
 import { TierShareButton } from "./TierShareButton";
 
@@ -26,7 +26,7 @@ export type RelicItem = {
 export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const [charFilter, setCharFilter] = useState<(typeof CHARACTERS)[number]>("全て");
-  const { isEditing, setIsEditing, tierLabels, updateLabel, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_relics");
+  const { isEditing, setIsEditing, tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_relics");
   const tierGridRef = useRef<HTMLDivElement>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -38,17 +38,19 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
     return true;
   });
 
-  const grouped: Record<Tier | "unrated", RelicItem[]> = { S: [], A: [], B: [], C: [], D: [], unrated: [] };
+  const grouped: Record<string, RelicItem[]> = {};
+  for (const tier of [...tiers, "unrated"]) grouped[tier] = [];
   for (const relic of filtered) {
-    grouped[getEffectiveTier(relic.id, relic.tier)].push(relic);
+    const t = getEffectiveTier(relic.id, relic.tier);
+    (grouped[t] ?? grouped["unrated"]).push(relic);
   }
 
   const handleDragEnd = (e: DragEndEvent) => {
-    if (e.over) moveItem(String(e.active.id), e.over.id as Tier | "unrated");
+    if (e.over) moveItem(String(e.active.id), String(e.over.id));
     setSelectedId(null);
   };
 
-  const handleTapDrop = (tier: Tier | "unrated", id: string) => {
+  const handleTapDrop = (tier: string, id: string) => {
     moveItem(id, tier);
     setSelectedId(null);
   };
@@ -81,9 +83,14 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
             {isEditing ? "編集完了" : "編集"}
           </button>
           {isEditing && (
-            <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
-              リセット
-            </button>
+            <>
+              <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
+                + Tier追加
+              </button>
+              <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+                リセット
+              </button>
+            </>
           )}
           <TierShareButton targetRef={tierGridRef} filename="slay2-relic-tier.png" title="スレスパ2 レリックTier表" />
         </div>
@@ -93,12 +100,13 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
         )}
 
         <div ref={tierGridRef} className="space-y-2">
-          {TIERS.map((tier) => (
-            <TierRow key={tier} tier={tier} label={tierLabels[tier]} isEditing={isEditing}
+          {tiers.map((tier, index) => (
+            <TierRow key={tier} tier={tier} tierIndex={index} label={tierLabels[tier] ?? tier} isEditing={isEditing}
               onLabelChange={(label) => updateLabel(tier, label)}
+              onRemove={() => removeTier(tier)}
               selectedId={selectedId} onTapDrop={(id) => handleTapDrop(tier, id)}
-              isEmpty={grouped[tier].length === 0} mobileColumns={5}>
-              {grouped[tier].map((relic) => (
+              isEmpty={(grouped[tier] ?? []).length === 0} mobileColumns={5}>
+              {(grouped[tier] ?? []).map((relic) => (
                 <DraggableItem key={relic.id} id={relic.id} name={relic.name} imgUrl={relic.imgUrl}
                   isEditing={isEditing}
                   isSelected={selectedId === relic.id}
@@ -108,8 +116,8 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
           ))}
           <TierRow tier="unrated" label="未評価" isEditing={isEditing}
             selectedId={selectedId} onTapDrop={(id) => handleTapDrop("unrated", id)}
-            isEmpty={grouped.unrated.length === 0} mobileColumns={5}>
-            {grouped.unrated.map((relic) => (
+            isEmpty={(grouped["unrated"] ?? []).length === 0} mobileColumns={5}>
+            {(grouped["unrated"] ?? []).map((relic) => (
               <DraggableItem key={relic.id} id={relic.id} name={relic.name} imgUrl={relic.imgUrl}
                 isEditing={isEditing} muted
                 isSelected={selectedId === relic.id}
