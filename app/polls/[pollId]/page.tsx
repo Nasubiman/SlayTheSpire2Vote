@@ -67,10 +67,10 @@ export default function PollPage() {
     fetchPoll();
   }, [pollId]);
 
-  // 結果をリアルタイムで購読
+  // 結果をリアルタイムで購読（pollIdで即座に開始し、fetchPollと並列化）
   useEffect(() => {
-    if (!pollDocId) return;
-    const unsub = onSnapshot(doc(db, "polls", pollDocId), (snap) => {
+    const targetId = pollDocId ?? pollId;
+    const unsub = onSnapshot(doc(db, "polls", targetId), (snap) => {
       const scores = (snap.data()?.scores ?? {}) as ResultsState;
       setResults(scores);
       if (!initialResultsLoaded.current) {
@@ -79,7 +79,7 @@ export default function PollPage() {
       }
     });
     return () => unsub();
-  }, [pollDocId]);
+  }, [pollDocId, pollId]);
 
   const EXCLUDED_CARDS = ["ストライク", "防御"];
 
@@ -107,7 +107,7 @@ export default function PollPage() {
         return a.name.localeCompare(b.name, "ja");
       });
     setSortedCards(sorted);
-    setListReady(true);
+    if (sortTrigger > 0) setListReady(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cards, filter, rarityFilter, sortBy, sortTrigger]);
 
@@ -239,7 +239,7 @@ export default function PollPage() {
                       height={560}
                       sizes="(max-width: 1024px) 50vw, 33vw"
                       className="w-full h-auto object-contain"
-                      priority={index < 4}
+                      priority={index < 6}
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                     {hasUpgraded && (
