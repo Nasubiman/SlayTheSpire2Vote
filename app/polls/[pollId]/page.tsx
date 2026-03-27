@@ -22,7 +22,7 @@ export default function PollPage() {
   const [cards, setCards] = useState<Card[]>(() => getCardsByCharacter(pollId));
   const [filter, setFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
-  const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
+  const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name" | null>(null);
   const { votes, status, vote } = useVote(pollDocId);
   const [notFound, setNotFound] = useState(false);
   const [upgradedCards, setUpgradedCards] = useState<Record<string, boolean>>({});
@@ -109,7 +109,8 @@ export default function PollPage() {
       .sort((a, b) => {
         if (sortBy === "score_desc") return weightedScore(r[b.id]) - weightedScore(r[a.id]);
         if (sortBy === "score_asc") return weightedScore(r[a.id]) - weightedScore(r[b.id]);
-        return a.name.localeCompare(b.name, "ja");
+        if (sortBy === "name") return a.name.localeCompare(b.name, "ja");
+        return 0;
       });
     setSortedCards(sorted);
     if (sortTrigger > 0) setListReady(true);
