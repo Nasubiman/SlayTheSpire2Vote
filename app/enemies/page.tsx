@@ -20,7 +20,7 @@ export default function EnemiesPage() {
   const [enemies] = useState<Enemy[]>(() => getAllEnemies().filter((e) => !!getEnemyImageUrl(e)));
   const [areaFilter, setAreaFilter] = useState<(typeof AREAS)[number]>("全て");
   const [typeFilter, setTypeFilter] = useState<(typeof TYPES)[number]>("全て");
-  const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name">("score_desc");
+  const [sortBy, setSortBy] = useState<"score_desc" | "score_asc" | "name" | null>(null);
   const { votes, status, vote } = useVote(POLL_ID);
   const [results, setResults] = useState<ResultsState>({});
   const [sortedEnemies, setSortedEnemies] = useState<Enemy[]>([]);
@@ -31,7 +31,8 @@ export default function EnemiesPage() {
 
   // 結果をリアルタイムで購読
   useEffect(() => {
-    const unsub = onSnapshot(doc(db, "polls", POLL_ID), (snap) => {
+    const unsub = onSnapshot(doc(db, "polls", POLL_ID), { includeMetadataChanges: true }, (snap) => {
+      if (snap.metadata.fromCache) return;
       const scores = (snap.data()?.scores ?? {}) as ResultsState;
       setResults(scores);
       if (!initialResultsLoaded.current) {
@@ -59,10 +60,11 @@ export default function EnemiesPage() {
       .sort((a, b) => {
         if (sortBy === "score_desc") return weightedScore(r[b.id]) - weightedScore(r[a.id]);
         if (sortBy === "score_asc") return weightedScore(r[a.id]) - weightedScore(r[b.id]);
-        return a.name.localeCompare(b.name, "ja");
+        if (sortBy === "name") return a.name.localeCompare(b.name, "ja");
+        return 0;
       });
     setSortedEnemies(filtered);
-    setListReady(true);
+    if (sortTrigger > 0) setListReady(true);
   }, [enemies, areaFilter, typeFilter, sortBy, sortTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const votedCount = Object.keys(votes).length;
@@ -160,7 +162,7 @@ export default function EnemiesPage() {
                     height={400}
                     sizes="(max-width: 1024px) 50vw, 33vw"
                     className="w-full h-auto object-contain bg-gray-800"
-                    priority={index < 4}
+                    priority={index < 6}
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                   />
                 )}
