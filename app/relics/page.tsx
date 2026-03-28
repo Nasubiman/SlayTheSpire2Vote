@@ -78,7 +78,7 @@ export default function RelicsPage() {
         return 0;
       });
     setSortedRelics(filtered);
-    if (sortTrigger > 0) setListReady(true);
+    setListReady(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [relics, rarityFilter, charFilter, sortBy, sortTrigger]);
 
@@ -192,6 +192,7 @@ export default function RelicsPage() {
                       sizes="(max-width: 1024px) 50vw, 33vw"
                       className="w-full h-auto object-contain"
                       priority={index < 6}
+                      fetchPriority={index < 6 ? "high" : "low"}
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                   </div>

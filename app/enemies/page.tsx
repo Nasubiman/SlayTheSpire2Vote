@@ -64,7 +64,7 @@ export default function EnemiesPage() {
         return 0;
       });
     setSortedEnemies(filtered);
-    if (sortTrigger > 0) setListReady(true);
+    setListReady(true);
   }, [enemies, areaFilter, typeFilter, sortBy, sortTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const votedCount = Object.keys(votes).length;
@@ -163,6 +163,7 @@ export default function EnemiesPage() {
                     sizes="(max-width: 1024px) 50vw, 33vw"
                     className="w-full h-auto object-contain bg-gray-800"
                     priority={index < 6}
+                    fetchPriority={index < 6 ? "high" : "low"}
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                   />
                 )}

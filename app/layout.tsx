@@ -48,7 +48,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <link rel="preconnect" href="https://firestore.googleapis.com" />
+        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://aoessbyed5xnzfiq.public.blob.vercel-storage.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
