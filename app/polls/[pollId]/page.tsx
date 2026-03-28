@@ -240,7 +240,7 @@ export default function PollPage() {
                   <div className="relative">
                     <Image
                       src={imgUrl}
-                      alt={card.name}
+                      alt={`スレスパ2 ${card.characterName}の${card.type}カード「${card.name}」${isUpgraded ? "（強化後）" : ""}`}
                       width={400}
                       height={560}
                       sizes="(max-width: 1024px) 50vw, 33vw"

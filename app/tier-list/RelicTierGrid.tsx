@@ -107,7 +107,8 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
               selectedId={selectedId} onTapDrop={(id) => handleTapDrop(tier, id)}
               isEmpty={(grouped[tier] ?? []).length === 0} mobileColumns={5}>
               {(grouped[tier] ?? []).map((relic) => (
-                <DraggableItem key={relic.id} id={relic.id} name={relic.name} imgUrl={relic.imgUrl}
+                <DraggableItem key={relic.id} id={relic.id} imgUrl={relic.imgUrl}
+                  alt={`スレスパ2 ${relic.rarity}レリック「${relic.name}」`}
                   isEditing={isEditing}
                   isSelected={selectedId === relic.id}
                   onSelect={() => setSelectedId(selectedId === relic.id ? null : relic.id)} />
@@ -118,7 +119,8 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
             selectedId={selectedId} onTapDrop={(id) => handleTapDrop("unrated", id)}
             isEmpty={(grouped["unrated"] ?? []).length === 0} mobileColumns={5}>
             {(grouped["unrated"] ?? []).map((relic) => (
-              <DraggableItem key={relic.id} id={relic.id} name={relic.name} imgUrl={relic.imgUrl}
+              <DraggableItem key={relic.id} id={relic.id} imgUrl={relic.imgUrl}
+                alt={`スレスパ2 ${relic.rarity}レリック「${relic.name}」`}
                 isEditing={isEditing} muted
                 isSelected={selectedId === relic.id}
                 onSelect={() => setSelectedId(selectedId === relic.id ? null : relic.id)} />
@@ -135,8 +137,8 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
   );
 }
 
-function DraggableItem({ id, name, imgUrl, isEditing, muted, isSelected, onSelect }: {
-  id: string; name: string; imgUrl: string; isEditing: boolean;
+function DraggableItem({ id, imgUrl, alt, isEditing, muted, isSelected, onSelect }: {
+  id: string; imgUrl: string; alt: string; isEditing: boolean;
   muted?: boolean; isSelected?: boolean; onSelect?: () => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id, disabled: !isEditing });
@@ -152,7 +154,7 @@ function DraggableItem({ id, name, imgUrl, isEditing, muted, isSelected, onSelec
         ${muted && !isSelected ? "opacity-50" : ""}
         ${isSelected ? "ring-2 ring-yellow-400 rounded scale-110" : ""}
       `}>
-      <Image src={imgUrl} alt={name} width={56} height={56} className="w-full h-auto object-contain rounded pointer-events-none" />
+      <Image src={imgUrl} alt={alt} width={56} height={56} className="w-full h-auto object-contain rounded pointer-events-none" />
     </div>
   );
 }

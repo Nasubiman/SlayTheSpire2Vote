@@ -103,7 +103,8 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
               selectedId={selectedId} onTapDrop={(id) => handleTapDrop(tier, id)}
               isEmpty={(grouped[tier] ?? []).length === 0}>
               {(grouped[tier] ?? []).map((enemy) => (
-                <DraggableItem key={enemy.id} id={enemy.id} name={enemy.name} imgUrl={enemy.imgUrl}
+                <DraggableItem key={enemy.id} id={enemy.id} imgUrl={enemy.imgUrl}
+                  alt={`スレスパ2 ${enemy.area}の${enemy.type}「${enemy.name}」`}
                   isEditing={isEditing}
                   isSelected={selectedId === enemy.id}
                   onSelect={() => setSelectedId(selectedId === enemy.id ? null : enemy.id)} />
@@ -114,7 +115,8 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
             selectedId={selectedId} onTapDrop={(id) => handleTapDrop("unrated", id)}
             isEmpty={(grouped["unrated"] ?? []).length === 0}>
             {(grouped["unrated"] ?? []).map((enemy) => (
-              <DraggableItem key={enemy.id} id={enemy.id} name={enemy.name} imgUrl={enemy.imgUrl}
+              <DraggableItem key={enemy.id} id={enemy.id} imgUrl={enemy.imgUrl}
+                alt={`スレスパ2 ${enemy.area}の${enemy.type}「${enemy.name}」`}
                 isEditing={isEditing} muted
                 isSelected={selectedId === enemy.id}
                 onSelect={() => setSelectedId(selectedId === enemy.id ? null : enemy.id)} />
@@ -131,8 +133,8 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
   );
 }
 
-function DraggableItem({ id, name, imgUrl, isEditing, muted, isSelected, onSelect }: {
-  id: string; name: string; imgUrl: string; isEditing: boolean;
+function DraggableItem({ id, imgUrl, alt, isEditing, muted, isSelected, onSelect }: {
+  id: string; imgUrl: string; alt: string; isEditing: boolean;
   muted?: boolean; isSelected?: boolean; onSelect?: () => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id, disabled: !isEditing });
@@ -148,7 +150,7 @@ function DraggableItem({ id, name, imgUrl, isEditing, muted, isSelected, onSelec
         ${muted && !isSelected ? "opacity-50" : ""}
         ${isSelected ? "ring-2 ring-yellow-400 rounded scale-110" : ""}
       `}>
-      <Image src={imgUrl} alt={name} width={56} height={56} className="w-full h-auto object-contain rounded bg-gray-800 pointer-events-none" />
+      <Image src={imgUrl} alt={alt} width={56} height={56} className="w-full h-auto object-contain rounded bg-gray-800 pointer-events-none" />
     </div>
   );
 }

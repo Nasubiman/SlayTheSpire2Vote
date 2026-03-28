@@ -186,7 +186,7 @@ export default function RelicsPage() {
                   <div className="relative">
                     <Image
                       src={imgUrl}
-                      alt={relic.name}
+                      alt={`スレスパ2 ${relic.rarity}レリック「${relic.name}」`}
                       width={160}
                       height={160}
                       sizes="(max-width: 1024px) 50vw, 33vw"

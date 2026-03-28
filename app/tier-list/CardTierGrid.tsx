@@ -109,6 +109,7 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
               isEmpty={(grouped[tier] ?? []).length === 0}>
               {(grouped[tier] ?? []).map((card) => (
                 <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl}
+                  alt={`スレスパ2 ${card.type}カード「${card.name}」`}
                   isEditing={isEditing} imgHeight={78}
                   isSelected={selectedId === card.id}
                   onSelect={() => setSelectedId(selectedId === card.id ? null : card.id)} />
@@ -121,6 +122,7 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
             isEmpty={(grouped["unrated"] ?? []).length === 0}>
             {(grouped["unrated"] ?? []).map((card) => (
               <DraggableItem key={card.id} id={card.id} name={card.name} imgUrl={card.imgUrl}
+                alt={`スレスパ2 ${card.type}カード「${card.name}」`}
                 isEditing={isEditing} imgHeight={78} muted
                 isSelected={selectedId === card.id}
                 onSelect={() => setSelectedId(selectedId === card.id ? null : card.id)} />
@@ -137,8 +139,8 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
   );
 }
 
-function DraggableItem({ id, name, imgUrl, isEditing, imgHeight, muted, isSelected, onSelect }: {
-  id: string; name: string; imgUrl: string; isEditing: boolean; imgHeight: number;
+function DraggableItem({ id, imgUrl, alt, isEditing, imgHeight, muted, isSelected, onSelect }: {
+  id: string; name: string; imgUrl: string; alt: string; isEditing: boolean; imgHeight: number;
   muted?: boolean; isSelected?: boolean; onSelect?: () => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id, disabled: !isEditing });
@@ -154,7 +156,7 @@ function DraggableItem({ id, name, imgUrl, isEditing, imgHeight, muted, isSelect
         ${muted && !isSelected ? "opacity-50" : ""}
         ${isSelected ? "ring-2 ring-yellow-400 rounded scale-110" : ""}
       `}>
-      <Image src={imgUrl} alt={name} width={56} height={imgHeight} className="w-full h-auto object-contain rounded pointer-events-none" />
+      <Image src={imgUrl} alt={alt} width={56} height={imgHeight} className="w-full h-auto object-contain rounded pointer-events-none" />
     </div>
   );
 }

@@ -157,7 +157,7 @@ export default function EnemiesPage() {
                 {imgUrl && (
                   <Image
                     src={imgUrl}
-                    alt={enemy.name}
+                    alt={`スレスパ2 ${enemy.area}の${enemy.type}「${enemy.name}」`}
                     width={400}
                     height={400}
                     sizes="(max-width: 1024px) 50vw, 33vw"
