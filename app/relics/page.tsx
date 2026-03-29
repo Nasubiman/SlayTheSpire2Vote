@@ -155,8 +155,7 @@ export default function RelicsPage() {
             {Array.from({ length: 12 }).map((_, i) => (
               <div key={i} className="rounded-lg overflow-hidden border border-gray-700 bg-gray-900 animate-pulse">
                 <div className="aspect-square bg-gray-800" />
-                <div className="p-3 space-y-2">
-                  <div className="h-4 bg-gray-800 rounded w-3/4" />
+                <div className="p-3">
                   <div className="flex gap-1.5">
                     {Array.from({ length: 5 }).map((_, j) => (
                       <div key={j} className="flex-1 h-8 bg-gray-800 rounded" />
@@ -199,8 +198,6 @@ export default function RelicsPage() {
                 )}
 
                 <div className="p-3">
-                  <p className="text-sm font-semibold mb-2 truncate">{relic.name}</p>
-                  <p className="text-xs text-gray-500 mb-2">{relic.rarity}</p>
                   <div className="flex gap-1.5">
                     {RATINGS.map((r) => (
                       <button
