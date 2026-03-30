@@ -60,7 +60,8 @@ export function useVote(pollId: string | null) {
     async (itemId: string, rating: Rating) => {
       if (!pollId) return;
       const current = entries[itemId];
-      if (current?.rating === rating) return;
+      // 同日に同じ評価を押した場合のみスキップ（日をまたいだ場合は同じ評価でも再投票）
+      if (current?.rating === rating && isSameDayJST(current.votedAt)) return;
 
       // 当日内の変更 → prevRating を送って古い票を差し引く
       // 日をまたいだ / 初回 → prevRating なし（純粋加算）
