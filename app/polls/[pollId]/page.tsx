@@ -170,7 +170,9 @@ export default function PollPage() {
             ))}
           </div>
           <div className="flex gap-2 flex-wrap">
-            {RARITIES.map((r) => (
+            {RARITIES.filter((r) =>
+              pollId === "colorless" ? r !== "コモン" && r !== "スターター" : true
+            ).map((r) => (
               <button
                 key={r}
                 onClick={() => setRarityFilter(r)}
