@@ -46,9 +46,13 @@ export function useVote(pollId: string | null) {
     } catch { /* ignore */ }
   }, [pollId]);
 
-  // 外部インターフェースは Record<string, Rating> のまま維持
+  // 当日に投票したものだけUIに反映（日をまたいだ分はリセット表示）
   const votes = useMemo(
-    () => Object.fromEntries(Object.entries(entries).map(([k, v]) => [k, v.rating])),
+    () => Object.fromEntries(
+      Object.entries(entries)
+        .filter(([, v]) => isSameDayJST(v.votedAt))
+        .map(([k, v]) => [k, v.rating])
+    ),
     [entries]
   );
 
