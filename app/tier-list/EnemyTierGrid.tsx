@@ -22,7 +22,8 @@ export type EnemyItem = {
 export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
   const [areaFilter, setAreaFilter] = useState<(typeof AREAS)[number]>("全て");
   const [typeFilter, setTypeFilter] = useState<(typeof TYPES)[number]>("全て");
-  const { isEditing, setIsEditing, tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_enemies");
+  const { tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_enemies");
+  const isEditing = true;
   const tierGridRef = useRef<HTMLDivElement>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -74,20 +75,12 @@ export function EnemyTierGrid({ enemies }: { enemies: EnemyItem[] }) {
         </div>
 
         <div className="flex gap-2 mb-4 flex-wrap">
-          <button onClick={() => { setIsEditing((v) => !v); setSelectedId(null); }}
-            className={`px-4 py-1.5 rounded-full text-sm transition-colors ${isEditing ? "bg-white text-gray-900" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}>
-            {isEditing ? "編集完了" : "編集"}
+          <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
+            + Tier追加
           </button>
-          {isEditing && (
-            <>
-              <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
-                + Tier追加
-              </button>
-              <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
-                リセット
-              </button>
-            </>
-          )}
+          <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+            リセット
+          </button>
           <TierShareButton targetRef={tierGridRef} filename="slay2-enemy-tier.png" title="スレスパ2 敵キャラTier表" />
         </div>
 

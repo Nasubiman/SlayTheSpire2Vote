@@ -23,7 +23,8 @@ export type CardItem = {
 export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storageKey: string }) {
   const [typeFilter, setTypeFilter] = useState<(typeof CARD_TYPES)[number]>("全て");
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
-  const { isEditing, setIsEditing, tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor(storageKey);
+  const { tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor(storageKey);
+  const isEditing = true;
   const tierGridRef = useRef<HTMLDivElement>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -75,26 +76,17 @@ export function CardTierGrid({ cards, storageKey }: { cards: CardItem[]; storage
           </div>
         </div>
 
-        {/* 編集ボタン */}
         <div className="flex gap-2 mb-4 flex-wrap">
-          <button onClick={() => { setIsEditing((v) => !v); setSelectedId(null); }}
-            className={`px-4 py-1.5 rounded-full text-sm transition-colors ${isEditing ? "bg-white text-gray-900" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}>
-            {isEditing ? "編集完了" : "編集"}
+          <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
+            + Tier追加
           </button>
-          {isEditing && (
-            <>
-              <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
-                + Tier追加
-              </button>
-              <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
-                リセット
-              </button>
-            </>
-          )}
+          <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+            リセット
+          </button>
           <TierShareButton targetRef={tierGridRef} filename="slay2-card-tier.png" title="スレスパ2 カードTier表" />
         </div>
 
-        {isEditing && selectedId && (
+        {selectedId && (
           <p className="text-xs text-yellow-400 mb-2">移動先のTierをタップしてください</p>
         )}
 

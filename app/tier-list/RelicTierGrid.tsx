@@ -26,7 +26,8 @@ export type RelicItem = {
 export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
   const [rarityFilter, setRarityFilter] = useState<(typeof RARITIES)[number]>("全て");
   const [charFilter, setCharFilter] = useState<(typeof CHARACTERS)[number]>("全て");
-  const { isEditing, setIsEditing, tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_relics");
+  const { tiers, tierLabels, updateLabel, addTier, removeTier, moveItem, reset, getEffectiveTier } = useTierEditor("tier_overrides_relics");
+  const isEditing = true;
   const tierGridRef = useRef<HTMLDivElement>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -78,20 +79,12 @@ export function RelicTierGrid({ relics }: { relics: RelicItem[] }) {
         </div>
 
         <div className="flex gap-2 mb-4 flex-wrap">
-          <button onClick={() => { setIsEditing((v) => !v); setSelectedId(null); }}
-            className={`px-4 py-1.5 rounded-full text-sm transition-colors ${isEditing ? "bg-white text-gray-900" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}>
-            {isEditing ? "編集完了" : "編集"}
+          <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
+            + Tier追加
           </button>
-          {isEditing && (
-            <>
-              <button onClick={addTier} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-green-400 hover:bg-gray-700 transition-colors">
-                + Tier追加
-              </button>
-              <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
-                リセット
-              </button>
-            </>
-          )}
+          <button onClick={reset} className="px-4 py-1.5 rounded-full text-sm bg-gray-800 text-red-400 hover:bg-gray-700 transition-colors">
+            リセット
+          </button>
           <TierShareButton targetRef={tierGridRef} filename="slay2-relic-tier.png" title="スレスパ2 レリックTier表" />
         </div>
 
