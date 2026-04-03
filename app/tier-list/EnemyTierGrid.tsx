@@ -150,7 +150,7 @@ function DraggableItem({ id, imgUrl, alt, isEditing, muted, isSelected, onSelect
         ${muted && !isSelected ? "opacity-50" : ""}
         ${isSelected ? "ring-2 ring-yellow-400 rounded scale-110" : ""}
       `}>
-      <Image src={imgUrl} alt={alt} width={56} height={56} className="w-full h-auto object-contain rounded bg-gray-800 pointer-events-none" />
+      <Image src={imgUrl} alt={alt} width={56} height={56} className="w-full h-auto object-contain rounded bg-gray-800 pointer-events-none" unoptimized />
     </div>
   );
 }

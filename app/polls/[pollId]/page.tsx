@@ -247,8 +247,8 @@ export default function PollPage() {
                       height={560}
                       sizes="(max-width: 1024px) 50vw, 33vw"
                       className="w-full h-auto object-contain"
+                      unoptimized
                       priority={index < 6}
-                      fetchPriority={index < 6 ? "high" : "low"}
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                     {hasUpgraded && (
