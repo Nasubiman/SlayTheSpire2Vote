@@ -220,6 +220,22 @@ export default async function HomePage() {
           })}
         </div>
 
+        {/* キャラクター */}
+        <h2 className="text-lg font-semibold text-gray-300 mt-8 mb-3">キャラクター</h2>
+        <div>
+          <Link
+            href="/characters"
+            className="inline-flex bg-gradient-to-b from-violet-900/60 to-gray-900 rounded-xl p-4 border border-violet-700 hover:border-violet-500 transition-all hover:scale-[1.02] flex-col w-full sm:w-56"
+          >
+            <p className="font-bold text-lg">全キャラクター</p>
+            <p className="text-xs text-gray-300 mt-1 leading-relaxed">どのキャラが最強？プレイアブル5キャラの強さ評価。</p>
+            <div className="flex items-center justify-between mt-3">
+              <span className="text-xs text-gray-400">5キャラクター</span>
+              <span className="text-xs text-gray-300">投票する →</span>
+            </div>
+          </Link>
+        </div>
+
         {/* レリック */}
         <h2 className="text-lg font-semibold text-gray-300 mt-8 mb-3">レリック</h2>
         <div>

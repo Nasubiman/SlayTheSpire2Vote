@@ -29,21 +29,19 @@ export async function POST(req: NextRequest) {
 
   try {
     if (prevRating && prevRating !== rating) {
-      // 変更: 古い評価を-1、新しい評価を+1
       await db.runTransaction(async (tx) => {
         tx.set(resultRef, { [rating]: FieldValue.increment(1), [prevRating]: FieldValue.increment(-1) }, { merge: true });
-        tx.update(pollRef, {
+        tx.set(pollRef, {
           [`scores.${cardId}.${rating}`]: FieldValue.increment(1),
           [`scores.${cardId}.${prevRating}`]: FieldValue.increment(-1),
-        });
+        }, { merge: true });
       });
     } else if (!prevRating) {
-      // 新規投票
       await db.runTransaction(async (tx) => {
         tx.set(resultRef, { [rating]: FieldValue.increment(1) }, { merge: true });
-        tx.update(pollRef, {
+        tx.set(pollRef, {
           [`scores.${cardId}.${rating}`]: FieldValue.increment(1),
-        });
+        }, { merge: true });
       });
     }
     // prevRating === rating の場合は何もしない
