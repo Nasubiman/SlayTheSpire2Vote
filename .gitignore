@@ -47,8 +47,14 @@ info.txt
 # スクレイピングスクリプト（個人用ツール）
 scripts/
 
+# 画像ローカルキャッシュ（著作権配慮・Supabase Storageに移行済み）
+data/images/
 data/failed-images.json
+data/relic-images/
+data/relic-compact-images/
 data/failed-relic-images.json
+data/enemy-images/
 
 CLAUDE.md
 AGENTS.md
+supabaseapi.txt
