@@ -15,7 +15,8 @@ https://slaythespire2vote.vercel.app/
 - 強化前 / 強化後の画像切り替え
 - 全レリック評価ランキング（スターター〜ショップレリックを網羅）
 - 全敵キャラ強さランキング（通常 / エリート / ボス、エリア別フィルター）
-- S〜Dの5段階評価で投票（何度でも再投票可能）
+- キャラクター強さランキング（アイアンクラッド / サイレント / ディフェクト / ネクロバインダー / リージェント）
+- S〜Dの5段階評価で投票（1日1回。日をまたぐと新たに投票権を得る）
 - 投票結果をリアルタイム表示（分布バーで確認）
 - カード・レリック・敵キャラのTier表ページ（投票結果をもとに自動分類）
   - Tier表の手動編集（ドラッグ＆ドロップ、スマホタップ対応）
@@ -29,7 +30,7 @@ https://slaythespire2vote.vercel.app/
 | フロントエンド | Next.js (App Router) / Tailwind CSS |
 | ホスティング | Vercel |
 | データベース | Firebase Firestore |
-| 画像配信 | Vercel Blob |
+| 画像配信 | Supabase Storage |
 | 投票API | Next.js API Routes |
 
 ## 免責事項
