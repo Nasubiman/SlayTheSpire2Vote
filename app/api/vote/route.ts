@@ -31,17 +31,17 @@ export async function POST(req: NextRequest) {
     if (prevRating && prevRating !== rating) {
       await db.runTransaction(async (tx) => {
         tx.set(resultRef, { [rating]: FieldValue.increment(1), [prevRating]: FieldValue.increment(-1) }, { merge: true });
-        tx.set(pollRef, {
+        tx.update(pollRef, {
           [`scores.${cardId}.${rating}`]: FieldValue.increment(1),
           [`scores.${cardId}.${prevRating}`]: FieldValue.increment(-1),
-        }, { merge: true });
+        });
       });
     } else if (!prevRating) {
       await db.runTransaction(async (tx) => {
         tx.set(resultRef, { [rating]: FieldValue.increment(1) }, { merge: true });
-        tx.set(pollRef, {
+        tx.update(pollRef, {
           [`scores.${cardId}.${rating}`]: FieldValue.increment(1),
-        }, { merge: true });
+        });
       });
     }
     // prevRating === rating の場合は何もしない
