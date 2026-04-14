@@ -50,5 +50,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true, debug: { pollId, cardId, rating, prevRating } });
 }
