@@ -42,7 +42,7 @@ export default function PollPage() {
         const q = query(
           collection(db, "polls"),
           where("characterId", "==", pollId),
-          orderBy("createdAt", "asc"),
+          orderBy("createdAt", "desc"),
           limit(1)
         );
         const qs = await getDocs(q);
