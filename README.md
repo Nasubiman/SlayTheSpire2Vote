@@ -33,8 +33,3 @@ https://slaythespire2vote.vercel.app/
 | 画像配信 | Supabase Storage |
 | 投票API | Next.js API Routes |
 
-## 免責事項
-
-- カード画像・カード名・レリック画像・敵キャラ画像は [Slay the Spire 2](https://store.steampowered.com/app/1868140/Slay_the_Spire_2/) (MegaCrit) の著作物です
-- 本サイトは非公式のファンサイトであり、MegaCrit とは一切関係ありません
-- 商用利用は行っていません
