@@ -4309,15 +4309,6 @@
       "imagePath": "data/images/regent/スペクトラムシフト.webp"
     },
     {
-      "id": "regent_1",
-      "name": "1",
-      "cost": "ターン開始時、ランダムな無色カードを1枚手札に加える。",
-      "rarity": "",
-      "type": "パワー",
-      "characterId": "regent",
-      "characterName": "リージェント"
-    },
-    {
       "id": "regent_ニュートロン・イージス",
       "name": "ニュートロン・イージス",
       "cost": "1+5",
@@ -5281,16 +5272,6 @@
       "characterId": "colorless",
       "characterName": "無色カード",
       "imagePath": "data/images/colorless/スタック.webp"
-    },
-    {
-      "id": "colorless_先読み",
-      "name": "先読み",
-      "cost": "1",
-      "rarity": "次のターン、●●を得る。",
-      "type": "スキル",
-      "characterId": "colorless",
-      "characterName": "無色カード",
-      "imagePath": "data/images/colorless/先読み.webp"
     },
     {
       "id": "colorless_動揺",
